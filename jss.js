@@ -30,7 +30,7 @@ function aaa(a){
                 if(jQuery('#lxb-buy-iframe-' + a)){
                     jQuery('#lxb-buy-iframe-' + a).remove();
                 }
-                jQuery('#lxb-buy-hide').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
+                jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button></div>');
