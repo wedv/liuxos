@@ -3,7 +3,7 @@ function aaa(a){
     jQuery.ajax({
         url:'http://www.renrendai.com/transfer/loanTransferDetail.action',
         data:{transferId: a},
-        dataType:'html',
+        dataType:'text',
         success:function(d){
             var inputs = jQuery(d).find('input');
             for(var i=0; i<inputs.length; i++){
