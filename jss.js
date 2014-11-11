@@ -8,12 +8,11 @@ function aaa(a){
             var re = new RegExp('<input [^>]+>', 'ig');
             var res = d.match(re);
             for(var i=0; i<res.length; i++){
-                console.log(res[i]);
-                console.log(jQuery(res[i]));
-                if(jQuery(res[i]).attr('type') == 'hidden'){
-                    jQuery(res[i]).attr('type', 'text');
-                }
-                jQuery('#lxb-buy-hide').append(jQuery(res[i]));
+                var $input = res[i];
+                console.log($input);
+                console.log(jQuery($input));
+                $input = $input.replace('hidden', 'text');
+                jQuery('#lxb-buy-hide').append(jQuery($input));
             }
         }
     });
