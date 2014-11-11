@@ -27,8 +27,10 @@ function aaa(a){
                 console.log(jQuery($input));
                 $input = $input.replace('hidden', 'text');
                 jQuery('#lxb-buy-form').append(jQuery($input));
-                jQuery('#lxb-buy-hide').remove(jQuery('iframe[name="lxb-buy-iframe-' + a + '"]'));
-                jQuery('#lxb-buy-hide').append('<iframe name="lxb-buy-iframe-' + a + '"></iframe>');
+                if(jQuery('#lxb-buy-iframe-' + a)){
+                    jQuery('#lxb-buy-iframe-' + a).remove();
+                }
+                jQuery('#lxb-buy-hide').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button></div>');
