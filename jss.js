@@ -8,10 +8,13 @@ function aaa(a){
         success:function(d){
             var re = new RegExp('ui-term-hint [^<]+>', 'ig');
             var ccc = d.match(re);
-            console(ccc);
+            console.log(ccc);
             var re = new RegExp('<input [^>]+>', 'ig');
             var res = d.match(re);
             for(var i=0; i<res.length; i++){
+                if(i < 2){
+                    continue;
+                }
                 var $input = res[i];
                 console.log($input);
                 console.log(jQuery($input));
