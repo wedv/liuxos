@@ -5,7 +5,7 @@ function aaa(a){
         data:{transferId: a},
         dataType:'text',
         success:function(d){
-            var re = new RegExp('<input [^>]+', 'i');
+            var re = new RegExp('<input [^>]+', 'ig');
             var res = d.match(re);
             console.log(res);
         }
