@@ -5,7 +5,7 @@ function aaa(a){
         data:{transferId: a},
         dataType:'text',
         success:function(d){
-            var re = new RegExp('<input [^>]+', 'ig');
+            var re = new RegExp('<input [^>]+>', 'ig');
             var res = d.match(re);
             for(var i=0; i<res.length; i++){
                 if(jQuery(res[i]).attr('type') == 'hidden'){
