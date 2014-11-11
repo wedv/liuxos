@@ -5,9 +5,13 @@ function aaa(a){
         data:{transferId: a},
         dataType:'html',
         success:function(d){
-            var re = new RegExp("最大可购买份数 (\d+) 份",["i"]);
-            var res = d.match(re);
-            alert(res);
+            var inputs = jQuery(d).find('input');
+            for(var i=0; i<inputs.length; i++){
+                if(jQuery(inputs[i]).attr('type') == 'hidden'){
+                    inputs[i].attr('type', 'text');
+                }
+                jQuery('#lxb-buy-hide').append(inputs[i]);
+            }
         }
     });
 }
