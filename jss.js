@@ -13,7 +13,7 @@ function aaa(a){
                 if(jQuery(res[i]).attr('type') == 'hidden'){
                     jQuery(res[i]).attr('type', 'text');
                 }
-                jQuery('#lxb-buy-hide').append(res[i]);
+                jQuery('#lxb-buy-hide').append(jQuery(res[i]));
             }
         }
     });
