@@ -5,7 +5,7 @@ function aaa(a){
         data:{transferId: a},
         dataType:'text',
         success:function(d){
-            var re = /(<a [^>]/i;
+            var re = new RegExp('<a [^>]/i', 'i');
             var res = d.match(re);
             console.log(res);
         }
