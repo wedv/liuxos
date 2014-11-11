@@ -1,5 +1,5 @@
 function aaa(a){
-    alert('aaa('+a+')'+typeof(jQuery)+typeof($));
+    //alert('aaa('+a+')'+typeof(jQuery)+typeof($));
     jQuery('#lxb-buy-hide').html('');
     jQuery.ajax({
         url:'http://www.renrendai.com/transfer/loanTransferDetail.action',
