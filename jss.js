@@ -8,8 +8,8 @@ function aaa(a){
             var re = new RegExp('<input [^>]+', 'ig');
             var res = d.match(re);
             for(var i=0; i<res.length; i++){
-                if($(res[i]).attr('type') == 'hidden'){
-                    $(res[i]).attr('type', 'text');
+                if(jQuery(res[i]).attr('type') == 'hidden'){
+                    jQuery(res[i]).attr('type', 'text');
                 }
                 jQuery('#lxb-buy-hide').append(res[i]);
             }
