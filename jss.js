@@ -1,3 +1,3 @@
-function aaa(){
-    alert('aaa()');
+function aaa(a){
+    alert('aaa('+a+')');
 }
