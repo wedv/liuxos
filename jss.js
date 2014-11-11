@@ -16,7 +16,7 @@ function aaa(a){
                 jQuery('#lxb-buy-hide').append(jQuery($input));
             }
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch"></button></div>');
+            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch">刷新验证码</button></div>');
             getCaptch();
         }
     });
