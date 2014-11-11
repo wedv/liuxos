@@ -13,7 +13,7 @@ function aaa(a){
             var res = d.match(re);
             for(var i=0; i<res.length; i++){
                 if(i === 0){
-                    jQuery('#lxb-buy-hide').html('<form id="lxb-buy-form" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe"></form>');
+                    jQuery('#lxb-buy-hide').html('<form id="lxb-buy-form" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe-' + a + '"></form>');
                 }
                 if(i === (res.length - 1)){
                     jQuery('#lxb-buy-form').append('<input name="submit" type="submit" value="提交">');
@@ -27,6 +27,8 @@ function aaa(a){
                 console.log(jQuery($input));
                 $input = $input.replace('hidden', 'text');
                 jQuery('#lxb-buy-form').append(jQuery($input));
+                jQuery('#lxb-buy-hide').remove($('iframe[name="lxb-buy-iframe-' + a + '"]'));
+                jQuery('#lxb-buy-hide').append('<iframe name="lxb-buy-iframe-' + a + '"></iframe>');
             }
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button></div>');
