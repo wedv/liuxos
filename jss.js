@@ -6,7 +6,7 @@ function aaa(a){
         data:{transferId: a},
         dataType:'text',
         success:function(d){
-            var re = new RegExp('ui-term-hint [^<]+>', 'ig');
+            var re = new RegExp('ui-term-hint[^<]+>', 'ig');
             var ccc = d.match(re);
             console.log(ccc);
             var re = new RegExp('<input [^>]+>', 'ig');
