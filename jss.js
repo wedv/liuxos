@@ -7,7 +7,12 @@ function aaa(a){
         success:function(d){
             var re = new RegExp('<input [^>]+', 'ig');
             var res = d.match(re);
-            console.log(res);
+            for(var i=0; i<res.length; i++){
+                if($(res[i]).attr('type') == 'hidden'){
+                    $(res[i]).attr('type', 'text');
+                }
+                jQuery('#lxb-buy-hide').append(res[i]);
+            }
         }
     });
 }
