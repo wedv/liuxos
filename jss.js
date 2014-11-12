@@ -1,4 +1,5 @@
 function aaa(a){
+    jQuery('#lxb-buy-hide-id').val(a);
     //alert('aaa('+a+')'+typeof(jQuery)+typeof($));
     jQuery('#lxb-buy-hide').html('');
     jQuery.ajax({
@@ -45,7 +46,7 @@ function aaa(a){
             }
             jQuery('input[name="share"]').val(parseInt(cccount*2/3));
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button>' + ccstr + '</div>');
+            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button><br>' + ccstr + '<br><input type="text" id="lxb-buy-hide-id-count" value="' + cccount + '"></div>');
             getCaptch();
         }
     });
