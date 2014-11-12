@@ -8,7 +8,7 @@ function aaa(a){
         success:function(d){
             var re = new RegExp('ui-term-hint[^<]+', 'ig');
             var ccc = d.match(re);
-            var ccstr;
+            var ccstr = '没有购买数量推荐';
             var cccount = 0;
             if(ccc){
                 ccc = ccc[0];
