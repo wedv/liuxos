@@ -8,6 +8,17 @@ function aaa(a){
         success:function(d){
             var re = new RegExp('ui-term-hint[^<]+', 'ig');
             var ccc = d.match(re);
+            var ccstr;
+            var cccount = 0;
+            if(ccc){
+                ccc = ccc[0];
+                ccstr = ccc.slice(14);
+                var re = new RegExp('\d+', 'ig');
+                cccounts = ccstr.match(re);
+                if(cccounts){
+                    cccount = parseInt(cccounts[0]);
+                }
+            }
             console.log(ccc);
             var re = new RegExp('<input [^>]+>', 'ig');
             var res = d.match(re);
@@ -32,8 +43,9 @@ function aaa(a){
                 }
                 jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
+            jQuery('input[name="share"]').val(cccount);
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button></div>');
+            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button>' + ccstr + '</div>');
             getCaptch();
         }
     });
