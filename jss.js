@@ -14,7 +14,7 @@ function aaa(a){
             if(ccc){
                 ccc = ccc[0];
                 ccstr = ccc.slice(14);
-                var re = new RegExp('\d+', 'ig');
+                var re = new RegExp('[0-9]+', 'ig');
                 var cccounts = ccstr.match(re);
                 if(cccounts){
                     cccount = parseInt(cccounts[0]);
