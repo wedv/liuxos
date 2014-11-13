@@ -68,6 +68,7 @@ function renderUserInfo(){
         url: url,
         dataType: 'json',
         success: function(ddd){
+            console.log(ddd);
             jQuery('#lxb-user-money').html(ddd.avaliableBalance);
         }
     });
