@@ -48,6 +48,7 @@ function aaa(a){
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button><br>' + ccstr + '<br>可购买数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
             getCaptch();
+            jQuery('#captcha-input').focus();
         }
     });
 }
