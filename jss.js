@@ -14,8 +14,8 @@ function aaa(a){
             if(ccc){
                 ccc = ccc[0];
                 ccstr = ccc.slice(14);
-                var re = new RegExp('\d+', 'ig');
-                cccounts = ccstr.match(re);
+                var re = new RegExp('[0-9]+', 'ig');
+                var cccounts = ccstr.match(re);
                 if(cccounts){
                     cccount = parseInt(cccounts[0]);
                 }
@@ -44,9 +44,10 @@ function aaa(a){
                 }
                 jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
-            jQuery('input[name="share"]').val(parseInt(cccount*2/3));
+            var v = parseInt(cccount*2/3);
+            jQuery('input[name="share"]').val(v);
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button><br>' + ccstr + '<br>可购买数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
+            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button><br>' + ccstr + '<br>剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
             getCaptch();
             jQuery('#captcha-input').focus();
         }
@@ -68,6 +69,7 @@ function renderUserInfo(){
         url: url,
         dataType: 'json',
         success: function(ddd){
+            console.log(ddd);
             jQuery('#lxb-user-money').html(ddd.avaliableBalance);
         }
     });
