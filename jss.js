@@ -60,21 +60,24 @@ function gerIframe(a){
 }
 function getCaptch(){
     var cookies = jQuery('#lxb-buy-sessionid').val();
-    jQuery.ajax({
-        url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
-        type: 'GET',
-        data: {cookies: cookies},
-        dataType: 'jsonp',
-        success: function(ddd){
-            jQuery('#lxb-buy-captch').html('<img src="' + ddd.result.ResultList.Item.DesFile + '">');
-            jQuery('#captcha-input').val(ddd.result.ResultList.Item.Result);
-            console.log(ddd);
-        }
-    });
-//    var d = new Date;
-//    var t = d.getTime();
-//    var url = "http://www.renrendai.com/image_https.jsp?_=" + t;
-//    jQuery('#lxb-buy-captch').html('<img src="' + url + '">');
+    if(cookies){
+        jQuery.ajax({
+            url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
+            type: 'GET',
+            data: {cookies: cookies},
+            dataType: 'jsonp',
+            success: function(ddd){
+                jQuery('#lxb-buy-captch').html('<img src="' + ddd.result.ResultList.Item.DesFile + '">');
+                jQuery('#captcha-input').val(ddd.result.ResultList.Item.Result);
+                console.log(ddd);
+            }
+        });
+    }else{
+        var d = new Date;
+        var t = d.getTime();
+        var url = "http://www.renrendai.com/image_https.jsp?_=" + t;
+        jQuery('#lxb-buy-captch').html('<img src="' + url + '">');
+    }
 }
 
 function renderUserInfo(){
