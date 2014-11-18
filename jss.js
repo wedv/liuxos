@@ -90,7 +90,7 @@ function testPng(){
     var cookies = document.cookie;
     jQuery.ajax({
         url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
-        type: 'post',
+        type: 'POST',
         data: {cookies: cookies},
         dataType: 'jsonp',
         success: function(ddd){
