@@ -102,8 +102,8 @@ function getCookie(name) {
         return unescape(arr[2]);
     return null;
 }
-function testPng(url){
-    var cookies = document.cookie;
+function testPng(url, $cookies){
+    var cookies = $cookies;
     jQuery.ajax({
         url: url,
         type: 'GET',
