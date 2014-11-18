@@ -55,6 +55,19 @@ function aaa(a){
 }
 
 function getCaptch(){
+    var cookies = document.cookie;
+    jQuery.ajax({
+        url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
+        type: 'GET',
+        data: {cookies: cookies},
+        dataType: 'jsonp',
+        success: function(ddd){
+            jQuery('#lxb-buy-captch').html('<img src="' + ddd.result.ResultList.Item.DesFile + '">');
+            jQuery('#captcha-input').val(ddd.result.ResultList.Item.Result);
+            console.log(ddd);
+//            jQuery('#lxb-user-money').html(ddd.avaliableBalance);
+        }
+    });
     var d = new Date;
     var t = d.getTime();
     var url = "http://www.renrendai.com/image_https.jsp?_=" + t;
