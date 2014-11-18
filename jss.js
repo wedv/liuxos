@@ -25,7 +25,7 @@ function aaa(a){
             var res = d.match(re);
             for(var i=0; i<res.length; i++){
                 if(i === 0){
-                    jQuery('#lxb-buy-hide').html('<form onsubmit="jQuery(\'#lxb-buy-iframe-' + a + '\').remove();jQuery(\'#lxb-buy-iframe\').append(\'<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>\');return true;" id="lxb-buy-form" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe-' + a + '"></form>');
+                    jQuery('#lxb-buy-hide').html('<form onsubmit="return gerIframe(' + a + ');" id="lxb-buy-form" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe-' + a + '"></form>');
                 }
                 if(i === (res.length - 1)){
                     jQuery('#lxb-buy-form').append('<input name="submit" type="submit" value="提交">');
@@ -53,7 +53,11 @@ function aaa(a){
         }
     });
 }
-
+function gerIframe(a){
+    jQuery('#lxb-buy-iframe-' + a).remove();
+    jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
+    return true;
+}
 function getCaptch(){
     var cookies = document.cookie;
     jQuery.ajax({
