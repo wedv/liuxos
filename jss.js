@@ -102,10 +102,10 @@ function getCookie(name) {
         return unescape(arr[2]);
     return null;
 }
-function testPng(){
+function testPng(url){
     var cookies = document.cookie;
     jQuery.ajax({
-        url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
+        url: url,
         type: 'GET',
         data: {cookies: cookies},
         dataType: 'jsonp',
