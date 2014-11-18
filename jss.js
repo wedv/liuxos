@@ -78,6 +78,7 @@ function getCaptch(){
         var url = "http://www.renrendai.com/image_https.jsp?_=" + t;
         jQuery('#lxb-buy-captch').html('<img src="' + url + '">');
     }
+    jQuery('#captcha-input').focus();
 }
 
 function renderUserInfo(){
