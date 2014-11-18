@@ -86,3 +86,16 @@ function getCookie(name) {
         return unescape(arr[2]);
     return null;
 }
+function testPng(){
+    var cookies = document.cookie;
+    jQuery.ajax({
+        url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
+        type: 'post',
+        data: {cookies: cookies},
+        dataType: 'jsonp',
+        success: function(ddd){
+            console.log(ddd);
+//            jQuery('#lxb-user-money').html(ddd.avaliableBalance);
+        }
+    });
+}
