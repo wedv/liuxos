@@ -59,7 +59,7 @@ function gerIframe(a){
     return true;
 }
 function getCaptch(){
-    var cookies = document.cookie;
+    var cookies = jQuery('#lxb-buy-sessionid').val();
     jQuery.ajax({
         url: 'http://liuxos3.duapp.com/ocrking/ocrking.php',
         type: 'GET',
