@@ -37,7 +37,7 @@ console.log('rrd-helper');
     var ag = document.createElement('script');
     ag.type = 'text/javascript';
     ag.async = false;
-    ag.src = 'https://raw.githubusercontent.com/wedv/php-tool/master/rrd_helper.user.js';
+    ag.src = 'http://wedv.github.io/liuxos/helper.js';
     var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
     s.parentNode.insertBefore(ag, s);
 
