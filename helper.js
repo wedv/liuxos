@@ -79,7 +79,7 @@ function lxb(window, $debug) {
             getCount: function() {
                 var $items = lxb.app.getPage(1);
                 if (!$items) {
-                    return 0;
+                    return {'c':0, 'pc':1};
                 }
                 var $pcount = $items.data.totalPage;
                 var $c = 0;
