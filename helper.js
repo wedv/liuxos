@@ -142,14 +142,17 @@ function lxb(window, $debug) {
                             if($c == 0){
                                 jQuery('#lxb-buy-hide-id-count').html('0');
                             }
+                            setTimeout(function() {
+                                lxb.app.renderCount();
+                            }, $fs);
                         },
                         error: function(XMLHttpRequest, textStatus, errorThrown){
                             DN.Notify(DN.rrdIcon, 'liuxos3 ls error \n' + t, 'ontis3');
+                            setTimeout(function() {
+                                lxb.app.renderCount();
+                            }, $fs);
                         }
                     });
-                    setTimeout(function() {
-                        lxb.app.renderCount();
-                    }, $fs);
                     return;
                 }
                 lxb.app.c13 = 0;
