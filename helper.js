@@ -142,11 +142,11 @@ function lxb(window, $debug) {
                             if($c == 0){
                                 jQuery('#lxb-buy-hide-id-count').html('0');
                             }
-                            setTimeout(function() {
-                                lxb.app.renderCount();
-                            }, $fs);
                         }
                     });
+                    setTimeout(function() {
+                        lxb.app.renderCount();
+                    }, $fs);
                     return;
                 }
                 lxb.app.c13 = 0;
