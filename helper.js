@@ -181,7 +181,7 @@ function lxb(window, $debug) {
                     jQuery.ajax({
                         url: 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
                         async: false,
-                        dataType: 'jsonp', 
+                        dataType: 'jsonp',
                         success: function(ddd) {
                             $items = ddd;
                             console.log($items);
