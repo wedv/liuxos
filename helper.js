@@ -88,7 +88,7 @@ function lxb(window, $debug) {
                 } else {
                     $c = $pcount * lxb.app.pageSize;
                 }
-                return $c;
+                return {'c':$c, 'pc':$pcount};
             },
             renderCount: function() {
                 lxb.app.c13 = 0;
@@ -97,7 +97,9 @@ function lxb(window, $debug) {
                     return false;
                 }
                 jQuery('#lxb-showCon').html('...');
-                var $c = lxb.app.getCount();
+                var $dc = lxb.app.getCount();
+                var $pc = $dc.pc;
+                var $c = $dc.c;
                 if($c > 60){
                     $fs += 2000;
                 }
@@ -133,7 +135,7 @@ function lxb(window, $debug) {
                     }, 600);
 //                    $fs = 20000;
                     DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
-                    lxb.app.renderList($c, lxb.app.pageSize);
+                    lxb.app.renderList($c, $pc);
                     if (lxb.app.c13 > 0) {
                         setTimeout(function() {
                             jQuery('#chatAudio3')[0].play();
@@ -174,6 +176,10 @@ function lxb(window, $debug) {
                 if ($debug) {
                     return lxb.data.page;
                 }
+                if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
+                    var $items = lxb.http.get('http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls');
+                    return $items;
+                }
                 var $url = lxb.url.getPageUrl(lxb.url.page, $page);
                 var $items = lxb.http.get($url);
                 //            var $items = data.page;
@@ -190,9 +196,9 @@ function lxb(window, $debug) {
                 var $userInfo = lxb.http.get($url);
                 return $userInfo;
             },
-            renderList: function($count, $pageSize) {
+            renderList: function($count, $pageCount) {
                 jQuery('.list-item').remove();
-                var $pages = $count / $pageSize;
+                var $pages = $pageCount;
                 if ($pages <= 1) {
                     $pages = 1;
                 }
@@ -251,7 +257,8 @@ function lxb(window, $debug) {
                 var $dom = '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:960px;height:500px;left:-830px;z-index:9999999;top:0;">';
                 $dom += '<div id="lxb-title" style="width:958px;height:30px;border-bottom:1px solid red;"><div id="s_time" style="color:red;"></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:40%;position: absolute;top:0;"><a href="http://liuxos3.duapp.com/wx/chart" target="_blank">债权交易走势图</a></div>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:60%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
+                $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:53%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
+                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:240px;top:0;"><input type="checkbox" id="lxb-ls-liuxos3">私服</div>';
                 $dom += '<div style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:20%;position: absolute;top:0;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:140px;top:0;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</div>';
                 $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:120px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
