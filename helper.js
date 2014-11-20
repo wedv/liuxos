@@ -177,16 +177,7 @@ function lxb(window, $debug) {
                     return lxb.data.page;
                 }
                 if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
-                    var $items;
-                    jQuery.ajax({
-                        url: 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
-                        async: false,
-                        dataType: 'jsonp',
-                        success: function(ddd) {
-                            $items = ddd;
-                            console.log($items);
-                        }
-                    });
+                    var $items = lxb.http.get('http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls', 'jsonp');
                     return $items;
                 }
                 var $url = lxb.url.getPageUrl(lxb.url.page, $page);
