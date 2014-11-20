@@ -55,7 +55,11 @@ function lxb(window, $debug) {
                         $res = ddd;
                     }
                 });
-                return $res;
+                while(1){
+                    if($res){
+                        return $res;
+                    }
+                }
             }
         },
         /**
