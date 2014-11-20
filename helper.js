@@ -98,6 +98,21 @@ function lxb(window, $debug) {
                 }
                 jQuery('#lxb-showCon').html('...');
                 var $c = lxb.app.getCount();
+                if($c > 60){
+                    $fs += 2000;
+                }
+                if($c > 120){
+                    $fs += 2000;
+                }
+                if($c > 220){
+                    $fs += 2000;
+                }
+                if($c > 320){
+                    $fs += 2000;
+                }
+                if($c > 520){
+                    $fs += 4000;
+                }
                 if ($c > 0) {
                     var t = '';
                     var D = new Date();
