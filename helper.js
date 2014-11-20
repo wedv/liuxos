@@ -207,7 +207,7 @@ function lxb($, window, $debug) {
                 return $userInfo;
             },
             renderList: function($count, $pageSize) {
-                $('#lxb-item-list').html('');
+                $('.list-item').remove();
                 var $pages = $count / $pageSize;
                 if ($pages <= 1) {
                     $pages = 1;
@@ -278,11 +278,11 @@ function lxb($, window, $debug) {
                 $dom += '<img style="width:118px;" src="https://www.renrendai.com/static/img/logo.png?v=f3810" />';
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-list" style="overflow-y:auto;width:828px;height:467px;border:1px solid red;">';
-                $dom += '<div id="lxb-item-list-c5" style="overflow-y:auto;width:826px;border:1px solid red;">';
+                $dom += '<div id="lxb-item-list-c5" style="width:826px;border:1px solid red;">';
                 $dom += '</div>';
-                $dom += '<div id="lxb-item-list-c3" style="overflow-y:auto;width:826px;border:1px solid red;">';
+                $dom += '<div id="lxb-item-list-c3" style="width:826px;border:1px solid red;">';
                 $dom += '</div>';
-                $dom += '<div id="lxb-item-list-c2" style="overflow-y:auto;width:826px;border:1px solid red;">';
+                $dom += '<div id="lxb-item-list-c2" style="width:826px;border:1px solid red;">';
                 $dom += '</div>';
                 $dom += '</div>';
                 $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd.php" method="get" target="lxb-rep-iframe">';
