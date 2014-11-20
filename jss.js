@@ -46,9 +46,11 @@ function aaa(a){
             }
             var v = parseInt(cccount*2/3);
             jQuery('input[name="share"]').val(v);
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch"></div>');
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button"><button onclick="getCaptch()">刷新验证码</button><br>' + ccstr + '<br>剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
+            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch" onclick="getCaptch()"></div>');
+            jQuery('#lxb-buy-hide').append(jQuery('#list-item-id' + v.id).html());
+            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button">' + ccstr + ' &nbsp;&nbsp;||&nbsp;&nbsp; 剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
             getCaptch();
+            jQuery('#lxb-buy-form').find('input').css('width', '100px');
             jQuery('#captcha-input').focus();
         }
     });
