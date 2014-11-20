@@ -91,6 +91,64 @@ function lxb(window, $debug) {
                 return {'c':$c, 'pc':$pcount};
             },
             renderCount: function() {
+                if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
+                    jQuery.ajax({
+                        url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
+                        dataType: 'jsonp',
+                        success: function(ddd){
+                            lxb.app.c13 = 0;
+                            var $fs = 3000;
+                            if (lxb.app.getStop()) {
+                                return false;
+                            }
+                            jQuery('#lxb-showCon').html('...');
+                            var $pc = ddd.data.totalPage;
+                            var $c = ddd.data.transferList.length;
+                            if ($c > 0) {
+                                var t = '';
+                                var D = new Date();
+                                t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
+                                jQuery('#s_time').html(t);
+                                //                app.setStop();
+                                //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
+                                if (!$debug) {
+                                    jQuery('#lxb-rep-count').val($c);
+                                    jQuery('#lxb-rep-submit').click();
+                                }
+                                jQuery('#chatAudio0')[0].play();
+                                setTimeout(function() {
+                                    jQuery('#chatAudio1')[0].play();
+                                }, 300);
+                                setTimeout(function() {
+                                    jQuery('#chatAudio2')[0].play();
+                                }, 600);
+            //                    $fs = 20000;
+                                DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
+                                lxb.app.renderList($c, $pc, ddd.data.transferList);
+                                if (lxb.app.c13 > 0) {
+                                    setTimeout(function() {
+                                        jQuery('#chatAudio3')[0].play();
+                                    }, 100);
+                                    setTimeout(function() {
+                                        jQuery('#chatAudio4')[0].play();
+                                    }, 300);
+                                    setTimeout(function() {
+                                        jQuery('#chatAudio5')[0].play();
+                                    }, 600);
+                                    DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
+                                }
+                            }
+                            jQuery('#lxb-showCon').html($c);
+                            if($c == 0){
+                                jQuery('#lxb-buy-hide-id-count').html('0');
+                            }
+                            setTimeout(function() {
+                                lxb.app.renderCount();
+                            }, $fs);
+                        }
+                    });
+                    return $items;
+                }
                 lxb.app.c13 = 0;
                 var $fs = 3000;
                 if (lxb.app.getStop()) {
@@ -176,10 +234,6 @@ function lxb(window, $debug) {
                 if ($debug) {
                     return lxb.data.page;
                 }
-                if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
-                    var $items = lxb.http.get('http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls', 'jsonp');
-                    return $items;
-                }
                 var $url = lxb.url.getPageUrl(lxb.url.page, $page);
                 var $items = lxb.http.get($url);
                 //            var $items = data.page;
@@ -197,6 +251,11 @@ function lxb(window, $debug) {
                 return $userInfo;
             },
             renderList: function($count, $pageCount) {
+                var ttt = arguments[2] ? arguments[2] : false;
+                if(ttt){
+                    $pageCount = 1;
+                    $count = ttt.length;
+                }
                 jQuery('.list-item').remove();
                 var $pages = $pageCount;
                 if ($pages <= 1) {
@@ -204,11 +263,15 @@ function lxb(window, $debug) {
                 }
                 jQuery('#lxb-buy-hide-id-count').html('0');
                 for (var i = 1; i <= $pages; i++) {
-                    var $items = lxb.app.getPage(i);
-                    if (!$items) {
-                        continue;
+                    if(ttt){
+                        var $list = ttt;
+                    }else{
+                        var $items = lxb.app.getPage(i);
+                        if (!$items) {
+                            continue;
+                        }
+                        var $list = $items.data.transferList;
                     }
-                    var $list = $items.data.transferList;
                     jQuery($list).each(function(k, v) {
                         var place = '';
                         var color = 'gray';
