@@ -147,6 +147,7 @@ function lxb(window, $debug) {
                             }, $fs);
                         }
                     });
+                    return;
                 }
                 lxb.app.c13 = 0;
                 var $fs = 3000;
