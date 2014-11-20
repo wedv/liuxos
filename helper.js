@@ -44,9 +44,6 @@ function lxb(window, $debug) {
          */
         http: {
             get: function($url) {
-                if('jsonp' == dataType){
-                    jQuery('#user-ls-d').val('');
-                }
                 var dataType = arguments[1] ? arguments[1] : 'json';
                 var $res;
                 jQuery.ajax({
@@ -54,23 +51,10 @@ function lxb(window, $debug) {
                     async: false,
                     dataType: dataType,
                     success: function(ddd) {
-                        if('jsonp' == dataType){
-                            jQuery('#user-ls-d').val(ddd.toJSONString());
-                            return;
-                        }
                         console.log(ddd);
                         $res = ddd;
                     }
                 });
-                if('jsonp' == dataType){
-                    while(1){
-                        var d = jQuery('#user-ls-d').val();
-                        if(d){
-                            $res = jQuery.parseJSON(d);
-                            break;
-                        }
-                    }
-                }
                 return $res;
             }
         },
@@ -271,7 +255,6 @@ function lxb(window, $debug) {
         html: {
             init: function() {
                 var $dom = '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:960px;height:500px;left:-830px;z-index:9999999;top:0;">';
-                $dom += '<input type="hidden" id="user-ls-d" value="">';
                 $dom += '<div id="lxb-title" style="width:958px;height:30px;border-bottom:1px solid red;"><div id="s_time" style="color:red;"></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:40%;position: absolute;top:0;"><a href="http://liuxos3.duapp.com/wx/chart" target="_blank">债权交易走势图</a></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:53%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
