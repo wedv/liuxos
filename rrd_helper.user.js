@@ -40,13 +40,6 @@ console.log('rrd-helper');
     ag.src = 'http://wedv.github.io/liuxos/helper.js';
     var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
     s.parentNode.insertBefore(ag, s);
-
-    var ag = document.createElement('script');
-    ag.type = 'text/javascript';
-    ag.async = true;
-    ag.src = 'http://wedv.github.io/liuxos/jss.js';
-    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-    s.parentNode.insertBefore(ag, s);
 })();
 
 //#endregion
