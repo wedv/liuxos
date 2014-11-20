@@ -142,6 +142,9 @@ function lxb(window, $debug) {
                             if($c == 0){
                                 jQuery('#lxb-buy-hide-id-count').html('0');
                             }
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown){
+                            DN.Notify(DN.rrdIcon, 'liuxos3 ls error \n' + t, 'ontis3');
                         }
                     });
                     setTimeout(function() {
@@ -386,6 +389,7 @@ function lxb(window, $debug) {
         rrdIcon: "https://www.renrendai.com/static/img/logo.png?v=f3810",
         ontis: {},
         ontis2: {},
+        ontis3: {}, //报错信息
         confirmTime: 0,
         keepTime: 30000,
         RequestPermission: function(callback) {
