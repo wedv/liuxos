@@ -210,8 +210,8 @@ function lxb(window, $debug) {
                                 jQuery('input[name="share"]').val(parseInt(v.share*2/3));
                             }
                         }
-                        var $d = '<div class="list-item" id="list-item-id' + v.id + '" style="overflow:hidden;float:left;margin:0;border:1px ' + color + ' solid;padding:3px;">';
-                        $d += '<button onclick="aaa(' + v.id + ')" >OO</button>|<a target="_blank" href="' + lxb.url.getItemUrl(lxb.url.item, v.id) + '">' + v.id + '</a>|' + v.interest + '|' + v.leftPhaseCount + '月|' + v.share + '份';
+                        var $d = '<div class="list-item" style="overflow:hidden;float:left;margin:0;border:1px ' + color + ' solid;padding:3px;">';
+                        $d += '<button onclick="aaa(' + v.id + ')" >OO</button>|<span id="list-item-id' + v.id + '" ><a target="_blank" href="' + lxb.url.getItemUrl(lxb.url.item, v.id) + '">' + v.id + '</a>|' + v.interest + '|' + v.leftPhaseCount + '月|' + v.share + '份</span>';
                         $d += '</div>';
                         jQuery($d).appendTo(jQuery('#lxb-item-list' + place));
                     });
