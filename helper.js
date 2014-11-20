@@ -375,6 +375,7 @@ function lxb($, window, $debug) {
 
 //if(typeof($) == "undefined") $ = jQuery;
 var $debug = 0;
+console.log(jQuery);
 lxb(jQuery, window, $debug);
 
 
