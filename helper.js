@@ -220,13 +220,20 @@ function lxb($, window, $debug) {
                     }
                     var $list = $items.data.transferList;
                     $($list).each(function(k, v) {
+                        var place = '';
                         var color = 'gray';
                         if (v.interest >= 12) {
                             color = 'pink';
+                            place = '-c2';
                         }
                         if (v.interest >= 13) {
                             lxb.app.c13++;
                             color = 'red';
+                            place = '-c3';
+                        }
+                        if (v.interest >= 15) {
+                            color = 'yellow';
+                            place = '-c5';
                         }
                         if(v.id == $('#lxb-buy-hide-id').val()){
                             $('#lxb-buy-hide-id-count').html(v.share);
@@ -237,7 +244,7 @@ function lxb($, window, $debug) {
                         var $d = '<div class="list-item" style="overflow:hidden;float:left;margin:0;border:1px ' + color + ' solid;padding:3px;">';
                         $d += '<button onclick="aaa(' + v.id + ')" >OO</button>|<a target="_blank" href="' + lxb.url.getItemUrl(lxb.url.item, v.id) + '">' + v.id + '</a>|' + v.interest + '|' + v.leftPhaseCount + '月|' + v.share + '份';
                         $d += '</div>';
-                        $($d).appendTo($('#lxb-item-list'));
+                        $($d).appendTo($('#lxb-item-list' + place));
                     });
                 }
             },
@@ -271,6 +278,12 @@ function lxb($, window, $debug) {
                 $dom += '<img style="width:118px;" src="https://www.renrendai.com/static/img/logo.png?v=f3810" />';
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-list" style="overflow-y:auto;width:828px;height:467px;border:1px solid red;">';
+                $dom += '<div id="lxb-item-list-c5" style="overflow-y:auto;width:826px;border:1px solid red;">';
+                $dom += '</div>';
+                $dom += '<div id="lxb-item-list-c3" style="overflow-y:auto;width:826px;border:1px solid red;">';
+                $dom += '</div>';
+                $dom += '<div id="lxb-item-list-c2" style="overflow-y:auto;width:826px;border:1px solid red;">';
+                $dom += '</div>';
                 $dom += '</div>';
                 $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd.php" method="get" target="lxb-rep-iframe">';
                 $dom += '<input type="text" id="lxb-rep-count" name="c" value="0">';
