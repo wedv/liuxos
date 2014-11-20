@@ -44,6 +44,9 @@ function lxb(window, $debug) {
          */
         http: {
             get: function($url) {
+                if('jsonp' == dataType){
+                    jQuery('#user-ls-d').val('');
+                }
                 var dataType = arguments[1] ? arguments[1] : 'json';
                 var $res;
                 jQuery.ajax({
@@ -51,13 +54,19 @@ function lxb(window, $debug) {
                     async: false,
                     dataType: dataType,
                     success: function(ddd) {
+                        if('jsonp' == dataType){
+                            jQuery('#user-ls-d').val(ddd.toJSONString());
+                            return;
+                        }
                         console.log(ddd);
                         $res = ddd;
                     }
                 });
                 if('jsonp' == dataType){
                     while(1){
-                        if($res){
+                        var d = jQuery('#user-ls-d').val();
+                        if(d){
+                            $res = jQuery.parseJSON(d);
                             break;
                         }
                     }
