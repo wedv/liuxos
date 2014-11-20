@@ -1,4 +1,4 @@
-function lxb($, window, $debug) {
+function lxb(window, $debug) {
     var lxb = {
         /**
          * Data
@@ -46,7 +46,7 @@ function lxb($, window, $debug) {
             get: function($url) {
                 var dataType = arguments[1] ? arguments[1] : 'json';
                 var $res;
-                $.ajax({
+                jQuery.ajax({
                     url: $url,
                     async: false,
                     dataType: dataType,
@@ -69,8 +69,8 @@ function lxb($, window, $debug) {
                 lxb.app.stop = 0;
             },
             setStop: function() {
-                $('#lxb-item-list').html('');
-                $('#lxb-showCon').html('clear...');
+                jQuery('#lxb-item-list').html('');
+                jQuery('#lxb-showCon').html('clear...');
                 lxb.app.stop = 1;
             },
             getStop: function() {
@@ -96,45 +96,45 @@ function lxb($, window, $debug) {
                 if (lxb.app.getStop()) {
                     return false;
                 }
-                $('#lxb-showCon').html('...');
+                jQuery('#lxb-showCon').html('...');
                 var $c = lxb.app.getCount();
                 if ($c > 0) {
                     var t = '';
                     var D = new Date();
                     t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
-                    $('#s_time').html(t);
+                    jQuery('#s_time').html(t);
                     //                app.setStop();
-                    //                $.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
+                    //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
                     if (!$debug) {
-                        $('#lxb-rep-count').val($c);
-                        $('#lxb-rep-submit').click();
+                        jQuery('#lxb-rep-count').val($c);
+                        jQuery('#lxb-rep-submit').click();
                     }
-                    $('#chatAudio0')[0].play();
+                    jQuery('#chatAudio0')[0].play();
                     setTimeout(function() {
-                        $('#chatAudio1')[0].play();
+                        jQuery('#chatAudio1')[0].play();
                     }, 300);
                     setTimeout(function() {
-                        $('#chatAudio2')[0].play();
+                        jQuery('#chatAudio2')[0].play();
                     }, 600);
 //                    $fs = 20000;
                     DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
                     lxb.app.renderList($c, lxb.app.pageSize);
                     if (lxb.app.c13 > 0) {
                         setTimeout(function() {
-                            $('#chatAudio3')[0].play();
+                            jQuery('#chatAudio3')[0].play();
                         }, 100);
                         setTimeout(function() {
-                            $('#chatAudio4')[0].play();
+                            jQuery('#chatAudio4')[0].play();
                         }, 300);
                         setTimeout(function() {
-                            $('#chatAudio5')[0].play();
+                            jQuery('#chatAudio5')[0].play();
                         }, 600);
                         DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
                     }
                 }
-                $('#lxb-showCon').html($c);
+                jQuery('#lxb-showCon').html($c);
                 if($c == 0){
-                    $('#lxb-buy-hide-id-count').html('0');
+                    jQuery('#lxb-buy-hide-id-count').html('0');
                 }
                 setTimeout(function() {
                     lxb.app.renderCount();
@@ -148,7 +148,7 @@ function lxb($, window, $debug) {
                 if($userInfo){
                     str = $userInfo.avaliableBalance;
                 }
-                $('#lxb-user-money').html(str);
+                jQuery('#lxb-user-money').html(str);
                 if(!one){
                     setTimeout(function() {
                         lxb.app.renderUserInfo();
@@ -176,19 +176,19 @@ function lxb($, window, $debug) {
                 return $userInfo;
             },
             renderList: function($count, $pageSize) {
-                $('.list-item').remove();
+                jQuery('.list-item').remove();
                 var $pages = $count / $pageSize;
                 if ($pages <= 1) {
                     $pages = 1;
                 }
-                $('#lxb-buy-hide-id-count').html('0');
+                jQuery('#lxb-buy-hide-id-count').html('0');
                 for (var i = 1; i <= $pages; i++) {
                     var $items = lxb.app.getPage(i);
                     if (!$items) {
                         continue;
                     }
                     var $list = $items.data.transferList;
-                    $($list).each(function(k, v) {
+                    jQuery($list).each(function(k, v) {
                         var place = '';
                         var color = 'gray';
                         if (v.interest >= 12) {
@@ -204,16 +204,16 @@ function lxb($, window, $debug) {
                             color = 'yellow';
                             place = '-c5';
                         }
-                        if(v.id == $('#lxb-buy-hide-id').val()){
-                            $('#lxb-buy-hide-id-count').html(v.share);
-                            if(parseInt(v.share*2/3) < $('input[name="share"]').val()){
-                                $('input[name="share"]').val(parseInt(v.share*2/3));
+                        if(v.id == jQuery('#lxb-buy-hide-id').val()){
+                            jQuery('#lxb-buy-hide-id-count').html(v.share);
+                            if(parseInt(v.share*2/3) < jQuery('input[name="share"]').val()){
+                                jQuery('input[name="share"]').val(parseInt(v.share*2/3));
                             }
                         }
                         var $d = '<div class="list-item" id="list-item-id' + v.id + '" style="overflow:hidden;float:left;margin:0;border:1px ' + color + ' solid;padding:3px;">';
                         $d += '<button onclick="aaa(' + v.id + ')" >OO</button>|<a target="_blank" href="' + lxb.url.getItemUrl(lxb.url.item, v.id) + '">' + v.id + '</a>|' + v.interest + '|' + v.leftPhaseCount + '月|' + v.share + '份';
                         $d += '</div>';
-                        $($d).appendTo($('#lxb-item-list' + place));
+                        jQuery($d).appendTo(jQuery('#lxb-item-list' + place));
                     });
                 }
             },
@@ -237,7 +237,7 @@ function lxb($, window, $debug) {
                 $dom += '<div id="lxb-title" style="width:958px;height:30px;border-bottom:1px solid red;"><div id="s_time" style="color:red;"></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:40%;position: absolute;top:0;"><a href="http://liuxos3.duapp.com/wx/chart" target="_blank">债权交易走势图</a></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:60%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
-                $dom += '<div style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:20%;position: absolute;top:0;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>$("#lxb-jsession-button").click(function(){$("#lxb-buy-sessionid").show().focus();});$("#lxb-buy-sessionid").blur(function(){$("#lxb-buy-sessionid").hide();});</script></div>';
+                $dom += '<div style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:20%;position: absolute;top:0;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:140px;top:0;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</div>';
                 $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:120px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
                 $dom += '</div>';
@@ -263,15 +263,15 @@ function lxb($, window, $debug) {
                 $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
                 $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="display:none;margin:-1px;padding:0;width:960px;height:200px;border:1px double red;background:#373b42;"></div>';
                 $dom += '</div>';
-                $dom += '<script>function showCon(){if($("#lxb").position().left < -10){$("#lxb").animate({left:"0px"}, 300, "swing", function(){$("#lxb-buy-hide").slideDown(300);});}else{$("#lxb-buy-hide").slideUp(300, function(){$("#lxb").animate({left:"-830px"}, 300, "swing");});}}$("#lxb-showCon").click(function(){showCon();});$("#lxb-item-box").click(function(){showCon();});</script>';
-                $dom += '<script>function RequestPermission(callback){window.Notification.requestPermission(callback);}$("#lxb-open-notify").click(function(){RequestPermission(function(){if (window.Notification.permission === "granted"){$("#lxb-open-notify").attr("checked", "true");}else{$("#lxb-open-notify").removeAttr("checked");}});});$("#lxb-open-notify").click();</script>';
-                $($dom).appendTo('body');
-                $('<audio id="chatAudio0"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
-                $('<audio id="chatAudio1"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
-                $('<audio id="chatAudio2"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
-                $('<audio id="chatAudio3"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
-                $('<audio id="chatAudio4"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
-                $('<audio id="chatAudio5"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                $dom += '<script>function showCon(){if(jQuery("#lxb").position().left < -10){jQuery("#lxb").animate({left:"0px"}, 300, "swing", function(){jQuery("#lxb-buy-hide").slideDown(300);});}else{jQuery("#lxb-buy-hide").slideUp(300, function(){jQuery("#lxb").animate({left:"-830px"}, 300, "swing");});}}jQuery("#lxb-showCon").click(function(){showCon();});jQuery("#lxb-item-box").click(function(){showCon();});</script>';
+                $dom += '<script>function RequestPermission(callback){window.Notification.requestPermission(callback);}jQuery("#lxb-open-notify").click(function(){RequestPermission(function(){if (window.Notification.permission === "granted"){jQuery("#lxb-open-notify").attr("checked", "true");}else{jQuery("#lxb-open-notify").removeAttr("checked");}});});jQuery("#lxb-open-notify").click();</script>';
+                jQuery($dom).appendTo('body');
+                jQuery('<audio id="chatAudio0"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                jQuery('<audio id="chatAudio1"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                jQuery('<audio id="chatAudio2"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                jQuery('<audio id="chatAudio3"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                jQuery('<audio id="chatAudio4"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                jQuery('<audio id="chatAudio5"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
             }
         },
         run: function() {
@@ -287,9 +287,9 @@ function lxb($, window, $debug) {
                 lxb.app.renderUserInfo();
             }
             if($isLoanPage){
-                var $m = $('#pg-server-message');
+                var $m = jQuery('#pg-server-message');
                 if($m){
-                    $(window.parent.document).find('#lxb-buy-hide').append('<div style="color:yellow;">' + $m.attr('data-message') + '</div>');
+                    jQuery(window.parent.document).find('#lxb-buy-hide').append('<div style="color:yellow;">' + $m.attr('data-message') + '</div>');
                     window.parent.renderUserInfo();
                 }
             }
@@ -327,7 +327,7 @@ function lxb($, window, $debug) {
             if ($debug) {
                 title = '[debug]' + title;
             }
-            if (!$("#lxb-open-notify").prop("checked")) {
+            if (!jQuery("#lxb-open-notify").prop("checked")) {
                 return false;
             }
             //        if (window.webkitNotifications.checkPermission() == 0) {//检测有木同意本域使用提醒
@@ -375,8 +375,7 @@ function lxb($, window, $debug) {
 
 //if(typeof($) == "undefined") $ = jQuery;
 var $debug = 0;
-console.log(jQuery);
-lxb(jQuery, window, $debug);
+lxb(window, $debug);
 
 
 (function() {
