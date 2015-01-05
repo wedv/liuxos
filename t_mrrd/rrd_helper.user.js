@@ -11,7 +11,7 @@
 // @require		https://www.renrendai.com/static/js/lib/jquery/1.9.1/jquery.js
 // @icon		https://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		1023
+// @version 		1024
 // @updateURL		https://wedv.github.io/liuxos/t_rrd/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
@@ -26,7 +26,6 @@
 console.log('mrrd-helper');
 
 (function() {
-	alert('sdf');return false;
 
     var ag = document.createElement('script');
     ag.type = 'text/javascript';
