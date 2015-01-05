@@ -12,7 +12,7 @@
 // @icon		https://www.renrendai.com/favicon.ico
 // @run-at		document-idle
 // @version 		1024
-// @updateURL		https://wedv.github.io/liuxos/t_rrd/rrd_helper.user.js
+// @updateURL		https://wedv.github.io/liuxos/t_mrrd/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
 // @contributionURL	https://me.alipay.com/
