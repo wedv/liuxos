@@ -368,8 +368,8 @@ function lxb(window, $debug) {
         run: function() {
             
             var $url = window.location.href;
-            var $transList = 'www.renrendai.com/transfer/transferList.action';
-            var $loan = 'm.renrendai.com';
+            var $transList = 'm.renrendai.com';
+            var $loan = 'www.renrendai.com/transfer/loanTransferDetail.action';
             var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
             var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
             if($isTransListPage){
