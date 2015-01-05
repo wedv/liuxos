@@ -474,7 +474,7 @@ lxb(window, $debug);
     var ag = document.createElement('script');
     ag.type = 'text/javascript';
     ag.async = true;
-    ag.src = 'http://wedv.github.io/liuxos/t_rrd/jss.js';
+    ag.src = 'https://wedv.github.io/liuxos/t_mrrd/jss.js';
     var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
     s.parentNode.insertBefore(ag, s);
 })();
