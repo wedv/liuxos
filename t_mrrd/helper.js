@@ -344,7 +344,7 @@ function lxb(window, $debug) {
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-list-c2">';
                 $dom += '</div>';
-                $dom += '<input type="text" id="mrrd_post" name="mrrd_post" value="">';
+                $dom += '<input type="text" id="mrrd_post" name="mrrd_post" value="{version:1.1,clientVersion:1.0,channelCode:\'wap\',username:\'15110012180\',password:\'111111.\',type:\'LOGIN\',_s:\'4wn252v\'}">';
                 $dom += '<input type="text" id="mrrd_method" name="mrrd_method" value="post">';
                 $dom += '<input type="button" id="mrrd_post_button" name="mrrd_post_button" value="提交">';
                 $dom += '<script>function mrrd_post(){eval("var $data=" + jQuery("#mrrd_post").val());var $method=jQuery("#mrrd_method").val();jQuery.ajax({url:"/login/login.action",type:$method,data:$data,dataType:"json"});}jQuery("#mrrd_post_button").click(function(){mrrd_post();});</script>';
