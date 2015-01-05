@@ -344,6 +344,10 @@ function lxb(window, $debug) {
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-list-c2">';
                 $dom += '</div>';
+                $dom += '<input type="text" id="mrrd_post" name="mrrd_post" value="">';
+                $dom += '<input type="text" id="mrrd_method" name="mrrd_method" value="post">';
+                $dom += '<input type="button" id="mrrd_post_button" name="mrrd_post_button" value="提交">';
+                $dom += '<script>function mrrd_post(){eval("var $data=" + jQuery("#mrrd_post").val());var $method=jQuery("#mrrd_method").val();jQuery.ajax({url:"/login/login.action",data:$data,dataType:"json"});}jQuery("#mrrd_post_button").click(function(){mrrd_post();});</script>';
                 $dom += '</div>';
                 $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd.php" method="get" target="lxb-rep-iframe">';
                 $dom += '<input type="text" id="lxb-rep-count" name="c" value="0">';
