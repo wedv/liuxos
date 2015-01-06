@@ -28,7 +28,7 @@ function aaa(a){
                     jQuery('#lxb-buy-hide').html('<form onsubmit="return gerIframe(' + a + ');" id="lxb-buy-form" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe-' + a + '"></form>');
                 }
                 if(i === (res.length - 1)){
-                    jQuery('#lxb-buy-form').append('<input name="submit" type="submit" value="提交">');
+                    jQuery('#lxb-buy-form').append('<input type="submit" value="提交">');
                     break;
                 }
                 if(i < 2){
@@ -41,6 +41,9 @@ function aaa(a){
                 var inattr = jQuery($input).attr('name');
                 if(inputs.indexOf(inattr) === -1){
                     continue;
+                }
+                if(inattr == 'couponId'){
+                    jQuery($input).val('');
                 }
                 $input = $input.replace('hidden', 'text');
                 jQuery('#lxb-buy-form').append(jQuery($input));
