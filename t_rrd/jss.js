@@ -37,6 +37,11 @@ function aaa(a){
                 var $input = res[i];
                 console.log($input);
                 console.log(jQuery($input));
+                var inputs = ['agree-contract', 'countRatio', 'couponId', 'currentPrice', 'share', 'transferId'];
+                var inattr = jQuery($input).attr('name');
+                if(inputs.indexOf(inattr) === -1){
+                    continue;
+                }
                 $input = $input.replace('hidden', 'text');
                 jQuery('#lxb-buy-form').append(jQuery($input));
                 if(jQuery('#lxb-buy-iframe-' + a)){
@@ -49,7 +54,7 @@ function aaa(a){
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch" onclick="getCaptch()"></div>');
             jQuery('#lxb-buy-hide').append(jQuery('#list-item-id' + a).html());
             jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button">' + ccstr + ' &nbsp;&nbsp;||&nbsp;&nbsp; 剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
-            getCaptch();
+//            getCaptch();
             jQuery('#lxb-buy-form').find('input').css('width', '100px');
             jQuery('#captcha-input').focus();
         }
