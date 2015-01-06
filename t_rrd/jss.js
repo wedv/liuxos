@@ -42,10 +42,10 @@ function aaa(a){
                 if(inputs.indexOf(inattr) === -1){
                     continue;
                 }
+                $input = $input.replace('hidden', 'text');
                 if(inattr == 'couponId'){
                     $input = '<input type="hidden" id="getUseCouponId" name="couponId" value="" />';
                 }
-                $input = $input.replace('hidden', 'text');
                 jQuery('#lxb-buy-form').append(jQuery($input));
                 if(jQuery('#lxb-buy-iframe-' + a)){
                     jQuery('#lxb-buy-iframe-' + a).remove();
