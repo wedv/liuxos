@@ -43,7 +43,7 @@ function aaa(a){
                     continue;
                 }
                 if(inattr == 'couponId'){
-                    jQuery($input).val('');
+                    $input = '<input type="hidden" id="getUseCouponId" name="couponId" value="" />';
                 }
                 $input = $input.replace('hidden', 'text');
                 jQuery('#lxb-buy-form').append(jQuery($input));
