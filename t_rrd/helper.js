@@ -279,6 +279,9 @@ function lxb(window, $debug) {
                         var $list = $items.data.transferList;
                     }
                     jQuery($list).each(function(k, v) {
+                        if (v.share <= 0) {
+                            return true;
+                        }
                         var place = '';
                         var color = 'gray';
                         if (v.interest >= 12) {
