@@ -179,44 +179,7 @@ function lxb(window, $debug) {
                 if($c > 520){
                     $fs += 4000;
                 }
-                if ($c > 0) {
-                    var t = '';
-                    var D = new Date();
-                    t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
-                    jQuery('#s_time').html(t);
-                    //                app.setStop();
-                    //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
-                    if (!$debug) {
-                        jQuery('#lxb-rep-count').val($c);
-                        jQuery('#lxb-rep-submit').click();
-                    }
-                    jQuery('#chatAudio0')[0].play();
-                    setTimeout(function() {
-                        jQuery('#chatAudio1')[0].play();
-                    }, 300);
-                    setTimeout(function() {
-                        jQuery('#chatAudio2')[0].play();
-                    }, 600);
-//                    $fs = 20000;
-                    DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
-                    lxb.app.renderList($c, $pc);
-                    if (lxb.app.c13 > 0) {
-                        setTimeout(function() {
-                            jQuery('#chatAudio3')[0].play();
-                        }, 100);
-                        setTimeout(function() {
-                            jQuery('#chatAudio4')[0].play();
-                        }, 300);
-                        setTimeout(function() {
-                            jQuery('#chatAudio5')[0].play();
-                        }, 600);
-                        DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
-                    }
-                }
-                jQuery('#lxb-showCon').html($c);
-                if($c == 0){
-                    jQuery('#lxb-buy-hide-id-count').html('0');
-                }
+                lxb.app.renderList($c, $pc);
                 setTimeout(function() {
                     lxb.app.renderCount();
                 }, $fs);
@@ -268,6 +231,7 @@ function lxb(window, $debug) {
                     $pages = 1;
                 }
                 jQuery('#lxb-buy-hide-id-count').html('0');
+                var $c = 0;
                 for (var i = 1; i <= $pages; i++) {
                     if(ttt){
                         var $list = ttt;
@@ -282,6 +246,7 @@ function lxb(window, $debug) {
                         if (v.share <= 0) {
                             return true;
                         }
+                        $c++;
                         var place = '';
                         var color = 'gray';
                         if (v.interest >= 12) {
@@ -308,6 +273,44 @@ function lxb(window, $debug) {
                         $d += '</div>';
                         jQuery($d).appendTo(jQuery('#lxb-item-list' + place));
                     });
+                }
+                if ($c > 0) {
+                    var t = '';
+                    var D = new Date();
+                    t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
+                    jQuery('#s_time').html(t);
+                    //                app.setStop();
+                    //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
+                    if (!$debug) {
+                        jQuery('#lxb-rep-count').val($c);
+                        jQuery('#lxb-rep-submit').click();
+                    }
+                    jQuery('#chatAudio0')[0].play();
+                    setTimeout(function() {
+                        jQuery('#chatAudio1')[0].play();
+                    }, 300);
+                    setTimeout(function() {
+                        jQuery('#chatAudio2')[0].play();
+                    }, 600);
+//                    $fs = 20000;
+                    DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
+//                    lxb.app.renderList($c, $pc);
+                    if (lxb.app.c13 > 0) {
+                        setTimeout(function() {
+                            jQuery('#chatAudio3')[0].play();
+                        }, 100);
+                        setTimeout(function() {
+                            jQuery('#chatAudio4')[0].play();
+                        }, 300);
+                        setTimeout(function() {
+                            jQuery('#chatAudio5')[0].play();
+                        }, 600);
+                        DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
+                    }
+                }
+                jQuery('#lxb-showCon').html($c);
+                if($c === 0){
+                    jQuery('#lxb-buy-hide-id-count').html('0');
                 }
             },
             getAllPage: function() {
