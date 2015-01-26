@@ -242,8 +242,10 @@ function lxb(window, $debug) {
                         }
                         var $list = $items.data.transferList;
                     }
+                    var $break = 0;
                     jQuery($list).each(function(k, v) {
                         if (v.share <= 0) {
+                            $break = 1;
                             return true;
                         }
                         $c++;
@@ -273,6 +275,9 @@ function lxb(window, $debug) {
                         $d += '</div>';
                         jQuery($d).appendTo(jQuery('#lxb-item-list' + place));
                     });
+                    if($break > 0){
+                        break;
+                    }
                 }
                 if ($c > 0) {
                     var t = '';
