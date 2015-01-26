@@ -62,6 +62,7 @@ function lxb(window, $debug) {
          * 执行操作
          */
         app: {
+            tooFast: 0,
             transfersList: [],
             c13: 0,
             pageSize: 20,
@@ -78,8 +79,12 @@ function lxb(window, $debug) {
                 return lxb.app.stop;
             },
             getCount: function() {
+                if(lxb.app.tooFast){
+                    alert('it\'s too faster !!!');
+                }
                 var $items = lxb.app.getPage(1);
                 if (!$items) {
+                    lxb.app.tooFast = 1;
                     return {'c':0, 'pc':1};
                 }
                 var $pcount = $items.data.totalPage;
