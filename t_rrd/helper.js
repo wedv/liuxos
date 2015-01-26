@@ -167,7 +167,8 @@ function lxb(window, $debug) {
                 jQuery('#lxb-showCon').html('...');
                 var $dc = lxb.app.getCount();
                 var $pc = $dc.pc;
-                var $c = $dc.c;
+                lxb.app.renderList($dc.c, $pc);
+                var $c = jQuery('#lxb-showCon').html();
                 if($c > 60){
                     $fs += 2000;
                 }
@@ -183,7 +184,6 @@ function lxb(window, $debug) {
                 if($c > 520){
                     $fs += 4000;
                 }
-                lxb.app.renderList($c, $pc);
                 setTimeout(function() {
                     lxb.app.renderCount();
                 }, $fs);
