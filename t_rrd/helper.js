@@ -242,13 +242,14 @@ function lxb(window, $debug) {
                     }else{
                         if(i === 1){
                             var $items = lxb.app.transfersList;
+                            var $list = $items;
                         }else{
                             var $items = lxb.app.getPage(i);
+                            var $list = $items.data.transferList;
                         }
                         if (!$items) {
                             continue;
                         }
-                        var $list = $items.data.transferList;
                     }
                     var $break = 0;
                     jQuery($list).each(function(k, v) {
