@@ -62,6 +62,7 @@ function lxb(window, $debug) {
          * 执行操作
          */
         app: {
+            transfersList: [],
             c13: 0,
             pageSize: 20,
             stop: 0,
@@ -88,9 +89,11 @@ function lxb(window, $debug) {
                 } else {
                     $c = $pcount * lxb.app.pageSize;
                 }
+                lxb.app.transfersList = $items.data.transferList;
                 return {'c':$c, 'pc':$pcount};
             },
             renderCount: function() {
+                lxb.app.transfersList = [];
                 if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
                     jQuery.ajax({
                         url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
@@ -124,6 +127,7 @@ function lxb(window, $debug) {
                                 }, 600);
             //                    $fs = 20000;
                                 DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
+                                lxb.app.transfersList = ddd.data.transferList;
                                 lxb.app.renderList($c, $pc, ddd.data.transferList);
                                 if (lxb.app.c13 > 0) {
                                     setTimeout(function() {
@@ -236,7 +240,11 @@ function lxb(window, $debug) {
                     if(ttt){
                         var $list = ttt;
                     }else{
-                        var $items = lxb.app.getPage(i);
+                        if(i === 1){
+                            var $items = lxb.app.transfersList;
+                        }else{
+                            var $items = lxb.app.getPage(i);
+                        }
                         if (!$items) {
                             continue;
                         }
@@ -472,7 +480,16 @@ function lxb(window, $debug) {
             //        }
         }
     };
-
+    jQuery(window).bind('beforeunload',function(){
+        try {
+            //DN.ontis.close();
+            eval('DN.ontis.close();');
+            eval('DN.ontis2.close();');
+        } catch (e) {
+            console.log(e);
+        }
+    });
+    window.DN = DN;
     lxb.run();
 }
 
