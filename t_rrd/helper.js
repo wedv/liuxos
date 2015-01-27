@@ -287,6 +287,17 @@ function lxb(window, $debug) {
                         var $d = '<div class="list-item" style="overflow:hidden;float:left;margin:0;border:1px ' + color + ' solid;padding:3px;">';
                         $d += '<button onclick="aaa(' + v.id + ')" >OO</button>|<span id="list-item-id' + v.id + '" ><a target="_blank" href="' + lxb.url.getItemUrl(lxb.url.item, v.id) + '">' + v.id + '</a>|' + v.interest + '|' + v.leftPhaseCount + '月|' + v.share + '份</span>';
                         $d += '</div>';
+                        var $m = jQuery('#lxb-min-money').val();
+                        var $im = jQuery('#lxb-user-money').html();
+                        if($m > 0 && $im > $m){
+                            var ct = gttt();
+                            var ch = ct - $lastBuyTime;
+                            if (v.interest >= 12 && ch > 3000) {
+                                $d += '<script>';
+                                $d += 'setTimeout(function(){aaa(' + v.id + ', 1);}, 100); ';
+                                $d += '</script>';
+                            }
+                        }
                         jQuery($d).appendTo(jQuery('#lxb-item-list' + place));
                     });
                     if($break > 0){
@@ -354,6 +365,7 @@ function lxb(window, $debug) {
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:53%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:240px;top:0;"><input type="checkbox" id="lxb-ls-liuxos3">私服</div>';
                 $dom += '<div style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:20%;position: absolute;top:0;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></div>';
+                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:576px;top:0;"><input type="checkbox" id="lxb-open-notify">留底<input id="lxb-min-money" value style="width:40px;" />元</div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:140px;top:0;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</div>';
                 $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:120px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
                 $dom += '</div>';
@@ -377,6 +389,7 @@ function lxb(window, $debug) {
                 $dom += '<iframe name="lxb-rep-iframe" style="display:none;"></iframe>';
                 $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
                 $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
+                $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
                 $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="display:none;margin:-1px;padding:0;width:960px;height:200px;border:1px double red;background:#373b42;"></div>';
                 $dom += '</div>';
                 $dom += '<script>function showCon(){if(jQuery("#lxb").position().left < -10){jQuery("#lxb").animate({left:"0px"}, 300, "swing", function(){jQuery("#lxb-buy-hide").slideDown(300);});}else{jQuery("#lxb-buy-hide").slideUp(300, function(){jQuery("#lxb").animate({left:"-830px"}, 300, "swing");});}}jQuery("#lxb-showCon").click(function(){showCon();});jQuery("#lxb-item-box").click(function(){showCon();});</script>';
@@ -501,6 +514,12 @@ function lxb(window, $debug) {
 
 //if(typeof($) == "undefined") $ = jQuery;
 var $debug = 0;
+function gttt() {
+    d = new Date();
+    t = d.getTime();
+    return t;
+}
+var $lastBuyTime = gttt();
 lxb(window, $debug);
 
 

@@ -1,7 +1,13 @@
 function aaa(a){
+    var autoCommit = arguments[1] ? arguments[1] : 0;
     jQuery('#lxb-buy-hide-id').val(a);
     //alert('aaa('+a+')'+typeof(jQuery)+typeof($));
-    jQuery('#lxb-buy-hide').html('');
+    var $buyHide = jQuery('#lxb-buy-hide');
+    if(autoCommit){
+        jQuery('#lxb-buy-hide-auto-commit').append('<div id="lxb-buy-hide-auto-commit-' + a + '" style="display:none;"></div>');
+        var $buyHide = jQuery('#lxb-buy-hide-auto-commit-' + a);
+    }
+    $buyHide.html('');
     jQuery.ajax({
         url:'http://www.renrendai.com/transfer/loanTransferDetail.action',
         data:{transferId: a},
@@ -23,12 +29,16 @@ function aaa(a){
             console.log(ccc);
             var re = new RegExp('<input [^>]+>', 'ig');
             var res = d.match(re);
+            var $formId = "lxb-buy-form";
+            if(autoCommit){
+                var $formId = "lxb-buy-form-" + a;
+            }
             for(var i=0; i<res.length; i++){
                 if(i === 0){
-                    jQuery('#lxb-buy-hide').html('<form onsubmit="return gerIframe(' + a + ');" id="lxb-buy-form" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe-' + a + '"></form>');
+                    $buyHide.html('<form onsubmit="return gerIframe(' + a + ');" id="' + $formId + '" action="/transfer/buyLoanTransfer.action" method="post" target="lxb-buy-iframe-' + a + '"></form>');
                 }
                 if(i === (res.length - 1)){
-                    jQuery('#lxb-buy-form').append('<input type="submit" value="提交">');
+                    jQuery('#' + $formId).append('<input id="lxb-buy-hide-submit-button-' + a + '" type="submit" value="提交">');
                     break;
                 }
                 if(i < 2){
@@ -46,7 +56,7 @@ function aaa(a){
                 if(inattr == 'couponId'){
                     $input = '<input type="hidden" id="getUseCouponId" name="couponId" value="" />';
                 }
-                jQuery('#lxb-buy-form').append(jQuery($input));
+                jQuery('#' + $formId).append(jQuery($input));
                 if(jQuery('#lxb-buy-iframe-' + a)){
                     jQuery('#lxb-buy-iframe-' + a).remove();
                 }
@@ -54,12 +64,19 @@ function aaa(a){
             }
             var v = parseInt(cccount*2/3);
             jQuery('input[name="share"]').val(v);
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch" onclick="getCaptch()"></div>');
-            jQuery('#lxb-buy-hide').append(jQuery('#list-item-id' + a).html());
-            jQuery('#lxb-buy-hide').append('<div id="lxb-buy-captch-button">' + ccstr + ' &nbsp;&nbsp;||&nbsp;&nbsp; 剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
+            $buyHide.append('<div id="lxb-buy-captch" onclick="getCaptch()"></div>');
+            $buyHide.append(jQuery('#list-item-id' + a).html());
+            $buyHide.append('<div id="lxb-buy-captch-button">' + ccstr + ' &nbsp;&nbsp;||&nbsp;&nbsp; 剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
 //            getCaptch();
-            jQuery('#lxb-buy-form').find('input').css('width', '100px');
+            jQuery('#' + $formId).find('input').css('width', '100px');
             jQuery('#captcha-input').focus();
+            if(autoCommit){
+                var $m = jQuery('#lxb-min-money').val();
+                var $im = jQuery('#lxb-user-money').html();
+                if($m > 0 && $im > $m){
+                    jQuery('#lxb-buy-hide-submit-button-' + a).click();
+                }
+            }
         }
     });
 }
