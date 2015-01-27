@@ -105,7 +105,7 @@ function lxb(window, $debug) {
                         dataType: 'jsonp',
                         success: function(ddd){
                             lxb.app.c13 = 0;
-                            var $fs = 3000;
+                            var $fs = 2000;
                             if (lxb.app.getStop()) {
                                 return false;
                             }
@@ -165,7 +165,7 @@ function lxb(window, $debug) {
                     return;
                 }
                 lxb.app.c13 = 0;
-                var $fs = 3000;
+                var $fs = 2000;
                 if (lxb.app.getStop()) {
                     return false;
                 }
@@ -174,20 +174,20 @@ function lxb(window, $debug) {
                 var $pc = $dc.pc;
                 lxb.app.renderList($dc.c, $pc);
                 var $c = jQuery('#lxb-showCon').html();
+                if($c > 20){
+                    $fs += 1000;
+                }
+                if($c > 40){
+                    $fs += 800;
+                }
                 if($c > 60){
-                    $fs += 2000;
+                    $fs += 600;
                 }
-                if($c > 120){
-                    $fs += 2000;
+                if($c > 80){
+                    $fs += 400;
                 }
-                if($c > 220){
-                    $fs += 2000;
-                }
-                if($c > 320){
-                    $fs += 2000;
-                }
-                if($c > 520){
-                    $fs += 4000;
+                if($c > 100){
+                    $fs += 300;
                 }
                 setTimeout(function() {
                     lxb.app.renderCount();
@@ -419,7 +419,7 @@ function lxb(window, $debug) {
         ontis2: {},
         ontis3: {}, //报错信息
         confirmTime: 0,
-        keepTime: 30000,
+        keepTime: 5000,
         RequestPermission: function(callback) {
             if (window.webkitNotifications) {
                 return true
