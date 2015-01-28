@@ -73,7 +73,9 @@ function aaa(a){
             if(autoCommit){
                 var $m = jQuery('#lxb-min-money').val();
                 var $im = jQuery('#lxb-user-money').html();
-                if($m > 0 && $im > $m){
+                var $buyCount = jQuery('#' + $formId).find('input[name="share"]').val();
+                console.log($buyCount);
+                if($m > 0 && $im > $m && $buyCount > 0){
                     jQuery('#lxb-buy-hide-submit-button-' + a).click();
                 }
             }

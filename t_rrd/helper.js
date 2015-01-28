@@ -289,13 +289,15 @@ function lxb(window, $debug) {
                         $d += '</div>';
                         var $m = jQuery('#lxb-min-money').val();
                         var $im = jQuery('#lxb-user-money').html();
-                        if($m > 0 && $im > $m){
+                        if($m > 0 && $im > $m){     //验证金额
                             var ct = gttt();
-                            var ch = ct - $lastBuyTime;
-                            if (v.interest >= 12 && ch > 3000) {
+                            var ch = ct - window.lastBuyTime;
+                            console.log('tttt' + ct + '|||||' + window.lastBuyTime);
+                            if (v.interest >= 12 && ch > 5000) {
                                 $d += '<script>';
                                 $d += 'setTimeout(function(){aaa(' + v.id + ', 1);}, 100); ';
                                 $d += '</script>';
+                                window.lastBuyTime = gttt();
                             }
                         }
                         jQuery($d).appendTo(jQuery('#lxb-item-list' + place));
@@ -365,7 +367,7 @@ function lxb(window, $debug) {
                 $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:53%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:240px;top:0;"><input type="checkbox" id="lxb-ls-liuxos3">私服</div>';
                 $dom += '<div style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:20%;position: absolute;top:0;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></div>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:576px;top:0;"><input type="checkbox" id="lxb-open-notify">留底<input id="lxb-min-money" value style="width:40px;" />元</div>';
+                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:576px;top:0;">留底<input id="lxb-min-money" value style="width:40px;" />元</div>';
                 $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:140px;top:0;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</div>';
                 $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:120px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
                 $dom += '</div>';
@@ -520,6 +522,7 @@ function gttt() {
     return t;
 }
 var $lastBuyTime = gttt();
+window.lastBuyTime = $lastBuyTime;
 lxb(window, $debug);
 
 
