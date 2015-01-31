@@ -71,9 +71,9 @@ function aaa(a){
             jQuery('#' + $formId).find('input').css('width', '100px');
             jQuery('#captcha-input').focus();
             if(autoCommit){
-                var $m = jQuery('#lxb-min-money').val();
-                var $im = jQuery('#lxb-user-money').html();
-                var $buyCount = jQuery('#' + $formId).find('input[name="share"]').val();
+                var $m = parseInt(jQuery('#lxb-min-money').val());
+                var $im = parseInt(jQuery('#lxb-user-money').html());
+                var $buyCount = parseInt(jQuery('#' + $formId).find('input[name="share"]').val());
                 console.log($buyCount);
                 if($m > 0 && $im > $m && $buyCount > 0){
                     jQuery('#lxb-buy-hide-submit-button-' + a).click();

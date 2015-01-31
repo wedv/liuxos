@@ -173,7 +173,7 @@ function lxb(window, $debug) {
                 var $dc = lxb.app.getCount();
                 var $pc = $dc.pc;
                 lxb.app.renderList($dc.c, $pc);
-                var $c = jQuery('#lxb-showCon').html();
+                var $c = parseInt(jQuery('#lxb-showCon').html());
                 if($c > 20){
                     $fs += 1000;
                 }
@@ -280,15 +280,15 @@ function lxb(window, $debug) {
                         }
                         if(v.id == jQuery('#lxb-buy-hide-id').val()){
                             jQuery('#lxb-buy-hide-id-count').html(v.share);
-                            if(parseInt(v.share*2/3) < jQuery('input[name="share"]').val()){
+                            if(parseInt(v.share*2/3) < parseInt(jQuery('input[name="share"]').val())){
                                 jQuery('input[name="share"]').val(parseInt(v.share*2/3));
                             }
                         }
                         var $d = '<div class="list-item" style="overflow:hidden;float:left;margin:0;border:1px ' + color + ' solid;padding:3px;">';
                         $d += '<button onclick="aaa(' + v.id + ')" >OO</button>|<span id="list-item-id' + v.id + '" ><a target="_blank" href="' + lxb.url.getItemUrl(lxb.url.item, v.id) + '">' + v.id + '</a>|' + v.interest + '|' + v.leftPhaseCount + '月|' + v.share + '份</span>';
                         $d += '</div>';
-                        var $m = jQuery('#lxb-min-money').val();
-                        var $im = jQuery('#lxb-user-money').html();
+                        var $m = parseInt(jQuery('#lxb-min-money').val());
+                        var $im = parseInt(jQuery('#lxb-user-money').html());
                         if($m > 0 && $im > $m){     //验证金额
                             var ct = gttt();
                             var ch = ct - window.lastBuyTime;
