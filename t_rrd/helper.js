@@ -546,3 +546,6 @@ window.lastBuyTime = $lastBuyTime;
 lxb(window, $debug);
 
 
+setTimeout(function(){
+    window.location.reload();
+}, 600000);
