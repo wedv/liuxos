@@ -1,3 +1,13 @@
+
+(function() {
+    var ag = document.createElement('script');
+    ag.type = 'text/javascript';
+    ag.async = true;
+    ag.src = 'http://wedv.github.io/liuxos/t_rrd/jss.js';
+    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
+    s.parentNode.insertBefore(ag, s);
+})();
+
 function lxb(window, $debug) {
     var lxb = {
         /**
@@ -536,11 +546,3 @@ window.lastBuyTime = $lastBuyTime;
 lxb(window, $debug);
 
 
-(function() {
-    var ag = document.createElement('script');
-    ag.type = 'text/javascript';
-    ag.async = true;
-    ag.src = 'http://wedv.github.io/liuxos/t_rrd/jss.js';
-    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-    s.parentNode.insertBefore(ag, s);
-})();
