@@ -293,7 +293,7 @@ function lxb(window, $debug) {
                             var ct = gttt();
                             var ch = ct - window.lastBuyTime;
                             console.log('tttt' + ct + '|||||' + window.lastBuyTime);
-                            if (v.interest >= 12 && ch > 5000) {
+                            if (v.interest >= 13 && ch > 5000) {
                                 $d += '<script>';
                                 $d += 'setTimeout(function(){aaa(' + v.id + ', 1);}, 100); ';
                                 $d += '</script>';
