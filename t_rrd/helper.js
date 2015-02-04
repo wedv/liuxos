@@ -51,7 +51,9 @@ function lxb(window, $debug) {
                     async: false,
                     dataType: dataType,
                     success: function(ddd) {
-                        console.log(ddd);
+                        if($debug){
+                            console.log(ddd);
+                        }
                         $res = ddd;
                     }
                 });
@@ -292,7 +294,9 @@ function lxb(window, $debug) {
                         if($m > 0 && $im > $m){     //验证金额
                             var ct = gttt();
                             var ch = ct - window.lastBuyTime;
-                            console.log('tttt' + ct + '|||||' + window.lastBuyTime);
+                            if($debug){
+                                console.log('tttt' + ct + '|||||' + window.lastBuyTime);
+                            }
                             if (v.interest >= 13 && ch > 5000) {
                                 $d += '<script>';
                                 $d += 'setTimeout(function(){aaa(' + v.id + ', 1);}, 100); ';
@@ -468,7 +472,9 @@ function lxb(window, $debug) {
                 eval('DN.' + ttt + '.close();');
                 eval('DN.ontis2.close();');
             } catch (e) {
-                console.log(e);
+                if($debug){
+                    console.log(e);
+                }
             }
 
             //DN.ontis = new Notification(title, {icon: icon, body: content});
@@ -484,7 +490,9 @@ function lxb(window, $debug) {
                     eval('DN.ontis.close();');
                     eval('DN.ontis2.close();');
                 } catch (e) {
-                    console.log(e);
+                    if($debug){
+                        console.log(e);
+                    }
                 }
             }, DN.keepTime);
             return true;
@@ -507,7 +515,9 @@ function lxb(window, $debug) {
             eval('DN.ontis.close();');
             eval('DN.ontis2.close();');
         } catch (e) {
-            console.log(e);
+            if($debug){
+                console.log(e);
+            }
         }
     });
     window.DN = DN;

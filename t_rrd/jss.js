@@ -26,7 +26,9 @@ function aaa(a){
                     cccount = parseInt(cccounts[0]);
                 }
             }
-            console.log(ccc);
+            if($debug){
+                console.log(ccc);
+            }
             var re = new RegExp('<input [^>]+>', 'ig');
             var res = d.match(re);
             var $formId = "lxb-buy-form";
@@ -45,8 +47,12 @@ function aaa(a){
                     continue;
                 }
                 var $input = res[i];
-                console.log($input);
-                console.log(jQuery($input));
+                if($debug){
+                    console.log($input);
+                }
+                if($debug){
+                    console.log(jQuery($input));
+                }
                 var inputs = ['agree-contract', 'countRatio', 'couponId', 'currentPrice', 'share', 'transferId'];
                 var inattr = jQuery($input).attr('name');
                 if(inputs.indexOf(inattr) === -1){
@@ -74,7 +80,9 @@ function aaa(a){
                 var $m = parseInt(jQuery('#lxb-min-money').val());
                 var $im = parseInt(jQuery('#lxb-user-money').html());
                 var $buyCount = parseInt(jQuery('#' + $formId).find('input[name="share"]').val());
-                console.log($buyCount);
+                if($debug){
+                    console.log($buyCount);
+                }
                 if($m > 0 && $im > $m && $buyCount > 0){
                     jQuery('#lxb-buy-hide-submit-button-' + a).click();
                 }
@@ -98,7 +106,9 @@ function getCaptch(){
             success: function(ddd){
                 jQuery('#lxb-buy-captch').html('<img src="' + ddd.result.ResultList.Item.DesFile + '">');
                 jQuery('#captcha-input').val(ddd.result.ResultList.Item.Result);
-                console.log(ddd);
+                if($debug){
+                    console.log(ddd);
+                }
             }
         });
     }else{
@@ -118,7 +128,9 @@ function renderUserInfo(){
         url: url,
         dataType: 'json',
         success: function(ddd){
-            console.log(ddd);
+            if($debug){
+                console.log(ddd);
+            }
             jQuery('#lxb-user-money').html(ddd.avaliableBalance);
         }
     });
@@ -143,7 +155,9 @@ function testPng(url, $cookies){
         data: {cookies: cookies},
         dataType: 'jsonp',
         success: function(ddd){
-            console.log(ddd);
+            if($debug){
+                console.log(ddd);
+            }
 //            jQuery('#lxb-user-money').html(ddd.avaliableBalance);
         }
     });
