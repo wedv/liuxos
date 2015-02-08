@@ -251,6 +251,11 @@ function lxb(window, $debug) {
                 if ($pages <= 1) {
                     $pages = 1;
                 }
+                var overflow = 0;
+                if ($pages >= 5) {
+                    $pages = 3;
+                    overflow = 1;
+                }
                 jQuery('#lxb-buy-hide-id-count').html('0');
                 var $c = 0;
                 for (var i = 1; i <= $pages; i++) {
@@ -339,7 +344,7 @@ function lxb(window, $debug) {
                         jQuery('#chatAudio2')[0].play();
                     }, 600);
 //                    $fs = 20000;
-                    DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
+                    DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + (overflow > 0 ? '大于' : '') + $c + '\n' + t);
 //                    lxb.app.renderList($c, $pc);
                     if (lxb.app.c13 > 0) {
                         setTimeout(function() {
