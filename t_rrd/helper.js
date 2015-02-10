@@ -91,11 +91,12 @@ function lxb(window, $debug) {
                 return lxb.app.stop;
             },
             getCount: function() {
-                if(lxb.app.tooFast && $debug){
-                    alert('it\'s too faster !!!');
+                if(lxb.app.tooFast){
+//                    alert('it\'s too faster !!!');
                 }
                 var $items = lxb.app.getPage(1);
                 if (!$items) {
+                    console.log($items);
                     lxb.app.tooFast = 1;
                     return {'c':0, 'pc':1};
                 }
@@ -117,7 +118,7 @@ function lxb(window, $debug) {
                         dataType: 'jsonp',
                         success: function(ddd){
                             lxb.app.c13 = 0;
-                            var $fs = 4000;
+                            var $fs = 2000;
                             if (lxb.app.getStop()) {
                                 return false;
                             }
@@ -177,7 +178,7 @@ function lxb(window, $debug) {
                     return;
                 }
                 lxb.app.c13 = 0;
-                var $fs = 4000;
+                var $fs = 2000;
                 if (lxb.app.getStop()) {
                     return false;
                 }
