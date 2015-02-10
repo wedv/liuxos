@@ -252,8 +252,8 @@ function lxb(window, $debug) {
                     $pages = 1;
                 }
                 var overflow = 0;
-                if ($pages >= 5) {
-                    $pages = 3;
+                if ($pages >= 2) {
+                    $pages = 2;
                     overflow = 1;
                 }
                 jQuery('#lxb-buy-hide-id-count').html('0');
