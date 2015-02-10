@@ -91,7 +91,7 @@ function lxb(window, $debug) {
                 return lxb.app.stop;
             },
             getCount: function() {
-                if(lxb.app.tooFast){
+                if(lxb.app.tooFast && $debug){
                     alert('it\'s too faster !!!');
                 }
                 var $items = lxb.app.getPage(1);
