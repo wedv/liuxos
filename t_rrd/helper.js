@@ -265,13 +265,16 @@ function lxb(window, $debug) {
                     }else{
                         if(i === 1){
                             var $items = lxb.app.transfersList;
+                            if (!$items) {
+                                continue;
+                            }
                             var $list = $items;
                         }else{
                             var $items = lxb.app.getPage(i);
+                            if (!$items) {
+                                continue;
+                            }
                             var $list = $items.data.transferList;
-                        }
-                        if (!$items) {
-                            continue;
                         }
                     }
                     var $break = 0;
