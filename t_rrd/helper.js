@@ -550,6 +550,18 @@ function gttt() {
     t = d.getTime();
     return t;
 }
+
+jQuery.ajaxSetup({
+	timeout: 2000,
+	error: function (XMLHttpRequest, textStatus, errorThrown) {
+		console.log(this);
+		console.log(XMLHttpRequest);
+		console.log(textStatus);
+		console.log(errorThrown);
+	}
+});
+
+
 var $lastBuyTime = gttt();
 window.lastBuyTime = $lastBuyTime;
 lxb(window, $debug);
