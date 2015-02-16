@@ -16,15 +16,23 @@ function aaa(a){
             var re = new RegExp('ui-term-hint[^<]+', 'ig');
             var ccc = d.match(re);
             var ccstr = '没有购买数量推荐';
-            var cccount = 0;
+            var canBuyCount = 0;
             if(ccc){
                 ccc = ccc[0];
                 ccstr = ccc.slice(14);
                 var re = new RegExp('[0-9]+', 'ig');
-                var cccounts = ccstr.match(re);
-                if(cccounts){
-                    cccount = parseInt(cccounts[0]);
+                var canBuyCountStr = ccstr.match(re);
+                if(canBuyCountStr){
+                    canBuyCount = parseInt(canBuyCountStr[0]);
                 }
+            }
+            var maxCount = 0;
+            var re = new RegExp('<em id="max-shares[^<]+', 'ig');
+            var maxCountStr = d.match(re);
+            if(maxCountStr){
+                maxCountStr = maxCountStr[0];
+                maxCountStr = maxCountStr + '</em>';
+                maxCount = parseInt(jQuery(maxCountStr).text());
             }
             if($debug){
                 console.log(ccc);
@@ -68,11 +76,11 @@ function aaa(a){
                 }
                 jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
-            var v = parseInt(cccount*2/3);
+            var v = parseInt(canBuyCount*2/3);
             jQuery('input[name="share"]').val(v);
             $buyHide.append('<div id="lxb-buy-captch" onclick="getCaptch()"></div>');
             $buyHide.append(jQuery('#list-item-id' + a).html());
-            $buyHide.append('<div id="lxb-buy-captch-button">' + ccstr + ' &nbsp;&nbsp;||&nbsp;&nbsp; 剩余数量：<span id="lxb-buy-hide-id-count">' + cccount + '</span>');
+            $buyHide.append('<div id="lxb-buy-captch-button">' + ccstr + ' &nbsp;&nbsp;||&nbsp;&nbsp; 剩余数量：<span id="lxb-buy-hide-id-count">' + maxCount + '</span>');
 //            getCaptch();
             jQuery('#' + $formId).find('input').css('width', '100px');
             jQuery('#captcha-input').focus();
