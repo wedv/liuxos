@@ -76,7 +76,7 @@ function aaa(a){
                 }
                 jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
-            var v = parseInt(canBuyCount*2/3);
+            var v = canBuyCount>3 ? parseInt(canBuyCount*2/3) : canBuyCount;
             jQuery('input[name="share"]').val(v);
             $buyHide.append('<div id="lxb-buy-captch" onclick="getCaptch()"></div>');
             $buyHide.append(jQuery('#list-item-id' + a).html());
