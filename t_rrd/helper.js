@@ -316,7 +316,7 @@ function lxb(window, $debug) {
                             if($debug){
                                 console.log('tttt' + ct + '|||||' + window.lastBuyTime);
                             }
-                            if (v.interest > 11 && ch > 5000) {
+                            if (v.interest > 11 && ch > 7000) {
                                 $d += '<script>';
                                 $d += 'setTimeout(function(){aaa(' + v.id + ', 1);}, 100); ';
                                 $d += '</script>';
