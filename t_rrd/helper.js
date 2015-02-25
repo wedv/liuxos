@@ -118,7 +118,7 @@ function lxb(window, $debug) {
                         dataType: 'jsonp',
                         success: function(ddd){
                             lxb.app.c13 = 0;
-                            var $fs = 600;
+                            var $fs = 1200;
                             if (lxb.app.getStop()) {
                                 return false;
                             }
