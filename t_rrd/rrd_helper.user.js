@@ -23,7 +23,7 @@
 /*! jQuery v1.9.1 | (c) 2005, 2012 jQuery Foundation, Inc. | jquery.org/license*/
 //console.log('js:jQuery is ' + typeof(jQuery));
 //console.log('js:$ is ' + typeof($));
-console.log('rrd-helper');
+//console.log('rrd-helper');
 
 (function() {
 
