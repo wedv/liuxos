@@ -96,7 +96,7 @@ function lxb(window, $debug) {
                 }
                 var $items = lxb.app.getPage(1);
                 if (!$items) {
-                    console.log($items);
+                    //console.log($items);
                     lxb.app.tooFast = 1;
                     return {'c':0, 'pc':1};
                 }
@@ -554,10 +554,10 @@ function gttt() {
 jQuery.ajaxSetup({
 	timeout: 2000,
 	error: function (XMLHttpRequest, textStatus, errorThrown) {
-		console.log(this);
-		console.log(XMLHttpRequest);
-		console.log(textStatus);
-		console.log(errorThrown);
+		//console.log(this);
+		//console.log(XMLHttpRequest);
+		//console.log(textStatus);
+		//console.log(errorThrown);
 	}
 });
 
