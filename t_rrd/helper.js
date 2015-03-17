@@ -443,7 +443,7 @@ function lxb(window, $debug) {
             if($isLoanPage){
                 var $m = jQuery('#pg-server-message');
                 if($m){
-                    jQuery(window.parent.document).find('#lxb-buy-hide').append('<div style="color:yellow;">' + $m.attr('data-message') + '</div>');
+                    jQuery(window.parent.document).find('#lxb-buy-hide').append('<div style="color:yellow;">' + $m.attr('data-message') + gtttstr() + '</div>');
                     window.parent.renderUserInfo();
                 }
             }
@@ -548,6 +548,11 @@ var $debug = 0;
 function gttt() {
     d = new Date();
     t = d.getTime();
+    return t;
+}
+function gtttstr() {
+    d = new Date();
+    t = d.toString();
     return t;
 }
 
