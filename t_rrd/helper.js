@@ -415,7 +415,7 @@ function lxb(window, $debug) {
                 $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
                 $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
                 $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
-                $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="display:none;margin:-1px;padding:0;width:960px;height:200px;border:1px double red;background:#373b42;"></div>';
+                $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:960px;height:200px;border:1px double red;background:#373b42;"></div>';
                 $dom += '</div>';
                 $dom += '<script>function showCon(){if(jQuery("#lxb").position().left < -10){jQuery("#lxb").animate({left:"0px"}, 300, "swing", function(){jQuery("#lxb-buy-hide").slideDown(300);});}else{jQuery("#lxb-buy-hide").slideUp(300, function(){jQuery("#lxb").animate({left:"-830px"}, 300, "swing");});}}jQuery("#lxb-showCon").click(function(){showCon();});jQuery("#lxb-item-box").click(function(){showCon();});</script>';
                 $dom += '<script>function RequestPermission(callback){window.Notification.requestPermission(callback);}jQuery("#lxb-open-notify").click(function(){RequestPermission(function(){if (window.Notification.permission === "granted"){jQuery("#lxb-open-notify").attr("checked", "true");}else{jQuery("#lxb-open-notify").removeAttr("checked");}});});jQuery("#lxb-open-notify").click();</script>';
