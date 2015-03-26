@@ -310,7 +310,7 @@ function lxb(window, $debug) {
                         $d += '</div>';
                         var $m = parseInt(jQuery('#lxb-min-money').val());
                         var $mlilv = parseFloat(jQuery('#lxb-min-lilv').val());
-                        $mlilv = $mlilv < 12 ? 12 : $mlilv;
+                        $mlilv = $mlilv < 10 ? 10 : $mlilv;
                         var $im = parseInt(jQuery('#lxb-user-money').html());
                         if($m > 0 && $im > $m){     //验证金额
                             var ct = gttt();
