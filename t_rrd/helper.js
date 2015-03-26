@@ -384,22 +384,23 @@ function lxb(window, $debug) {
         },
         html: {
             init: function() {
-                var $dom = '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:960px;height:500px;left:-830px;z-index:9999999;top:0;">';
-                $dom += '<div id="lxb-title" style="width:958px;height:30px;border-bottom:1px solid red;"><div id="s_time" style="color:red;"></div>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:40%;position: absolute;top:0;"><a href="http://liuxos3.duapp.com/wx/chart" target="_blank">债权交易走势图</a></div>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;margin-left:53%;position: absolute;top:0;"><p>账户余额：<span id="lxb-user-money">--</span></p></div>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:240px;top:0;"><input type="checkbox" id="lxb-ls-liuxos3" checked="checked">私服</div>';
-                $dom += '<div style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:20%;position: absolute;top:0;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></div>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:576px;top:0;">留底<input id="lxb-min-money" value style="width:40px;" />元</div><script>jQuery("#lxb-min-money").keyup(function(){setCookie("lxb-min-money", jQuery("#lxb-min-money").val())});setInterval(function(){var min = jQuery("#lxb-min-money").val();var min_cookie = getCookie("lxb-min-money");if(min != min_cookie && min_cookie != 0){jQuery("#lxb-min-money").val(min_cookie);}}, 3000);</script>';
-                $dom += '<div style="border:1px solid gray;line-height:28px;position: absolute;right:140px;top:0;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</div>';
-                $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:120px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
+                var $dom = '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:900px;height:300px;left:-830px;z-index:9999999;top:0;">';
+                $dom += '<div id="lxb-title" style="width:898px;height:30px;border-bottom:1px solid red;">';
+                $dom += '<span style="width:50px;border-right:1px solid gray;padding-right:5px;padding-left:5px;line-height:28px;color:red;" id="s_time" title="上次刷出债权时间"></span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:55px;position: absolute;top:0;"><a href="http://liuxos3.duapp.com/wx/chart" target="_blank">债权交易走势图</a></span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:160;position: absolute;top:0;">账户余额：<span id="lxb-user-money">--</span></span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;position: absolute;right:240px;top:0;"><input type="checkbox" id="lxb-ls-liuxos3" checked="checked">私服</span>';
+                $dom += '<span style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;">留底<input id="lxb-min-money" value style="width:40px;" />元</span><script>jQuery("#lxb-min-money").keyup(function(){setCookie("lxb-min-money", jQuery("#lxb-min-money").val())});setInterval(function(){var min = jQuery("#lxb-min-money").val();var min_cookie = getCookie("lxb-min-money");if(min != min_cookie && min_cookie != 0){jQuery("#lxb-min-money").val(min_cookie);}}, 3000);</script>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;position: absolute;right:140px;top:0;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</span>';
+                $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:60px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
                 $dom += '</div>';
-                $dom += '<div id="lxb-item-box" style="cursor:pointer;width:130px;height:468px;float:right;background:gray;">';
-                $dom += '<img style="width:118px;" src="https://www.renrendai.com/static/img/logo.png?v=f3810" />';
-                $dom += '<p style="font-size:45px;margin:auto;padding:15px 0px 15px 40px;">人<br>人<br>贷<br>助<br>手<br></p>';
-                $dom += '<img style="width:118px;" src="https://www.renrendai.com/static/img/logo.png?v=f3810" />';
+                $dom += '<div id="lxb-item-box" style="cursor:pointer;width:130px;height:268px;float:right;background:gray;">';
+                $dom += '<img style="width:70px;" src="https://www.renrendai.com/static/img/logo.png?v=f3810" />';
+                $dom += '<p style="font-size:27px;margin:auto;padding:5px 0px 5px 23px;">人<br>人<br>贷<br>助<br>手<br></p>';
+                $dom += '<img style="width:70px;" src="https://www.renrendai.com/static/img/logo.png?v=f3810" />';
                 $dom += '</div>';
-                $dom += '<div id="lxb-item-list" style="overflow-y:auto;width:828px;height:467px;border:1px solid red;">';
+                $dom += '<div id="lxb-item-list" style="overflow-y:auto;width:828px;height:267px;border:1px solid red;">';
                 $dom += '<div id="lxb-item-list-c5">';
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-list-c3">';
@@ -415,7 +416,7 @@ function lxb(window, $debug) {
                 $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
                 $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
                 $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
-                $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:960px;height:200px;border:1px double red;background:#373b42;"></div>';
+                $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:900px;height:200px;border:1px double red;background:#373b42;"></div>';
                 $dom += '</div>';
                 $dom += '<script>function showCon(){if(jQuery("#lxb").position().left < -10){jQuery("#lxb").animate({left:"0px"}, 300, "swing", function(){jQuery("#lxb-buy-hide").slideDown(300);});}else{jQuery("#lxb-buy-hide").slideUp(300, function(){jQuery("#lxb").animate({left:"-830px"}, 300, "swing");});}}jQuery("#lxb-showCon").click(function(){showCon();});jQuery("#lxb-item-box").click(function(){showCon();});</script>';
                 $dom += '<script>function RequestPermission(callback){window.Notification.requestPermission(callback);}jQuery("#lxb-open-notify").click(function(){RequestPermission(function(){if (window.Notification.permission === "granted"){jQuery("#lxb-open-notify").attr("checked", "true");}else{jQuery("#lxb-open-notify").removeAttr("checked");}});});jQuery("#lxb-open-notify").click();</script>';
