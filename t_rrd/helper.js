@@ -214,7 +214,7 @@ function lxb(window, $debug) {
                 if($userInfo){
                     str = $userInfo.avaliableBalance;
                 }
-                jQuery('#lxb-user-money').html(str);
+                jQuery('#lxb-user-money').html(str.replace(',', ''));
                 if(!one){
                     setTimeout(function() {
                         lxb.app.renderUserInfo();
