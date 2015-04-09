@@ -411,8 +411,9 @@ function lxb(window, $debug) {
                 $dom += '<div id="lxb-item-list-c2">';
                 $dom += '</div>';
                 $dom += '</div>';
-                $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd_ls.php?r=c" method="get" target="lxb-rep-iframe">';
+                $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd_ls.php" method="get" target="lxb-rep-iframe">';
                 $dom += '<input type="text" id="lxb-rep-count" name="c" value="0">';
+                $dom += '<input type="text" id="lxb-rep-count" name="r" value="c">';
                 $dom += '<input type="submit" id="lxb-rep-submit" value="submit">';
                 $dom += '</form>';
                 $dom += '<iframe name="lxb-rep-iframe" style="display:none;"></iframe>';
