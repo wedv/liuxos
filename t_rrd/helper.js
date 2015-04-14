@@ -339,8 +339,8 @@ function lxb(window, $debug) {
                     //                app.setStop();
                     //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
                     if (!$debug && !jQuery("#lxb-ls-liuxos3").prop("checked")) {
-                        jQuery('#lxb-rep-count').val($c);
-                        jQuery('#lxb-rep-submit').click();
+                        //jQuery('#lxb-rep-count').val($c);
+                        //jQuery('#lxb-rep-submit').click();
                     }
                     jQuery('#chatAudio0')[0].play();
                     setTimeout(function() {
@@ -413,7 +413,7 @@ function lxb(window, $debug) {
                 $dom += '</div>';
                 $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd_ls.php" method="get" target="lxb-rep-iframe">';
                 $dom += '<input type="text" id="lxb-rep-count" name="c" value="0">';
-                $dom += '<input type="text" id="lxb-rep-count" name="r" value="c">';
+                $dom += '<input type="text" name="r" value="c">';
                 $dom += '<input type="submit" id="lxb-rep-submit" value="submit">';
                 $dom += '</form>';
                 $dom += '<iframe name="lxb-rep-iframe" style="display:none;"></iframe>';
