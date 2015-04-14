@@ -133,8 +133,8 @@ function lxb(window, $debug) {
                                 //                app.setStop();
                                 //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
                                 if (!$debug && !jQuery("#lxb-ls-liuxos3").prop("checked")) {
-                                    jQuery('#lxb-rep-count').val($c);
-                                    jQuery('#lxb-rep-submit').click();
+                                    //jQuery('#lxb-rep-count').val($c);
+                                    //jQuery('#lxb-rep-submit').click();
                                 }
                                 jQuery('#chatAudio0')[0].play();
                                 setTimeout(function() {
