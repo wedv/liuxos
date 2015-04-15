@@ -136,12 +136,13 @@ function lxb(window, $debug) {
                                     //jQuery('#lxb-rep-count').val($c);
                                     //jQuery('#lxb-rep-submit').click();
                                 }
-                                jQuery('#chatAudio0')[0].play();
+                                var $voice = jQuery("#lxb-open-voice").prop("checked");
+                                $voice && jQuery('#chatAudio0')[0].play();
                                 setTimeout(function() {
-                                    jQuery('#chatAudio1')[0].play();
+                                    $voice && jQuery('#chatAudio1')[0].play();
                                 }, 300);
                                 setTimeout(function() {
-                                    jQuery('#chatAudio2')[0].play();
+                                    $voice && jQuery('#chatAudio2')[0].play();
                                 }, 600);
             //                    $fs = 20000;
                                 DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
@@ -149,13 +150,13 @@ function lxb(window, $debug) {
                                 lxb.app.renderList($c, $pc, ddd.data.transferList);
                                 if (lxb.app.c13 > 0) {
                                     setTimeout(function() {
-                                        jQuery('#chatAudio3')[0].play();
+                                        $voice && jQuery('#chatAudio3')[0].play();
                                     }, 100);
                                     setTimeout(function() {
-                                        jQuery('#chatAudio4')[0].play();
+                                        $voice && jQuery('#chatAudio4')[0].play();
                                     }, 300);
                                     setTimeout(function() {
-                                        jQuery('#chatAudio5')[0].play();
+                                        $voice && jQuery('#chatAudio5')[0].play();
                                     }, 600);
                                     DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
                                 }
@@ -342,25 +343,26 @@ function lxb(window, $debug) {
                         //jQuery('#lxb-rep-count').val($c);
                         //jQuery('#lxb-rep-submit').click();
                     }
-                    jQuery('#chatAudio0')[0].play();
+                    var $voice = jQuery("#lxb-open-voice").prop("checked");
+                    $voice && jQuery('#chatAudio0')[0].play();
                     setTimeout(function() {
-                        jQuery('#chatAudio1')[0].play();
+                        $voice && jQuery('#chatAudio1')[0].play();
                     }, 300);
                     setTimeout(function() {
-                        jQuery('#chatAudio2')[0].play();
+                        $voice && jQuery('#chatAudio2')[0].play();
                     }, 600);
 //                    $fs = 20000;
                     DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + (overflow > 0 ? '大于' : '') + $c + '\n' + t);
 //                    lxb.app.renderList($c, $pc);
                     if (lxb.app.c13 > 0) {
                         setTimeout(function() {
-                            jQuery('#chatAudio3')[0].play();
+                            $voice && jQuery('#chatAudio3')[0].play();
                         }, 100);
                         setTimeout(function() {
-                            jQuery('#chatAudio4')[0].play();
+                            $voice && jQuery('#chatAudio4')[0].play();
                         }, 300);
                         setTimeout(function() {
-                            jQuery('#chatAudio5')[0].play();
+                            $voice && jQuery('#chatAudio5')[0].play();
                         }, 600);
                         DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
                     }
@@ -396,6 +398,7 @@ function lxb(window, $debug) {
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">留底<input id="lxb-min-money" value style="width:40px;" />元</span><script>jQuery("#lxb-min-money").keyup(function(){setCookie("lxb-min-money", jQuery("#lxb-min-money").val())});setInterval(function(){var min = jQuery("#lxb-min-money").val();var min_cookie = getCookie("lxb-min-money");if(min != min_cookie && min_cookie != 0){jQuery("#lxb-min-money").val(min_cookie);}}, 3000);</script>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">收益底限<input id="lxb-min-lilv" value="13" style="width:40px;" />%</span><script>jQuery("#lxb-min-lilv").keyup(function(){setCookie("lxb-min-lilv", jQuery("#lxb-min-lilv").val())});setInterval(function(){var min = jQuery("#lxb-min-lilv").val();var min_lilv_cookie = getCookie("lxb-min-lilv");if(min != min_lilv_cookie && min_lilv_cookie != 0){jQuery("#lxb-min-lilv").val(min_lilv_cookie);}}, 3000);</script>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><input type="checkbox" id="lxb-open-voice" checked="checked">声音</span>';
                 $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:60px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-box" style="cursor:pointer;width:70px;height:268px;float:right;background:gray;">';
