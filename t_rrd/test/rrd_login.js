@@ -1,4 +1,4 @@
-var ext_j_password='W6pPhRwPRPV1aqfFSEJtHonJELRYB9d3duNUbWKkZMDRj11kjB9Hvtsxe/du73Govao2sQJuKrYl/Pfcmq70KhvA7nnbLmbSeEnH6yWoXeLgvs3Z/+tYzLutLMYCZVBscApK+BFxLRSi9SHExYicPu8dWz69ayHAjcVGow+trsI=';
+var ext_j_password='Y3DRlHPI6PWYr3nD1B8g3snJfzUsxXF8QuVpHe/iWJBnf4xKbZVom/hiRlbnSO6mDFznXt+fgGI9oO3qGTe3szIWIFFWH0MBBDqsXIPTP/Uxrdmsyn6tjEHSwJh9PPse0b08xNJM1U/ymRcu27gOzAT1xb8MW4Rm+wJxqPbx2Vk=';
 function ext_login(){
 	jQuery.ajax({
 		url:'https://www.renrendai.com/j_spring_security_check',
