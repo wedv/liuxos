@@ -79,6 +79,15 @@ function lxb(window, $debug) {
             c13: 0,
             pageSize: 20,
             stop: 0,
+            sifuError: 0,
+            sifuErrorLimit: 10,
+            autoSwitchServer: function(){
+            	jQuery("#lxb-ls-liuxos3").prop("checked", false);
+            	lxb.app.sifuError = 0;
+            	setTimeout(function(){
+            		jQuery("#lxb-ls-liuxos3").prop("checked", true);
+            	},60000);
+            },
             clearStop: function() {
                 lxb.app.stop = 0;
             },
@@ -159,6 +168,14 @@ function lxb(window, $debug) {
                                         $voice && jQuery('#chatAudio5')[0].play();
                                     }, 600);
                                     DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
+                                }
+                                if(lxb.app.sifuError > 0){
+                                	lxb.app.sifuError--;
+                                }
+                            }else{
+                            	lxb.app.sifuError++;
+                            	if(lxb.app.sifuError > lxb.app.sifuErrorLimit){
+                                	lxb.app.autoSwitchServer();
                                 }
                             }
                             jQuery('#lxb-showCon').html($c);
