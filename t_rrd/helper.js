@@ -81,12 +81,13 @@ function lxb(window, $debug) {
             stop: 0,
             sifuError: 0,
             sifuErrorLimit: 10,
+            sifuSwitchLimit: 180000,
             autoSwitchServer: function(){
             	jQuery("#lxb-ls-liuxos3").prop("checked", false);
             	lxb.app.sifuError = 0;
             	setTimeout(function(){
             		jQuery("#lxb-ls-liuxos3").prop("checked", true);
-            	},60000);
+            	}, lxb.app.sifuSwitchLimit);
             },
             clearStop: function() {
                 lxb.app.stop = 0;
