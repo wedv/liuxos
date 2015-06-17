@@ -93,6 +93,7 @@ function lxb(window, $debug) {
                             	alert(ddd.message);
                             }
                         }
+            	});
             }
         },
         /**
