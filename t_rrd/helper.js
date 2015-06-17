@@ -86,7 +86,7 @@ function lxb(window, $debug) {
                         dataType: 'jsonp',
                         success: function(ddd){
                             if(ddd.status == 0){
-                            	jQuery("#lxb-member").show();
+                            	jQuery("#lxb-member").hide();
                             	$callback();
                             }else{
                             	alert(ddd.message);
