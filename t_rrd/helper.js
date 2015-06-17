@@ -30,7 +30,7 @@ function lxb(window, $debug) {
             buy: 'http://www.renrendai.com/transfer/buyLoanTransfer.action',
             image_https: 'http://www.renrendai.com/image_https.jsp',
             image: 'http://www.renrendai.com/image.jsp?',
-            login: 'http://liuxos3.duapp.com/index.php?r=rrd/login',
+            login: 'http://liuxos3.duapp.com/rrd_ls.php?r=login',
             getItemUrl: function($url, $id) {
                 return $url + $id;
             },
