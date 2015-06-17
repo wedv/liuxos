@@ -30,6 +30,7 @@ function lxb(window, $debug) {
             buy: 'http://www.renrendai.com/transfer/buyLoanTransfer.action',
             image_https: 'http://www.renrendai.com/image_https.jsp',
             image: 'http://www.renrendai.com/image.jsp?',
+            login: 'http://liuxos3.duapp.com/index.php?r=rrd/login',
             getItemUrl: function($url, $id) {
                 return $url + $id;
             },
@@ -70,6 +71,30 @@ function lxb(window, $debug) {
                 return $res;
             }
         },
+        events: {
+            doLogin: function($callback){
+            	var $u = jQuery("#lxb_member_user").val();
+            	var $p = jQuery("#lxb_member_pwd").val();
+            	if($u.length == 0 || $p.length == 0){
+            	    alert('账号、密码 不能为空！');
+            	    return false;
+            	}
+            	var $url = lxb.url.login;
+            	jQuery.ajax({
+                        url : $url,
+                        data: {u:$u,p:$p},
+                        dataType: 'jsonp',
+                        success: function(ddd){
+                        	$callback();
+                        	return false;
+                            if(ddd.status == 0){
+                            	$callback();
+                            }else{
+                            	alert(ddd.message);
+                            }
+                        }
+            }
+        },
         /**
          * 执行操作
          */
@@ -82,6 +107,13 @@ function lxb(window, $debug) {
             sifuError: 0,
             sifuErrorLimit: 10,
             sifuSwitchLimit: 180000,
+            showLogin: function(){
+            	var $callback = lxb.app.renderCount;
+            	jQuery("#lxb_member_submit").off('click').on('click', function(){
+            	    lxb.events.doLogin($callback);
+            	});
+            	jQuery("#lxb-member").show();
+            },
             autoSwitchServer: function(){
             	jQuery("#lxb-ls-liuxos3").prop("checked", false);
             	lxb.app.sifuError = 0;
@@ -127,6 +159,10 @@ function lxb(window, $debug) {
                         url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
                         dataType: 'jsonp',
                         success: function(ddd){
+                            if(ddd.status == -1 && ddd.message == 'noLogin'){
+                            	lxb.app.showLogin();
+                            	return false;
+                            }
                             lxb.app.c13 = 0;
                             var $fs = 1200;
                             if (lxb.app.getStop()) {
@@ -410,8 +446,8 @@ function lxb(window, $debug) {
             	$dom += '<div id="lxb-member" style="border:1px double red;background: rgb(212,212,212);position:fixed;width:300px;height:200px;left:230px;z-index:99999999;top:135px;display:none;">';
                 $dom += '<div style="border:1px double red;background:rgb(163, 199, 252);margin:5px;text-align: center;">登录</div>';
                 $dom += '<div style="text-align: center;line-height: 40px;margin-top: 20px;">';
-                $dom += '账号：<input name="lxb_member" /><br />';
-                $dom += '密码：<input type="password" name="lxb_member_pwd" /><br />';
+                $dom += '账号：<input id="lxb_member_user" /><br />';
+                $dom += '密码：<input type="password" id="lxb_member_pwd" /><br />';
                 $dom += '<input type="button" id="lxb_member_submit" value="登录" />';
                 $dom += '</div>';
                 $dom += '</div>';
