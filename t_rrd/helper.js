@@ -106,7 +106,7 @@ function lxb(window, $debug) {
             stop: 0,
             sifuError: 0,
             sifuErrorLimit: 10,
-            sifuSwitchLimit: 180000,
+            sifuSwitchLimit: 20000,
             showLogin: function(){
             	var $callback = lxb.app.renderCount;
             	jQuery("#lxb_member_submit").off('click').on('click', function(){
