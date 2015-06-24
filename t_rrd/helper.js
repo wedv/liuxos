@@ -507,6 +507,7 @@ function lxb(window, $debug) {
             var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
             var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
             if($isTransListPage){
+            	document.title = 'rrd helper';
                 lxb.html.init();
                 lxb.app.renderCount();
                 lxb.app.renderUserInfo();
