@@ -103,7 +103,7 @@ function gerIframe(a){
     jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
     setTimeout(function(){
         jQuery('#lxb-buy-iframe-' + a).remove();
-    }, 600000);
+    }, 30000);
     return true;
 }
 function getCaptch(){
