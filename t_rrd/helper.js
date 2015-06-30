@@ -447,7 +447,7 @@ function lxb(window, $debug) {
         html: {
             init: function() {
             	var $dom = '';
-            	$dom += '<div id="lxb-member" style="border:1px double red;background: rgb(212,212,212);position:fixed;width:300px;height:200px;left:230px;z-index:99999999;top:135px;display:none;">';
+            	$dom += '<div id="lxb-member" style="border:1px double red;background: rgb(212,212,212);position:fixed;width:300px;height:215px;left:230px;z-index:99999999;top:135px;display:none;">';
                 $dom += '<div style="border:1px double red;background:rgb(163, 199, 252);margin:5px;text-align: center;">登录</div>';
                 $dom += '<div style="text-align: center;line-height: 40px;margin-top: 20px;">';
                 $dom += '账号：<input id="lxb_member_user" /><br />';
