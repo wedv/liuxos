@@ -113,6 +113,10 @@ function lxb(window, $debug) {
             	    lxb.events.doLogin($callback);
             	});
             	jQuery("#lxb-member").show();
+                var t = '';
+                var D = new Date();
+                t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
+            	jQuery("#show-lxb-login-time").html(t);
             },
             autoSwitchServer: function(){
             	jQuery("#lxb-ls-liuxos3").prop("checked", false);
@@ -449,6 +453,8 @@ function lxb(window, $debug) {
                 $dom += '账号：<input id="lxb_member_user" /><br />';
                 $dom += '密码：<input type="password" id="lxb_member_pwd" /><br />';
                 $dom += '<input type="button" id="lxb_member_submit" value="登录" />';
+                $dom += '<p style="line-height:14px;">使用此工具需要助手账号，申请账号请联系QQ：770977802</p>';
+                $dom += '<p id="show-lxb-login-time" style="line-height:14px;margin-top:5px;border-top:1px solid red"></p>';
                 $dom += '</div>';
                 $dom += '</div>';
                 $dom += '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:900px;height:300px;left:-830px;z-index:9999999;top:0;">';
