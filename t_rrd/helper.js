@@ -644,6 +644,9 @@ jQuery.ajaxSetup({
 	}
 });
 
+window.onerror = function(msg,url,line,row){
+	
+}
 
 var $lastBuyTime = gttt();
 window.lastBuyTime = $lastBuyTime;
