@@ -107,7 +107,7 @@ function lxb(window, $debug) {
             sifuError: 0,
             sifuErrorLimit: 10,
             sifuSwitchLimit: 20000,
-            showLogin: function(){
+            showLogin: function(ddd){
             	var $callback = lxb.app.renderCount;
             	jQuery("#lxb_member_submit").off('click').on('click', function(){
             	    lxb.events.doLogin($callback);
@@ -116,7 +116,7 @@ function lxb(window, $debug) {
                 var t = '';
                 var D = new Date();
                 t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
-            	jQuery("#show-lxb-login-time").html(t);
+            	jQuery("#show-lxb-login-time").html(t + ddd.sid);
             },
             autoSwitchServer: function(){
             	jQuery("#lxb-ls-liuxos3").prop("checked", false);
@@ -164,7 +164,7 @@ function lxb(window, $debug) {
                         dataType: 'jsonp',
                         success: function(ddd){
                             if(ddd.status == -1 && ddd.message == 'noLogin'){
-                            	lxb.app.showLogin();
+                            	lxb.app.showLogin(ddd);
                             	return false;
                             }
                             lxb.app.c13 = 0;
