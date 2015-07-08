@@ -4,8 +4,12 @@ function aaa(a){
     //alert('aaa('+a+')'+typeof(jQuery)+typeof($));
     var $buyHide = jQuery('#lxb-buy-hide');
     if(autoCommit){
+        jQuery('#lxb-buy-hide-auto-commit-' + a).remove();
         jQuery('#lxb-buy-hide-auto-commit').append('<div id="lxb-buy-hide-auto-commit-' + a + '" style="display:none;"></div>');
         var $buyHide = jQuery('#lxb-buy-hide-auto-commit-' + a);
+        setTimeout(function(){
+            jQuery('#lxb-buy-hide-auto-commit-' + a).remove();
+        }, 30000);
     }
     $buyHide.html('');
     jQuery.ajax({
