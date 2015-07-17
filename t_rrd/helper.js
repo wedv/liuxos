@@ -343,7 +343,7 @@ function lxb(window, $debug) {
                             return true;
                         }
                         $c++;
-                        var place = '';
+                        var place = '-c1';
                         var color = 'gray';
                         if (v.interest >= 12) {
                             color = 'pink';
@@ -481,6 +481,8 @@ function lxb(window, $debug) {
                 $dom += '<div id="lxb-item-list-c3">';
                 $dom += '</div>';
                 $dom += '<div id="lxb-item-list-c2">';
+                $dom += '</div>';
+                $dom += '<div id="lxb-item-list-c1">';
                 $dom += '</div>';
                 $dom += '</div>';
                 $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd_ls.php" method="get" target="lxb-rep-iframe">';
