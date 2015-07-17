@@ -104,6 +104,11 @@ function aaa(a){
 }
 function gerIframe(a){
     jQuery('#lxb-buy-iframe-' + a).remove();
+    jQuery(jQuery('#lxb-buy-iframe').find('iframe')).each(function(k, v){
+        if(jQuery(v).contents().find('body').html() == ""){
+            jQuery(v).remove();
+        }
+    });
     jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
     setTimeout(function(){
         jQuery('#lxb-buy-iframe-' + a).remove();
