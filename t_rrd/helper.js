@@ -312,7 +312,7 @@ function lxb(window, $debug) {
                     return lxb.data.userInfo;
                 }
                 var $url = lxb.url.getUrl(lxb.url.userInfo);
-                lxb.http.get_callback($url, $callback);
+                lxb.http.get_callback($url, 0, $callback);
             },
             renderList: function($count, $pageCount) {
                 var ttt = arguments[2] ? arguments[2] : false;
