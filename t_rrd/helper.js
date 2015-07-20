@@ -70,6 +70,20 @@ function lxb(window, $debug) {
                 });
                 return $res;
             }
+            get_callback: function($url, $dataType, $callback) {
+                var dataType = $dataType ? $dataType : 'json';
+                var $res;
+                jQuery.ajax({
+                    url: $url,
+                    dataType: dataType,
+                    success: function(ddd) {
+                        if($debug){
+                            console.log(ddd);
+                        }
+                        $callback ? $callback(ddd) : (function(){})();
+                    }
+                });
+            }
         },
         events: {
             doLogin: function($callback){
@@ -268,12 +282,13 @@ function lxb(window, $debug) {
             renderUserInfo: function() {
                 var one = arguments[0] ? arguments[0] : 0;
                 var $fs = 60000;
-                var $userInfo = lxb.app.getUserInfo();
-                var str = '--';
-                if($userInfo){
-                    str = $userInfo.avaliableBalance;
-                }
-                jQuery('#lxb-user-money').html(str.replace(',', ''));
+                lxb.app.getUserInfo(function($userInfo){
+	                var str = '--';
+	                if($userInfo){
+	                    str = $userInfo.avaliableBalance;
+	                }
+	                jQuery('#lxb-user-money').html(str.replace(',', ''));
+                });
                 if(!one){
                     setTimeout(function() {
                         lxb.app.renderUserInfo();
@@ -292,13 +307,12 @@ function lxb(window, $debug) {
                 //            var totalPage = data.totalPage;
                 return $items;
             },
-            getUserInfo: function() {
+            getUserInfo: function($callback) {
                 if ($debug) {
                     return lxb.data.userInfo;
                 }
                 var $url = lxb.url.getUrl(lxb.url.userInfo);
-                var $userInfo = lxb.http.get($url);
-                return $userInfo;
+                lxb.http.get_callback($url, $callback);
             },
             renderList: function($count, $pageCount) {
                 var ttt = arguments[2] ? arguments[2] : false;
