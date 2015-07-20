@@ -170,111 +170,97 @@ function _lxb(window, $debug) {
                 lxb.app.transfersList = $items.data.transferList;
                 return {'c':$c, 'pc':$pcount};
             },
+            getTransferList_gw: function($callback){
+                lxb.app.getPage(1, $callback);
+            },
+            getTransferList_sf: function($callback){
+                jQuery.ajax({
+                    url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
+                    dataType: 'jsonp',
+                    success: function(ddd){
+                        $callback ? $callback(ddd) : (function(){})();
+                    }
+                });
+            },
             renderCount: function() {
+                if (lxb.app.getStop()) {
+                    return false;
+                }
                 lxb.app.transfersList = [];
+                jQuery('#lxb-showCon').html('...');
                 if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
-                    jQuery.ajax({
-                        url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
-                        dataType: 'jsonp',
-                        success: function(ddd){
-                            if(ddd.status == -1 && ddd.message == 'noLogin'){
-                            	lxb.app.showLogin(ddd);
-                            	return false;
+                    var $fs = 1200;
+                    lxb.app.getTransferList_sf(function(ddd){
+                        if(ddd.status == -1 && ddd.message == 'noLogin'){
+                            lxb.app.showLogin(ddd);
+                            return false;
+                        }
+                        lxb.app.c13 = 0;
+                        var $pc = ddd.data.totalPage;
+                        var $c = ddd.data.transferList.length;
+                        if ($c > 0) {
+                            var t = '';
+                            var D = new Date();
+                            t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
+                            jQuery('#s_time').html(t);
+                            //                app.setStop();
+                            //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
+                            if (!$debug && !jQuery("#lxb-ls-liuxos3").prop("checked")) {
+                                //jQuery('#lxb-rep-count').val($c);
+                                //jQuery('#lxb-rep-submit').click();
                             }
-                            lxb.app.c13 = 0;
-                            var $fs = 1200;
-                            if (lxb.app.getStop()) {
-                                return false;
-                            }
-                            jQuery('#lxb-showCon').html('...');
-                            var $pc = ddd.data.totalPage;
-                            var $c = ddd.data.transferList.length;
-                            if ($c > 0) {
-                                var t = '';
-                                var D = new Date();
-                                t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
-                                jQuery('#s_time').html(t);
-                                //                app.setStop();
-                                //                jQuery.get('http://liuxos3.duapp.com/wx/rrd.php?c=' + $c);
-                                if (!$debug && !jQuery("#lxb-ls-liuxos3").prop("checked")) {
-                                    //jQuery('#lxb-rep-count').val($c);
-                                    //jQuery('#lxb-rep-submit').click();
-                                }
-                                var $voice = jQuery("#lxb-open-voice").prop("checked");
-                                $voice && jQuery('#chatAudio0')[0].play();
+                            var $voice = jQuery("#lxb-open-voice").prop("checked");
+                            $voice && jQuery('#chatAudio0')[0].play();
+                            setTimeout(function() {
+                                $voice && jQuery('#chatAudio1')[0].play();
+                            }, 300);
+                            setTimeout(function() {
+                                $voice && jQuery('#chatAudio2')[0].play();
+                            }, 600);
+        //                    $fs = 20000;
+                            DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
+                            lxb.app.transfersList = ddd.data.transferList;
+                            lxb.app.renderList($c, $pc, ddd.data.transferList);
+                            if (lxb.app.c13 > 0) {
                                 setTimeout(function() {
-                                    $voice && jQuery('#chatAudio1')[0].play();
+                                    $voice && jQuery('#chatAudio3')[0].play();
+                                }, 100);
+                                setTimeout(function() {
+                                    $voice && jQuery('#chatAudio4')[0].play();
                                 }, 300);
                                 setTimeout(function() {
-                                    $voice && jQuery('#chatAudio2')[0].play();
+                                    $voice && jQuery('#chatAudio5')[0].play();
                                 }, 600);
-            //                    $fs = 20000;
-                                DN.Notify(DN.rrdIcon, "债权数量", '债权数量：' + $c + '\n' + t);
-                                lxb.app.transfersList = ddd.data.transferList;
-                                lxb.app.renderList($c, $pc, ddd.data.transferList);
-                                if (lxb.app.c13 > 0) {
-                                    setTimeout(function() {
-                                        $voice && jQuery('#chatAudio3')[0].play();
-                                    }, 100);
-                                    setTimeout(function() {
-                                        $voice && jQuery('#chatAudio4')[0].play();
-                                    }, 300);
-                                    setTimeout(function() {
-                                        $voice && jQuery('#chatAudio5')[0].play();
-                                    }, 600);
-                                    DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
-                                }
-                                if(lxb.app.sifuError > 0){
-                                	lxb.app.sifuError--;
-                                }
-                            }else{
-                            	lxb.app.sifuError++;
-                            	if(lxb.app.sifuError > lxb.app.sifuErrorLimit){
-                                	lxb.app.autoSwitchServer();
-                                }
+                                DN.Notify(DN.rrdIcon, "c13数量", 'c13数量：' + lxb.app.c13 + '\n' + t, 'ontis2');
                             }
-                            jQuery('#lxb-showCon').html($c);
-                            if($c == 0){
-                                jQuery('#lxb-buy-hide-id-count').html('0');
+                            if(lxb.app.sifuError > 0){
+                                lxb.app.sifuError--;
                             }
-                            setTimeout(function() {
-                                lxb.app.renderCount();
-                            }, $fs);
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown){
-                            DN.Notify(DN.rrdIcon, 'liuxos3 ls error \n' + t, 'ontis3');
-                            setTimeout(function() {
-                                lxb.app.renderCount();
-                            }, $fs);
+                        }else{
+                            lxb.app.sifuError++;
+                            if(lxb.app.sifuError > lxb.app.sifuErrorLimit){
+                                lxb.app.autoSwitchServer();
+                            }
+                        }
+                        jQuery('#lxb-showCon').html($c);
+                        if($c == 0){
+                            jQuery('#lxb-buy-hide-id-count').html('0');
                         }
                     });
+                    setTimeout(function() {
+                        lxb.app.renderCount();
+                    }, $fs);
                     return;
                 }
                 lxb.app.c13 = 0;
                 var $fs = 2000;
-                if (lxb.app.getStop()) {
-                    return false;
-                }
-                jQuery('#lxb-showCon').html('...');
-                var $dc = lxb.app.getCount();
-                var $pc = $dc.pc;
-                lxb.app.renderList($dc.c, $pc);
-                var $c = parseInt(jQuery('#lxb-showCon').html());
-                if($c > 20){
-                    $fs += 1000;
-                }
-                if($c > 40){
-                    $fs += 800;
-                }
-                if($c > 60){
-                    $fs += 600;
-                }
-                if($c > 80){
-                    $fs += 400;
-                }
-                if($c > 100){
-                    $fs += 300;
-                }
+                lxb.app.getTransferList_gw(function($items){
+                    if (!$items) {
+                        return false;
+                    }
+                    lxb.app.transfersList = $items.data.transferList;
+                    lxb.app.renderList(1, 1, $items.data.transferList);
+                });
                 setTimeout(function() {
                     lxb.app.renderCount();
                 }, $fs);
@@ -295,17 +281,12 @@ function _lxb(window, $debug) {
                     }, $fs);
                 }
             },
-            getPage: function($page) {
+            getPage: function($page, $callback) {
                 if ($debug) {
-                    return lxb.data.page;
+                    $callback(lxb.data.page);
                 }
                 var $url = lxb.url.getPageUrl(lxb.url.page, $page);
-                var $items = lxb.http.get($url);
-                //            var $items = data.page;
-                //            var data = $items.data;
-                //            var list = data.transferList;
-                //            var totalPage = data.totalPage;
-                return $items;
+                lxb.http.get_callback($url, 0, $callback);
             },
             getUserInfo: function($callback) {
                 if ($debug) {
