@@ -141,19 +141,7 @@ function getCaptch(){
 }
 
 function renderUserInfo(){
-    var d = new Date;
-    var t = d.getTime();
-    var url = "http://www.renrendai.com/getHomePageUserInfo.action?timeout=5000&_=" + t;
-    jQuery.ajax({
-        url: url,
-        dataType: 'json',
-        success: function(ddd){
-            if($debug){
-                console.log(ddd);
-            }
-            jQuery('#lxb-user-money').html(ddd.avaliableBalance);
-        }
-    });
+    lxb.app.renderUserInfo(1);
 }
 function setCookie(name, value) {
     var Days = 30; //此 cookie 将被保存 30 天
