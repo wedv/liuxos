@@ -69,7 +69,7 @@ function lxb(window, $debug) {
                     }
                 });
                 return $res;
-            }
+            },
             get_callback: function($url, $dataType, $callback) {
                 var dataType = $dataType ? $dataType : 'json';
                 var $res;
