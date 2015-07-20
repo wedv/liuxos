@@ -8,7 +8,7 @@
     s.parentNode.insertBefore(ag, s);
 })();
 
-function lxb(window, $debug) {
+function _lxb(window, $debug) {
     var lxb = {
         /**
          * Data
@@ -634,6 +634,7 @@ function lxb(window, $debug) {
         }
     });
     window.DN = DN;
+    window.lxb = lxb;
     lxb.run();
 }
 
@@ -666,5 +667,5 @@ window.onerror = function(msg,url,line,row){
 
 var $lastBuyTime = gttt();
 window.lastBuyTime = $lastBuyTime;
-lxb(window, $debug);
+_lxb(window, $debug);
 
