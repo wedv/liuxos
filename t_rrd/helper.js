@@ -519,8 +519,8 @@ function _lxb(window, $debug) {
             if($isTransListPage){
             	document.title = 'rrd helper';
                 lxb.html.init();
-                lxb.app.renderCount();
                 lxb.app.renderUserInfo();
+                lxb.app.renderCount();
             }
             if($isLoanPage){
                 var $m = jQuery('#pg-server-message');
