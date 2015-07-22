@@ -278,6 +278,7 @@ function _lxb(window, $debug) {
 	                if(money < $m && !lxb.app.getStop()){
 	                    lxb.app.setStop();
 	                    setTimeout(lxb.app.clearStop, 180000);
+	                    lxb.app.renderCount();
 	                }
 	                jQuery('#lxb-user-money').html(money + '');
                 });
