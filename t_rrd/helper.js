@@ -273,7 +273,13 @@ function _lxb(window, $debug) {
 	                if($userInfo){
 	                    str = $userInfo.avaliableBalance;
 	                }
-	                jQuery('#lxb-user-money').html(str.replace(',', ''));
+	                var money = parseFloat(str.replace(',', ''));
+	                var $m = parseInt(jQuery('#lxb-min-money').val());
+	                if(money < $m && !lxb.app.getStop()){
+	                    lxb.app.setStop();
+	                    setTimeout(lxb.app.clearStop, 180000);
+	                }
+	                jQuery('#lxb-user-money').html(money + '');
                 });
                 if(!one){
                     setTimeout(function() {
