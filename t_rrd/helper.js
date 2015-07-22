@@ -191,6 +191,9 @@ function _lxb(window, $debug) {
                 if (jQuery("#lxb-ls-liuxos3").prop("checked")) {
                     var $fs = 1200;
                     lxb.app.getTransferList_sf(function(ddd){
+	                if (lxb.app.getStop()) {
+	                    return false;
+	                }
                         if(ddd.status == -1 && ddd.message == 'noLogin'){
                             lxb.app.showLogin(ddd);
                             return false;
