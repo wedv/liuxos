@@ -278,8 +278,10 @@ function _lxb(window, $debug) {
 	                var $m = parseInt(jQuery('#lxb-min-money').val());
 	                if(money < $m && !lxb.app.getStop()){
 	                    lxb.app.setStop();
-	                    setTimeout(lxb.app.clearStop, 150000);
-	                    lxb.app.renderCount();
+	                    setTimeout(function(){
+	                    	lxb.app.clearStop();
+	                    	lxb.app.renderCount();
+	                    }, 150000);
 	                }
                 });
                 if(!one){
