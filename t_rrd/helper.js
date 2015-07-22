@@ -278,7 +278,7 @@ function _lxb(window, $debug) {
 	                var $m = parseInt(jQuery('#lxb-min-money').val());
 	                if(money < $m && !lxb.app.getStop()){
 	                    lxb.app.setStop();
-	                    setTimeout(lxb.app.clearStop, 180000);
+	                    setTimeout(lxb.app.clearStop, 150000);
 	                    lxb.app.renderCount();
 	                }
                 });
