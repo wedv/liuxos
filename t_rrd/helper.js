@@ -143,7 +143,7 @@ function _lxb(window, $debug) {
                 lxb.app.stop = 0;
             },
             setStop: function() {
-                jQuery('#lxb-item-list').html('');
+            	jQuery('.list-item').remove();
                 jQuery('#lxb-showCon').html('clear...');
                 lxb.app.stop = 1;
             },
