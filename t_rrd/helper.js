@@ -98,7 +98,6 @@ function _lxb(window, $debug) {
                         url : $url,
                         data: {u:$u,p:$p},
                         dataType: 'jsonp',
-                        jsonp: 'jsoncallback_doLogin',
                         success: function(ddd){
                             if(ddd.status == 0){
                             	jQuery("#lxb-member").hide();
@@ -178,7 +177,6 @@ function _lxb(window, $debug) {
                 jQuery.ajax({
                     url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
                     dataType: 'jsonp',
-                    jsonp: 'jsoncallback_getTransferList_sf',
                     success: function(ddd){
                         $callback ? $callback(ddd) : (function(){})();
                     }
