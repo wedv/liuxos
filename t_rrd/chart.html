@@ -19,14 +19,16 @@
     </head>
     <body>
         <!-- containers  -->
-        <form class="form-inline">
-	  <div class="form-group">
-	    <div class="input-group">
-	      <input type="text" class="form-control" id="days" value="{'d':'20141104,20141105'}" style="width:900px;"/>
-	    </div>
-	  </div>
-	  <button type="submit" class="btn btn-primary" onclick="ddd()">刷新</button>
-	</form>
+        <div class="well">
+			<form class="form-inline">
+			  <div class="form-group">
+			    <div class="input-group">
+			      <input type="text" class="form-control" id="days" value="{'d':'20141104,20141105'}" style="width:900px;"/>
+			    </div>
+			  </div>
+			  <button type="submit" class="btn btn-primary" onclick="ddd()">刷新</button>
+			</form>
+		</div>
         <div id="jqChart" class="jumbotron" style="height: 800px;"></div>
         <!-- / containers  -->
         <!-- footer -->
@@ -54,7 +56,7 @@
             $(document).ready(function() {
                 var myDate = new Date();
                 var rrr = getTstr(addDays(myDate, -7));
-                for (var i = 3; i >= 0; i--) {
+                for (var i = 1; i >= 0; i--) {
                     rrr += ',' + getTstr(addDays(myDate, -i));
                 }
                 $('#days').val('{d:"' + rrr + '",l:13}');
