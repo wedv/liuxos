@@ -469,7 +469,7 @@ function _lxb(window, $debug) {
                 $dom += '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:900px;height:300px;left:-830px;z-index:9999999;top:0;">';
                 $dom += '<div id="lxb-title" style="width:898px;height:30px;border-bottom:1px solid red;">';
                 $dom += '<span style="border:1px solid gray;line-height:28px;color:red;width:50px;padding-right:5px;padding-left:5px;" id="s_time" title="上次刷出债权时间"></span>';
-                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><a href="http://liuxos3.duapp.com/wx/chart" target="_blank">债权交易走势图</a></span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><a href="http://wedv.github.io/liuxos/t_rrd/chart.html" target="_blank">债权交易走势图</a></span>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">账户余额：<span id="lxb-user-money">--</span></span>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><input type="checkbox" id="lxb-ls-liuxos3" checked="checked">私服</span>';
                 $dom += '<span style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:5px;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></span>';
