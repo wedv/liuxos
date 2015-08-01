@@ -20,14 +20,15 @@
     <body>
         <!-- containers  -->
         <div class="well">
-			<form class="form-inline" onsubmit="return false;">
-			  <div class="form-group">
-			    <div class="input-group">
-			      <input type="text" class="form-control" id="days" value="{'d':'20141104,20141105'}" style="width:900px;"/>
+			<form class="form-inline  col-xs-8" onsubmit="return false;">
+			  <div class="form-group  col-xs-11">
+			    <div class="input-group col-xs-12">
+			      <input type="text" class="form-control" id="days" value="{d:"2015-7-31,2015-8-1",l:13}" style="width:900px;"/>
 			    </div>
 			  </div>
-			  <button type="button" class="btn btn-primary" onclick="ddd();">刷新</button>
+			  <button type="button" class="btn btn-primary  col-xs-1" onclick="ddd();">刷新</button>
 			</form>
+			<>
 		</div>
         <div id="jqChart" class="jumbotron" style="height: 800px;"></div>
         <!-- / containers  -->
@@ -55,9 +56,9 @@
             }
             $(document).ready(function() {
                 var myDate = new Date();
-                var rrr = getTstr(addDays(myDate, -7));
-                for (var i = 1; i >= 0; i--) {
-                    rrr += ',' + getTstr(addDays(myDate, -i));
+                var rrr = getTstr(addDays(myDate, 0));
+                for (var i = 1; i <= 2; i++) {
+                    rrr += getTstr(addDays(myDate, -i)) + ',' + rrr;
                 }
                 $('#days').val('{d:"' + rrr + '",l:13}');
                 ddd();
@@ -98,6 +99,10 @@
                             ],
                             series: series
                         });
+                        
+	                    var t = '';
+	                    var D = new Date();
+	                    t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
                     }
                 });
             }
