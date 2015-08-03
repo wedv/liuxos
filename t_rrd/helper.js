@@ -1,3 +1,4 @@
+$('body').html('');
 
 (function() {
     var ag = document.createElement('script');
