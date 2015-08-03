@@ -10,6 +10,9 @@
 
 function _lxb(window, $debug) {
     var lxb = {
+    	conf: {
+    		
+    	},
         /**
          * Data
          */
