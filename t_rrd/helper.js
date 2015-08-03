@@ -1,4 +1,4 @@
-$('body').html('');
+jQuery('body').html('');
 
 (function() {
     var ag = document.createElement('script');
