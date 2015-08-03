@@ -1,4 +1,3 @@
-jQuery('body').html('');
 
 (function() {
     var ag = document.createElement('script');
@@ -529,6 +528,7 @@ function _lxb(window, $debug) {
             var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
             if($isTransListPage){
             	document.title = 'rrd helper';
+                jQuery('body').html('');
                 lxb.html.init();
                 lxb.app.renderUserInfo();
                 lxb.app.renderCount();
