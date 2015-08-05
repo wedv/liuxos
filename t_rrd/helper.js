@@ -476,8 +476,8 @@ function _lxb(window, $debug) {
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">账户余额：<span id="lxb-user-money">--</span></span>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><input type="checkbox" id="lxb-ls-liuxos3" checked="checked">私服</span>';
                 $dom += '<span style="width:58px;over-flow:hidden;border:1px solid gray;line-height:28px;margin-left:5px;"><button id="lxb-jsession-button">jsession</button><input style="display:none;" type="text" id="lxb-buy-sessionid" value="" /><script>jQuery("#lxb-jsession-button").click(function(){jQuery("#lxb-buy-sessionid").show().focus();});jQuery("#lxb-buy-sessionid").blur(function(){jQuery("#lxb-buy-sessionid").hide();});</script></span>';
-                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">留底<input id="lxb-min-money" value style="width:40px;" />元</span><script>jQuery("#lxb-min-money").keyup(function(){setCookie("lxb-min-money", jQuery("#lxb-min-money").val())});setInterval(function(){var min = jQuery("#lxb-min-money").val();var min_cookie = getCookie("lxb-min-money");if(min != min_cookie && min_cookie != 0){jQuery("#lxb-min-money").val(min_cookie);}}, 3000);</script>';
-                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">收益底限<input id="lxb-min-lilv" value="13" style="width:40px;" />%</span><script>jQuery("#lxb-min-lilv").keyup(function(){setCookie("lxb-min-lilv", jQuery("#lxb-min-lilv").val())});setInterval(function(){var min = jQuery("#lxb-min-lilv").val();var min_lilv_cookie = getCookie("lxb-min-lilv");if(min != min_lilv_cookie && min_lilv_cookie != 0){jQuery("#lxb-min-lilv").val(min_lilv_cookie);}}, 3000);</script>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">留底<input id="lxb-min-money" class="lxb-conf" value style="width:40px;" />元</span>';
+                $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;">收益底限<input id="lxb-min-lilv" class="lxb-conf" value="13" style="width:40px;" />%</span>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><input type="checkbox" id="lxb-open-notify">开启桌面通知</span>';
                 $dom += '<span style="border:1px solid gray;line-height:28px;margin-left:5px;"><input type="checkbox" id="lxb-open-voice" checked="checked">声音</span>';
                 $dom += '<div id="lxb-showCon" style="border-left:1px solid red;position: absolute;right:0;top:0;width:60px;height:30px;float:right;padding:0 5px;color:red;font-size:22px;cursor:pointer;">O</div>';
@@ -517,6 +517,22 @@ function _lxb(window, $debug) {
                 jQuery('<audio id="chatAudio3"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
                 jQuery('<audio id="chatAudio4"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
                 jQuery('<audio id="chatAudio5"><source src="http://www.helloweba.com/demo/notifysound/notify.ogg" type="audio/ogg"></audio>').appendTo('body');//载入声音文件 
+                lxb.html.init_conf();
+            },
+            init_conf: function(){
+                jQuery('.lxb-conf').each(function(k, item){
+                    var id = $(item).attr('id');
+                    var conf_val = jQuery("#" + id).val();
+                    var conf_val_cookie = getCookie(id);
+                    if(conf_val != conf_val_cookie && conf_val_cookie != 0){
+                        jQuery("#" + id).val(conf_val_cookie);
+                    }
+                });
+                jQuery('body').on('keyup', '.lxb-conf', function(e){
+                    var $target = jQuery(e.target);
+                    var id = $target.attr('id');
+                    setCookie(id, $target.val());
+                });
             }
         },
         run: function() {
