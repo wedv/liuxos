@@ -26,7 +26,7 @@ var lxb_app = {
     },
     clearStop: function() {
         lxb_app.stop = 0;
-        lxb_process_list();
+        lxb_get_list_from_server();
     },
     setStop: function() {
         jQuery('.list-item').remove();
@@ -193,7 +193,8 @@ var lxb_run = function() {
         jQuery('body').html('');
         lxb_html.init();
         lxb_renderUserInfo();
-        lxb_process_list();
+        setInterval(lxb_get_list_from_server, 1200);
+        setInterval(lxb_use_list, 500);
     }
     if($isLoanPage){
         var $m = jQuery('#pg-server-message');
@@ -247,8 +248,7 @@ var lxb_process_list = function(){
     });
 };
 
-var lxb_showLogin = function(ddd){
-    var $callback = lxb_process_list;
+var lxb_showLogin = function(ddd, $callback){
     jQuery("#lxb_member_submit").off('click').on('click', function(){
         lxb_doLogin($callback);
     });
@@ -307,4 +307,51 @@ window.onerror = function(msg,url,line,row){
 	
 }
 
+var lxb_init_time = gttt();
+var lxb_list = {
+    list: [],
+    time: lxb_init_time
+};
+var write_lxb_list = function(list){
+    lxb_list.list = list;
+    lxb_list.time = gttt();
+};
+var lxb_get_list_from_server = function(){
+    if (lxb_app.getStop()) {
+        return false;
+    }
+    lxb_getTransferList_sf(function(ddd){
+        if(ddd.status == -1 && ddd.message == 'noLogin'){
+            lxb_app.setStop();
+            lxb_showLogin(ddd, function(){
+                lxb_app.clearStop();
+            });
+            return false;
+        }
+        var list_ser = ddd.data.transferList;
+        var list_ser_str = JSON.stringify(list_ser);
+        var list_loc_str = JSON.stringify(lxb_list.list);
+        if(list_ser_str !== list_loc_str){
+            write_lxb_list(list_ser);
+        }
+    });
+};
+var lxb_use_list = function(time){
+    if(time != lxb_list.time){
+        jQuery(lxb_list.list).each(function(k, v) {
+            var $m = parseInt(jQuery('#lxb-min-money').val());
+            var $mlilv = parseFloat(jQuery('#lxb-min-lilv').val());
+            $mlilv = $mlilv < 10 ? 10 : $mlilv;
+            var $im = parseInt(jQuery('#lxb-user-money').html());
+            if($m > 0 && $im > $m){     //验证金额
+                var ct = gttt();
+                var ch = ct - window.lastBuyTime;
+                if (v.interest >= $mlilv && ch > 7000) {
+                    aaa(' + v.id + ', 1);
+                    window.lastBuyTime = gttt();
+                }
+            }
+        });
+    }
+};
 setTimeout(lxb_run, 1000);
