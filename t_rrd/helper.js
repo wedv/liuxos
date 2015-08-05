@@ -682,5 +682,5 @@ window.onerror = function(msg,url,line,row){
 
 var $lastBuyTime = gttt();
 window.lastBuyTime = $lastBuyTime;
-setTimeout(function(){_lxb(window, $debug);}, 1);
+setTimeout(function(){_lxb(window, $debug);}, 1000);
 
