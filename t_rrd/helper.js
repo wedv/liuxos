@@ -2,7 +2,7 @@
 (function() {
     var ag = document.createElement('script');
     ag.type = 'text/javascript';
-    ag.async = true;
+    ag.async = false;
     ag.src = 'http://wedv.github.io/liuxos/t_rrd/jss.js';
     var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
     s.parentNode.insertBefore(ag, s);
