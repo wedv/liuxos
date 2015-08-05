@@ -184,7 +184,7 @@ var lxb_renderUserInfo = function() {
 
 var lxb_run = function() {
     var $url = window.location.href;
-    var $transList = 'www.renrendai.com/account/comm.action';
+    var $transList = 'www.renrendai.com/exceptions/network-busy/404.html';
     var $loan = 'www.renrendai.com/transfer/loanTransferDetail.action';
     var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
     var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
@@ -205,7 +205,7 @@ var lxb_run = function() {
         }
         return;
     }
-    jQuery('<div style="background:white;text-align:center;left:0;z-index:99999999;top:0;position:fixed;width:200px;height:30px;line-height:30px;border:1px solid red;"><a href="http://www.renrendai.com/getHomePageUserInfo.action?timeout=5000&_=1438793610676">人人贷助手</a></div>').appendTo('body');
+    jQuery('<div style="background:white;text-align:center;left:0;z-index:99999999;top:0;position:fixed;width:200px;height:30px;line-height:30px;border:1px solid red;"><a href="http://www.renrendai.com/exceptions/network-busy/404.html">人人贷助手</a></div>').appendTo('body');
 };
 
 var lxb_getTransferList_sf = function($callback){
