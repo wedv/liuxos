@@ -650,7 +650,7 @@ function _lxb(window, $debug) {
     });
     window.DN = DN;
     window.lxb = lxb;
-    setTimeout(lxb.run(), 1000);
+    lxb.run();
 }
 
 //if(typeof($) == "undefined") $ = jQuery;
@@ -682,5 +682,5 @@ window.onerror = function(msg,url,line,row){
 
 var $lastBuyTime = gttt();
 window.lastBuyTime = $lastBuyTime;
-_lxb(window, $debug);
+setTimeout(function(){_lxb(window, $debug);}, 1);
 
