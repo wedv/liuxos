@@ -241,10 +241,10 @@ var lxb_process_list = function(){
                 }
             });
         }
+        setTimeout(function() {
+            lxb_process_list();
+        }, 1200);
     });
-    setTimeout(function() {
-        lxb_process_list();
-    }, 1200);
 };
 
 var lxb_showLogin = function(ddd){
