@@ -192,6 +192,8 @@ var lxb_run = function() {
         document.title = 'rrd helper';
         jQuery('body').html('');
         lxb_html.init();
+        lxb_renderUserInfo();
+        lxb_getTransferList_sf(lxb_process_list);
     }
     if($isLoanPage){
         var $m = jQuery('#pg-server-message');
