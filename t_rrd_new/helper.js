@@ -282,4 +282,29 @@ var lxb_doLogin = function($callback){
     });
 };
 
+function gttt() {
+    d = new Date();
+    t = d.getTime();
+    return t;
+}
+function gtttstr() {
+    d = new Date();
+    t = d.toString();
+    return t;
+}
+
+jQuery.ajaxSetup({
+	timeout: 2000,
+	error: function (XMLHttpRequest, textStatus, errorThrown) {
+		//console.log(this);
+		//console.log(XMLHttpRequest);
+		//console.log(textStatus);
+		//console.log(errorThrown);
+	}
+});
+
+window.onerror = function(msg,url,line,row){
+	
+}
+
 setTimeout(lxb_run, 1000);
