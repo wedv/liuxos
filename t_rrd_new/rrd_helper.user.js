@@ -6,8 +6,8 @@
 // @developer		we
 // @contributor		
 // @description	人人贷助手系统 For Firefox&Chrome :-)
-// @include		http://localhost/*
-// @match		http://localhost/*
+// @include		http://www.renrendai.com/*
+// @match		http://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
 // @version 		1023
