@@ -336,8 +336,10 @@ var lxb_get_list_from_server = function(){
         }
     });
 };
-var lxb_use_list = function(time){
-    if(time != lxb_list.time){
+var lxb_use_time = 0;
+var lxb_use_list = function(){
+    if(lxb_use_time != lxb_list.time){
+        lxb_use_time = lxb_list.time;
         jQuery(lxb_list.list).each(function(k, v) {
             var $m = parseInt(jQuery('#lxb-min-money').val());
             var $mlilv = parseFloat(jQuery('#lxb-min-lilv').val());
