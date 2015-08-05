@@ -650,7 +650,7 @@ function _lxb(window, $debug) {
     });
     window.DN = DN;
     window.lxb = lxb;
-    setTimeout(lxb.run(), 1);
+    setTimeout(lxb.run(), 1000);
 }
 
 //if(typeof($) == "undefined") $ = jQuery;
