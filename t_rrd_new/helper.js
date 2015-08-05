@@ -194,7 +194,7 @@ var lxb_run = function() {
         lxb_html.init();
         lxb_renderUserInfo();
         setInterval(lxb_get_list_from_server, 1200);
-        setInterval(lxb_use_list, 500);
+        setInterval(lxb_use_list, 1000);
     }
     if($isLoanPage){
         var $m = jQuery('#pg-server-message');
