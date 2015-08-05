@@ -521,7 +521,7 @@ function _lxb(window, $debug) {
             },
             init_conf: function(){
                 jQuery('.lxb-conf').each(function(k, item){
-                    var id = $(item).attr('id');
+                    var id = jQuery(item).attr('id');
                     var conf_val = jQuery("#" + id).val();
                     var conf_val_cookie = getCookie(id);
                     if(conf_val != conf_val_cookie && conf_val_cookie != 0){
