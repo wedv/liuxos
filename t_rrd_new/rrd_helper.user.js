@@ -11,7 +11,7 @@
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
 // @version 		1023
-// @updateURL		http://localhost/_we/git/liuxos_gh-pages/t_rrd_new/helper.js
+// @updateURL		http://wedv.github.io/liuxos/t_rrd_new/helper.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
 // @contributionURL	https://me.alipay.com/
