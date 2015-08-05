@@ -184,7 +184,7 @@ var lxb_renderUserInfo = function() {
 
 var lxb_run = function() {
     var $url = window.location.href;
-    var $transList = 'www.renrendai.com/getHomePageUserInfo.action';
+    var $transList = 'www.renrendai.com/account/comm.action';
     var $loan = 'www.renrendai.com/transfer/loanTransferDetail.action';
     var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
     var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
