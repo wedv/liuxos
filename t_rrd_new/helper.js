@@ -193,7 +193,7 @@ var lxb_run = function() {
         jQuery('body').html('');
         lxb_html.init();
         lxb_renderUserInfo();
-        lxb_getTransferList_sf(lxb_process_list);
+        lxb_process_list();
     }
     if($isLoanPage){
         var $m = jQuery('#pg-server-message');
@@ -215,35 +215,40 @@ var lxb_getTransferList_sf = function($callback){
     });
 };
 
-var lxb_process_list = function(ddd){
+var lxb_process_list = function(){
     if (lxb_app.getStop()) {
         return false;
     }
-    if(ddd.status == -1 && ddd.message == 'noLogin'){
-        lxb_showLogin(ddd);
-        return false;
-    }
-    var list = ddd.data.transferList;
-    if(list){
-        jQuery(list).each(function(k, v) {
-            var $m = parseInt(jQuery('#lxb-min-money').val());
-            var $mlilv = parseFloat(jQuery('#lxb-min-lilv').val());
-            $mlilv = $mlilv < 10 ? 10 : $mlilv;
-            var $im = parseInt(jQuery('#lxb-user-money').html());
-            if($m > 0 && $im > $m){     //验证金额
-                var ct = gttt();
-                var ch = ct - window.lastBuyTime;
-                if (v.interest >= $mlilv && ch > 7000) {
-                    aaa(' + v.id + ', 1);
-                    window.lastBuyTime = gttt();
+    lxb_getTransferList_sf(function(ddd){
+        if(ddd.status == -1 && ddd.message == 'noLogin'){
+            lxb_showLogin(ddd);
+            return false;
+        }
+        var list = ddd.data.transferList;
+        if(list){
+            jQuery(list).each(function(k, v) {
+                var $m = parseInt(jQuery('#lxb-min-money').val());
+                var $mlilv = parseFloat(jQuery('#lxb-min-lilv').val());
+                $mlilv = $mlilv < 10 ? 10 : $mlilv;
+                var $im = parseInt(jQuery('#lxb-user-money').html());
+                if($m > 0 && $im > $m){     //验证金额
+                    var ct = gttt();
+                    var ch = ct - window.lastBuyTime;
+                    if (v.interest >= $mlilv && ch > 7000) {
+                        aaa(' + v.id + ', 1);
+                        window.lastBuyTime = gttt();
+                    }
                 }
-            }
-        });
-    }
+            });
+        }
+    });
+    setTimeout(function() {
+        lxb_process_list();
+    }, 1200);
 };
 
 var lxb_showLogin = function(ddd){
-    var $callback = lxb_run;
+    var $callback = lxb_process_list;
     jQuery("#lxb_member_submit").off('click').on('click', function(){
         lxb_doLogin($callback);
     });
