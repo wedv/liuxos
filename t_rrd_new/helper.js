@@ -177,7 +177,7 @@ var lxb_renderUserInfo = function() {
     });
     if(!one){
         setTimeout(function() {
-            lxb_app.renderUserInfo();
+            lxb_renderUserInfo();
         }, $fs);
     }
 };
