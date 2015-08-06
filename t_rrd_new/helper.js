@@ -2,7 +2,6 @@ var lxb_stop = 0;
 var lxb_app = {
     clearStop: function() {
         lxb_stop = 0;
-        lxb_get_list_from_server();
     },
     setStop: function() {
         lxb_stop = 1;
