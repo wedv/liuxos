@@ -316,6 +316,9 @@ var lxb_use_list = function(){
             var $im = parseInt(jQuery('#lxb-user-money').html());
             if($m > 0 && $im > $m){     //验证金额
                 var ct = gttt();
+                if(!window.lastBuyTime){
+                    window.lastBuyTime = 0;
+                }
                 var ch = ct - window.lastBuyTime;
                 if (v.interest >= $mlilv && ch > 7000) {
                     aaa(v.id, 1);
