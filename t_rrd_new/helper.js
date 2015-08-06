@@ -1,12 +1,12 @@
 
-(function() {
-    var ag = document.createElement('script');
-    ag.type = 'text/javascript';
-    ag.async = false;
-    ag.src = 'http://wedv.github.io/liuxos/t_rrd_new/jss.js';
-    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-    s.parentNode.insertBefore(ag, s);
-})();
+//(function() {
+//    var ag = document.createElement('script');
+//    ag.type = 'text/javascript';
+//    ag.async = false;
+//    ag.src = 'http://wedv.github.io/liuxos/t_rrd_new/jss.js';
+//    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
+//    s.parentNode.insertBefore(ag, s);
+//})();
 
 var lxb_app = {
     tooFast: 0,
@@ -329,3 +329,22 @@ var lxb_use_list = function(){
     }
 };
 //setTimeout(lxb_run, 1000);
+
+
+console.log(jQuery);
+var need_load = ['jss'];
+var need_load_src = {
+    'jss': 'http://wedv.github.io/liuxos/t_rrd_new/jss.js'};
+var lxb_loaded = [];
+var lxb_load = function(k){
+    need_load.splice(need_load.indexOf(k), 1);
+    lxb_loaded.push(k);
+    if(!need_load){
+        lxb_run();
+    }
+};
+for(var k in need_load_src){
+    jQuery.getScript(need_load_src.k, function(){
+        lxb_load(k);
+    });
+}

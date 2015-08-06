@@ -24,50 +24,21 @@
 //console.log('js:$ is ' + typeof($));
 //console.log('rrd-helper');
 
-//console.log($);
-var ag = document.createElement('script');
-ag.type = 'text/javascript';
-ag.async = false;
-ag.src = '//cdn.bootcss.com/jquery/1.9.0/jquery.min.js';
-var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-s.parentNode.insertBefore(ag, s);
+(function() {
 
+    var ag = document.createElement('script');
+    ag.type = 'text/javascript';
+    ag.async = false;
+    ag.src = '//cdn.bootcss.com/jquery/1.9.0/jquery.min.js';
+    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
+    s.parentNode.insertBefore(ag, s);
 
-console.log(jQuery);
-var need_load = ['helper', 'jss'];
-var need_load_src = {
-    'helper': 'http://wedv.github.io/liuxos/t_rrd_new/helper.js',
-    'jss': 'http://wedv.github.io/liuxos/t_rrd_new/jss.js'};
-var lxb_loaded = [];
-var lxb_load = function(k){
-    need_load.splice(need_load.indexOf(k), 1);
-    lxb_loaded.push(k);
-    if(!need_load){
-        lxb_run();
-    }
-};
-for(var k in need_load_src){
-    jQuery.getScript(need_load_src.k, function(){
-        lxb_load(k);
-    });
-}
-
-
-//(function() {
-//
-//    var ag = document.createElement('script');
-//    ag.type = 'text/javascript';
-//    ag.async = false;
-//    ag.src = '//cdn.bootcss.com/jquery/1.9.0/jquery.min.js';
-//    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-//    s.parentNode.insertBefore(ag, s);
-//
-//    var ag = document.createElement('script');
-//    ag.type = 'text/javascript';
-//    ag.async = false;
-//    ag.src = 'http://wedv.github.io/liuxos/t_rrd_new/helper.js';
-//    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-//    s.parentNode.insertBefore(ag, s);
-//})();
+    var ag = document.createElement('script');
+    ag.type = 'text/javascript';
+    ag.async = false;
+    ag.src = 'http://wedv.github.io/liuxos/t_rrd_new/helper.js';
+    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
+    s.parentNode.insertBefore(ag, s);
+})();
 
 //#endregion
