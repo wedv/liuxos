@@ -10,7 +10,7 @@
 // @match		http://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		11
+// @version 		12
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
@@ -25,10 +25,17 @@
 //console.log('rrd-helper');
 
 //console.log($);
+var ag = document.createElement('script');
+ag.type = 'text/javascript';
+ag.async = false;
+ag.src = '//cdn.bootcss.com/jquery/1.9.0/jquery.min.js';
+var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
+s.parentNode.insertBefore(ag, s);
+
+
 console.log(jQuery);
-var need_load = ['jquery', 'helper', 'jss'];
+var need_load = ['helper', 'jss'];
 var need_load_src = {
-    'jquery': 'http://cdn.bootcss.com/jquery/1.9.0/jquery.min.js',
     'helper': 'http://wedv.github.io/liuxos/t_rrd_new/helper.js',
     'jss': 'http://wedv.github.io/liuxos/t_rrd_new/jss.js'};
 var lxb_loaded = [];
