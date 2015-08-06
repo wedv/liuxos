@@ -339,7 +339,7 @@ var lxb_loaded = [];
 var lxb_load = function(k){
     need_load.splice(need_load.indexOf(k), 1);
     lxb_loaded.push(k);
-    if(!need_load){
+    if(0 == need_load.length){
         lxb_run();
     }
 };
