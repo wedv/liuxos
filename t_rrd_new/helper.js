@@ -1,31 +1,16 @@
-
+var lxb_stop = 0;
 var lxb_app = {
-    tooFast: 0,
-    transfersList: [],
-    c13: 0,
-    pageSize: 20,
-    stop: 0,
-    sifuError: 0,
-    sifuErrorLimit: 10,
-    sifuSwitchLimit: 20000,
-    autoSwitchServer: function(){
-        jQuery("#lxb-ls-liuxos3").prop("checked", false);
-        lxb_app.sifuError = 0;
-        setTimeout(function(){
-            jQuery("#lxb-ls-liuxos3").prop("checked", true);
-        }, lxb_app.sifuSwitchLimit);
-    },
     clearStop: function() {
-        lxb_app.stop = 0;
+        lxb_stop = 0;
         lxb_get_list_from_server();
     },
     setStop: function() {
         jQuery('.list-item').remove();
         jQuery('#lxb-showCon').html('clear...');
-        lxb_app.stop = 1;
+        lxb_stop = 1;
     },
     getStop: function() {
-        return lxb_app.stop;
+        return lxb_stop;
     }
 };
 var lxb_url = {
