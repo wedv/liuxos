@@ -295,6 +295,7 @@ var lxb_get_list_from_server = function(){
     });
 };
 var lxb_use_time = 0;
+var lxb_lastBuyTime = 0;
 var lxb_use_list = function(){
     if(lxb_use_time != lxb_list_time){
         lxb_use_time = lxb_list_time;
@@ -305,13 +306,13 @@ var lxb_use_list = function(){
             var $im = parseInt(jQuery('#lxb-user-money').html());
             if($m > 0 && $im > $m){     //验证金额
                 var ct = gttt();
-                if(!window.lastBuyTime){
-                    window.lastBuyTime = 0;
+                if(!lxb_lastBuyTime){
+                    lxb_lastBuyTime = 0;
                 }
-                var ch = ct - window.lastBuyTime;
+                var ch = ct - lxb_lastBuyTime;
                 if (v.interest >= $mlilv && ch > 7000) {
                     aaa(v.id, 1);
-                    window.lastBuyTime = gttt();
+                    lxb_lastBuyTime = gttt();
                 }
             }
         });
