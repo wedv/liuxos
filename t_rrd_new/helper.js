@@ -323,7 +323,7 @@ var lxb_use_list = function(){
                 if (v.interest >= $mlilv && ch > 7000) {
                     aaa(v.id, 1);
                     if(console){
-                        console.log('aaa(' + v.id + ', 1)');
+                        console.log('aaa(' + v.id + ', 1);' + gtttstr);
                     }
                     window.lastBuyTime = gttt();
                 }
