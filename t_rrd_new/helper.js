@@ -268,13 +268,11 @@ window.onerror = function(msg,url,line,row){
 }
 
 var lxb_init_time = gttt();
-var lxb_list = {
-    list: [],
-    time: lxb_init_time
-};
+var lxb_list_data = [];
+var lxb_list_time = lxb_init_time;
 var write_lxb_list = function(list){
-    lxb_list.list = list;
-    lxb_list.time = gttt();
+    lxb_list_data = list;
+    lxb_list_time = gttt();
 };
 var lxb_get_list_from_server = function(){
     if (lxb_app.getStop()) {
@@ -290,7 +288,7 @@ var lxb_get_list_from_server = function(){
         }
         var list_ser = ddd.data.transferList;
         var list_ser_str = JSON.stringify(list_ser);
-        var list_loc_str = JSON.stringify(lxb_list.list);
+        var list_loc_str = JSON.stringify(lxb_list_data);
         if(list_ser_str !== list_loc_str){
             write_lxb_list(list_ser);
         }
@@ -298,9 +296,9 @@ var lxb_get_list_from_server = function(){
 };
 var lxb_use_time = 0;
 var lxb_use_list = function(){
-    if(lxb_use_time != lxb_list.time){
-        lxb_use_time = lxb_list.time;
-        jQuery(lxb_list.list).each(function(k, v) {
+    if(lxb_use_time != lxb_list_time){
+        lxb_use_time = lxb_list_time;
+        jQuery(lxb_list_data).each(function(k, v) {
             var $m = parseInt(jQuery('#lxb-min-money').val());
             var $mlilv = parseFloat(jQuery('#lxb-min-lilv').val());
             $mlilv = $mlilv < 10 ? 10 : $mlilv;
