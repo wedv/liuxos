@@ -5,8 +5,6 @@ var lxb_app = {
         lxb_get_list_from_server();
     },
     setStop: function() {
-        jQuery('.list-item').remove();
-        jQuery('#lxb-showCon').html('clear...');
         lxb_stop = 1;
     },
     getStop: function() {
