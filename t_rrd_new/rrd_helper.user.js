@@ -10,7 +10,7 @@
 // @match		http://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		10
+// @version 		11
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
@@ -24,7 +24,7 @@
 //console.log('js:$ is ' + typeof($));
 //console.log('rrd-helper');
 
-console.log($);
+//console.log($);
 console.log(jQuery);
 var need_load = ['jquery', 'helper', 'jss'];
 var need_load_src = {
