@@ -328,4 +328,4 @@ var lxb_use_list = function(){
         });
     }
 };
-setTimeout(lxb_run, 1000);
+//setTimeout(lxb_run, 1000);
