@@ -1,13 +1,4 @@
 
-//(function() {
-//    var ag = document.createElement('script');
-//    ag.type = 'text/javascript';
-//    ag.async = false;
-//    ag.src = 'http://wedv.github.io/liuxos/t_rrd_new/jss.js';
-//    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-//    s.parentNode.insertBefore(ag, s);
-//})();
-
 var lxb_app = {
     tooFast: 0,
     transfersList: [],
@@ -184,7 +175,7 @@ var lxb_renderUserInfo = function() {
 
 var lxb_run = function() {
     var $url = window.location.href;
-    var $transList = 'www.renrendai.com/exceptions/network-busy/404.html';
+    var $transList = 'www.renrendai.com/getHomePageUserInfo.action';
     var $loan = 'www.renrendai.com/transfer/loanTransferDetail.action';
     var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
     var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
@@ -331,7 +322,6 @@ var lxb_use_list = function(){
 //setTimeout(lxb_run, 1000);
 
 
-console.log(jQuery);
 var need_load = ['jss'];
 var need_load_src = {
     'jss': 'http://wedv.github.io/liuxos/t_rrd_new/jss.js'};
