@@ -344,7 +344,7 @@ var lxb_load = function(k){
     }
 };
 for(var k in need_load_src){
-    jQuery.getScript(need_load_src.k, function(){
+    jQuery.getScript(need_load_src[k], function(){
         lxb_load(k);
     });
 }
