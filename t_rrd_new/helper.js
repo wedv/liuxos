@@ -212,7 +212,6 @@ var lxb_getTransferList_sf = function($callback){
     jQuery.ajax({
         url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
         dataType: 'jsonp',
-        jsonpCallback: 'jsonpCallback_getTransferList_sf',
         success: function(ddd){
             $callback ? $callback(ddd) : (function(){})();
         }
@@ -241,7 +240,6 @@ var lxb_doLogin = function($callback){
             url : $url,
             data: {u:$u,p:$p},
             dataType: 'jsonp',
-            jsonpCallback: 'jsonpCallback_doLogin',
             success: function(ddd){
                 if(ddd.status == 0){
                     jQuery("#lxb-member").hide();
