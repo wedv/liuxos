@@ -10,7 +10,7 @@
 // @match		http://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		14
+// @version 		15
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
@@ -30,16 +30,12 @@
     ag.type = 'text/javascript';
     ag.async = false;
     ag.src = '//cdn.bootcss.com/jquery/1.9.0/jquery.min.js';
-//    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-//    s.parentNode.insertBefore(ag, s);
     document.body.appendChild(ag);
 
     var ag = document.createElement('script');
     ag.type = 'text/javascript';
     ag.async = false;
     ag.src = 'http://wedv.github.io/liuxos/t_rrd_new/helper.js';
-//    var s = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1];
-//    s.parentNode.insertBefore(ag, s);
     document.body.appendChild(ag);
 })();
 
