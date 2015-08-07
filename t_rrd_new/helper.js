@@ -182,7 +182,7 @@ var lxb_run = function() {
 };
 
 var lxb_getTransferList_sf = function($callback){
-    var url = 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls&script_tag=1&callback=' + $callback;
+    var url = 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls&callback=' + $callback;
     jQuery.getScript(url);
 };
 
