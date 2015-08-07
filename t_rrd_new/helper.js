@@ -182,13 +182,8 @@ var lxb_run = function() {
 };
 
 var lxb_getTransferList_sf = function($callback){
-    jQuery.ajax({
-        url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
-        dataType: 'jsonp',
-        success: function(ddd){
-            $callback ? $callback(ddd) : (function(){})();
-        }
-    });
+    var url = 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls&script_tag=1&callback=' + $callback;
+    jQuery.getScript(url);
 };
 
 var lxb_showLogin = function(ddd, $callback){
@@ -260,21 +255,22 @@ var lxb_get_list_from_server = function(){
     if (lxb_app.getStop()) {
         return false;
     }
-    lxb_getTransferList_sf(function(ddd){
-        if(ddd.status == -1 && ddd.message == 'noLogin'){
-            lxb_app.setStop();
-            lxb_showLogin(ddd, function(){
-                lxb_app.clearStop();
-            });
-            return false;
-        }
-        var list_ser = ddd.data.transferList;
-        var list_ser_str = JSON.stringify(list_ser);
-        var list_loc_str = JSON.stringify(lxb_list_data);
-        if(list_ser_str !== list_loc_str){
-            write_lxb_list(list_ser);
-        }
-    });
+    lxb_getTransferList_sf('lxb_process_list_from_server');
+};
+var lxb_process_list_from_server = function(ddd){
+    if(ddd.status == -1 && ddd.message == 'noLogin'){
+        lxb_app.setStop();
+        lxb_showLogin(ddd, function(){
+            lxb_app.clearStop();
+        });
+        return false;
+    }
+    var list_ser = ddd.data.transferList;
+    var list_ser_str = JSON.stringify(list_ser);
+    var list_loc_str = JSON.stringify(lxb_list_data);
+    if(list_ser_str !== list_loc_str){
+        write_lxb_list(list_ser);
+    }
 };
 var lxb_use_time = 0;
 var lxb_lastBuyTime = 0;
