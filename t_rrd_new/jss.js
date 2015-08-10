@@ -66,7 +66,7 @@ function aaa(a){
                     $input = '<input type="hidden" id="getUseCouponId" name="couponId" value="" />';
                 }
                 jQuery('#' + $formId).append(jQuery($input));
-                if(jQuery('#lxb-buy-iframe-' + a)){
+                if(jQuery('#lxb-buy-iframe-' + a) && document.getElementById('lxb-buy-iframe-' + a)){
                     var iframe = document.getElementById('lxb-buy-iframe-' + a);
                     destroyIframe(iframe);
 //                    jQuery('#lxb-buy-iframe-' + a).remove();
