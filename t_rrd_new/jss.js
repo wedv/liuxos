@@ -67,7 +67,9 @@ function aaa(a){
                 }
                 jQuery('#' + $formId).append(jQuery($input));
                 if(jQuery('#lxb-buy-iframe-' + a)){
-                    jQuery('#lxb-buy-iframe-' + a).remove();
+                    var iframe = document.getElementById('lxb-buy-iframe-' + a);
+                    destroyIframe(iframe);
+//                    jQuery('#lxb-buy-iframe-' + a).remove();
                 }
                 jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
             }
@@ -99,7 +101,9 @@ function gerIframe(a){
     });
     jQuery('#lxb-buy-iframe').append('<iframe id="lxb-buy-iframe-' + a + '" name="lxb-buy-iframe-' + a + '"></iframe>');
     setTimeout(function(){
-        jQuery('#lxb-buy-iframe-' + a).remove();
+        var iframe = document.getElementById('lxb-buy-iframe-' + a);
+        destroyIframe(iframe);
+//        jQuery('#lxb-buy-iframe-' + a).remove();
     }, 30000);
     return true;
 }
@@ -154,4 +158,18 @@ function testPng(url, $cookies){
 //            jQuery('#lxb-user-money').html(ddd.avaliableBalance);
         }
     });
+}
+/**
+ * 销毁iframe，释放iframe所占用的内存。
+ * @param iframe 需要销毁的iframe对象
+*/
+function destroyIframe(iframe){
+	//把iframe指向空白页面，这样可以释放大部分内存。
+	iframe.src = 'about:blank';
+	try{
+		iframe.contentWindow.document.write('');
+		iframe.contentWindow.document.clear();
+	}catch(e){}
+	//把iframe从页面移除
+	iframe.parentNode.removeChild(iframe);
 }
