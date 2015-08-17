@@ -145,7 +145,7 @@ var lxb_renderUserInfo = function() {
             lxb_app.setStop();
             setTimeout(function(){
                 lxb_app.clearStop();
-            }, 150000);
+            }, 175000);
         }
     });
     if(!one){
