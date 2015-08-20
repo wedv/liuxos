@@ -162,9 +162,7 @@ var lxb_run = function() {
     var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
     var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
     if($isTransListPage){
-    	var exp = new Date();
-	exp.setTime(exp.getTime());
-	setCookie('rrd_page_init_time', exp.toGMTString());
+	setCookie('rrd_page_init_time', gtttstr());
         document.title = 'rrd helper';
         jQuery('body').html('');
         lxb_html.init();
