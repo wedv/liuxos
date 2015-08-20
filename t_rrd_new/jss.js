@@ -138,9 +138,7 @@ function setCookie(name, value) {
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 }
-var exp = new Date();
-exp.setTime(exp.getTime());
-setCookie('rrd_page_init_time', exp.toGMTString());
+
 function getCookie(name) {
     var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
     if (arr != null)
