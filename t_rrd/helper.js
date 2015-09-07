@@ -179,7 +179,7 @@ function _lxb(window, $debug) {
             },
             getTransferList_sf: function($callback){
                 jQuery.ajax({
-                    url : 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls',
+                    url : 'http://liuxos3.duapp.com/wx/box/Rrd.php?r=actionLs',
                     dataType: 'jsonp',
                     jsonpCallback: 'jsonpCallback_getTransferList_sf',
                     success: function(ddd){
