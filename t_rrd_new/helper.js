@@ -18,7 +18,7 @@ var lxb_url = {
     buy: 'http://www.renrendai.com/transfer/buyLoanTransfer.action',
     image_https: 'http://www.renrendai.com/image_https.jsp',
     image: 'http://www.renrendai.com/image.jsp?',
-    login: 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=login',
+    rrd: 'http://liuxos3.duapp.com/wx/box/Rrd.php',
     getItemUrl: function($url, $id) {
         return $url + $id;
     },
@@ -98,12 +98,6 @@ var lxb_html = {
         $dom += '<div id="lxb-item-list-c1">';
         $dom += '</div>';
         $dom += '</div>';
-        $dom += '<form style="display:none;" action="http://liuxos3.duapp.com/wx/rrd_ls.php" method="get" target="lxb-rep-iframe">';
-        $dom += '<input type="text" id="lxb-rep-count" name="c" value="0">';
-        $dom += '<input type="text" name="r" value="c">';
-        $dom += '<input type="submit" id="lxb-rep-submit" value="submit">';
-        $dom += '</form>';
-        $dom += '<iframe name="lxb-rep-iframe" style="display:none;"></iframe>';
         $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
         $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
         $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
@@ -183,7 +177,7 @@ var lxb_run = function() {
 };
 
 var lxb_getTransferList_sf = function($callback){
-    var url = 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=ls&callback=' + $callback;
+    var url = lxb_url.rrd + '?r=actionLs&callback=' + $callback;
     jQuery.getScript(url);
 };
 
@@ -204,10 +198,10 @@ var lxb_doLogin = function($callback){
         alert('账号、密码 不能为空！');
         return false;
     }
-    var $url = 'http://liuxos3.duapp.com/wx/rrd_ls.php?r=login';
+    var $url = lxb_url.rrd;
     jQuery.ajax({
             url : $url,
-            data: {u:$u,p:$p},
+            data: {u:$u,p:$p,r:'actionLogin'},
             dataType: 'jsonp',
             success: function(ddd){
                 if(ddd.status == 0){
