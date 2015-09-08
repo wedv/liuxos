@@ -201,7 +201,7 @@ var lxb_doLogin = function($callback){
     var $url = lxb_url.rrd;
     jQuery.ajax({
             url : $url,
-            data: {u:$u,p:$p,r:'actionLogin'},
+            data: {u:$u,p:$p,r:'actionPageLogin'},
             dataType: 'jsonp',
             success: function(ddd){
                 if(ddd.status == 0){
