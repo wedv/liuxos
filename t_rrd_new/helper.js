@@ -118,7 +118,6 @@ var lxb_html = {
                 return false;
             }
             $target.attr(attr, click_count);
-            return true;
         });
     },
     init_conf: function(){
