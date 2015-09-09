@@ -79,11 +79,14 @@ var lxb_html = {
         $dom += '</div>';
         $dom += '</div>';
         
-        $dom += '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:120px;height:auto;z-index:9999999;top:0;left:0;">';
+        $dom += '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:240px;height:auto;z-index:9999999;top:0;left:0;">';
         $dom += '<span>账户余额：<span id="lxb-user-money">--</span></span>';
         $dom += '<br><span><input type="checkbox" id="lxb-ls-liuxos3" checked="checked">私服</span>';
         $dom += '<br><span>留底<input id="lxb-min-money" class="lxb-conf" value style="width:40px;" />元</span>';
         $dom += '<br><span>收益底限<input id="lxb-min-lilv" class="lxb-conf" value="13" style="width:40px;" />%</span>';
+        $dom += '<hr />';
+        $dom += '<br><span>人人贷账号：<input id="lxb-rrd-user" class="lxb-conf" value="" style="width:160px;" /></span>';
+        $dom += '<br><span>人人贷密码：<input type="password" id="lxb-rrd-password" class="lxb-conf" value="" style="width:160px;" /></span>';
         $dom += '</div>';
         
         
@@ -99,6 +102,7 @@ var lxb_html = {
         $dom += '</div>';
         $dom += '</div>';
         $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
+        $dom += '<a class="save_click_count" id="lxb-rrd-login-link" style="display:none;" target="_blank" data-click_count=0 src="https://www.renrendai.com/loginPage.action">rrd login</a>';
         $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
         $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
         $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:900px;height:200px;border:1px double red;background:#373b42;"></div>';
@@ -106,6 +110,16 @@ var lxb_html = {
         
         jQuery($dom).appendTo('body');
         lxb_html.init_conf();
+        jQuery('body').on('click', '.save_click_count', function(e){
+            var $target = jQuery(e.target);
+            var attr = 'data-click_count';
+            var click_count = parseInt($target.attr(attr)) + 1;
+            if(click_count > 8){
+                return false;
+            }
+            $target.attr(attr, click_count);
+            return true;
+        });
     },
     init_conf: function(){
         jQuery('.lxb-conf').each(function(k, item){
@@ -124,6 +138,10 @@ var lxb_html = {
     }
 };
 
+var lxb_rrd_login = function(){
+    jQuery('#lxb-rrd-login-link').click();
+};
+
 var lxb_renderUserInfo = function() {
     var one = arguments[0] ? arguments[0] : 0;
     var $fs = 60000;
@@ -135,6 +153,16 @@ var lxb_renderUserInfo = function() {
         var money = parseFloat(str.replace(',', ''));
         jQuery('#lxb-user-money').html(money + '');
         var $m = parseInt(jQuery('#lxb-min-money').val());
+        var $isOffLine = '0.00' === money ? true : false;
+        var login_time_cookie_key = 'lxb_rrd_user_off_line';
+        if($isOffLine){
+            if( (getCookie(login_time_cookie_key) <= 0) || ((gttt() - getCookie(login_time_cookie_key)) >= 3600000) ){
+                setCookie(login_time_cookie_key, gttt());
+                lxb_rrd_login();
+            }
+        }else{
+            setCookie(login_time_cookie_key, 0);
+        }
         if(money < $m && !lxb_app.getStop()){
             lxb_app.setStop();
             setTimeout(function(){
@@ -153,8 +181,10 @@ var lxb_run = function() {
     var $url = window.location.href;
     var $transList = 'www.renrendai.com/getHomePageUserInfo.action';
     var $loan = 'www.renrendai.com/transfer/loanTransferDetail.action';
+    var $login = 'www.renrendai.com/loginPage.action';
     var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
     var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
+    var $isLoginPage = ($url.indexOf($login) !== -1) ? true : false;
     if($isTransListPage){
 	setCookie('rrd_page_init_time', gtttstr());
         document.title = 'rrd helper';
@@ -172,6 +202,19 @@ var lxb_run = function() {
             window.parent.renderUserInfo();
         }
         return;
+    }
+    if($isLoginPage){
+        if(window.top!=window.self){
+            var $ruser = getCookie('lxb-rrd-user');
+            var $rpwd = getCookie('lxb-rrd-password');
+            if(jQuery.trim($ruser) && jQuery.trim($rpwd)){
+                jQuery('#j_username').val($ruser);
+                jQuery('#J_pass_input').val($rpwd);
+                setTimeout(function(){
+                    jQuery('#login').submit();
+                }, 500);
+            }
+        }
     }
     jQuery('<div style="background:white;text-align:center;left:0;z-index:99999999;top:0;position:fixed;width:200px;height:30px;line-height:30px;border:1px solid red;"><a href="http://www.renrendai.com/getHomePageUserInfo.action">人人贷助手</a></div>').appendTo('body');
 };
