@@ -155,7 +155,7 @@ var lxb_renderUserInfo = function() {
         if($isOffLine){
             if( (getCookie(login_time_cookie_key) <= 0) || ((gttt() - getCookie(login_time_cookie_key)) >= 3600000) ){
                 setCookie(login_time_cookie_key, gttt());
-                lxb_rrd_login();
+//                lxb_rrd_login();
             }
         }else{
             setCookie(login_time_cookie_key, 0);
