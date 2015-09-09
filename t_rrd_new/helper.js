@@ -153,7 +153,7 @@ var lxb_renderUserInfo = function() {
         var money = parseFloat(str.replace(',', ''));
         jQuery('#lxb-user-money').html(money + '');
         var $m = parseInt(jQuery('#lxb-min-money').val());
-        var $isOffLine = '0.00' === money ? true : false;
+        var $isOffLine = 0 === money ? true : false;
         var login_time_cookie_key = 'lxb_rrd_user_off_line';
         if($isOffLine){
             if( (getCookie(login_time_cookie_key) <= 0) || ((gttt() - getCookie(login_time_cookie_key)) >= 3600000) ){
