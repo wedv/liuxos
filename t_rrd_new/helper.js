@@ -79,7 +79,7 @@ var lxb_html = {
         $dom += '</div>';
         $dom += '</div>';
         
-        $dom += '<div id="lxb" style="border:1px double red;background:#373b42;position:fixed;width:285px;height:auto;z-index:9999999;top:0;left:0;padding:5px;">';
+        $dom += '<div id="lxb" style="color: #BB8B8B;border:1px double red;background:#373b42;position:fixed;width:285px;height:auto;z-index:9999999;top:0;left:0;padding:5px;">';
         $dom += '<span>账户余额：<span id="lxb-user-money">--</span></span>';
         $dom += '<br><span><input type="checkbox" id="lxb-ls-liuxos3" checked="checked">私服</span>';
         $dom += '<br><span>留底<input id="lxb-min-money" class="lxb-conf" value style="width:40px;" />元</span>';
