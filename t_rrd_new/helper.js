@@ -102,7 +102,7 @@ var lxb_html = {
         $dom += '</div>';
         $dom += '</div>';
         $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
-        $dom += '<a class="save_click_count" id="lxb-rrd-login-link" style="display:none;" target="_blank" data-click_count=0 src="https://www.renrendai.com/loginPage.action">rrd login</a>';
+        $dom += '<div class="save_click_count" id="lxb-rrd-login-link" style="display:none;" data-click_count=0><a target="_blank" src="https://www.renrendai.com/loginPage.action">rrd login</a></div>';
         $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
         $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
         $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:900px;height:200px;border:1px double red;background:#373b42;"></div>';
@@ -118,6 +118,7 @@ var lxb_html = {
                 return false;
             }
             $target.attr(attr, click_count);
+            jQuery($target.children()).click();
         });
     },
     init_conf: function(){
