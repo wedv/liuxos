@@ -102,7 +102,7 @@ var lxb_html = {
         $dom += '</div>';
         $dom += '</div>';
         $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
-        $dom += '<div class="save_click_count" id="lxb-rrd-login-link" style="display:none;" data-click_count=0></div><a style="display:none;" target="_blank" href="https://www.renrendai.com/loginPage.action">rrd login</a>';
+        $dom += '<iframe class="save_click_count" id="lxb-rrd-login-iframe" style="display:none;" data-click_count=0 href="https://www.renrendai.com/loginPage.action"></iframe>';
         $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
         $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
         $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:900px;height:200px;border:1px double red;background:#373b42;"></div>';
@@ -110,16 +110,6 @@ var lxb_html = {
         
         jQuery($dom).appendTo('body');
         lxb_html.init_conf();
-        jQuery('body').on('click', '.save_click_count', function(e){
-            var $target = jQuery(e.target);
-            var attr = 'data-click_count';
-            var click_count = parseInt($target.attr(attr)) + 1;
-            if(click_count > 8){
-                return false;
-            }
-            $target.attr(attr, click_count);
-            jQuery($target.next()).click();
-        });
     },
     init_conf: function(){
         jQuery('.lxb-conf').each(function(k, item){
@@ -139,7 +129,14 @@ var lxb_html = {
 };
 
 var lxb_rrd_login = function(){
-    jQuery('#lxb-rrd-login-link').click();
+    var $target = jQuery('#lxb-rrd-login-iframe');
+    var attr = 'data-click_count';
+    var click_count = parseInt($target.attr(attr)) + 1;
+    if(click_count > 8){
+        return false;
+    }
+    $target.attr(attr, click_count);
+    $target.attr('src', 'https://www.renrendai.com/loginPage.action');
 };
 
 var lxb_renderUserInfo = function() {
