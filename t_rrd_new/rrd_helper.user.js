@@ -1,16 +1,16 @@
 
 // ==UserScript==
-// @name 		人人贷助手系统 For Firefox&Chrome
+// @name 		人人贷助手系统(精简版) For Firefox&Chrome
 // @namespace		http://www.u-tide.com/fish/
 // @author		770977802@qq.com <770977802@qq.com> http://www.baidu.com/
 // @developer		we
 // @contributor		
 // @description	人人贷助手系统 For Firefox&Chrome :-)
-// @include		http://www.renrendai.com/*
-// @match		http://www.renrendai.com/*
+// @include		*://www.renrendai.com/*
+// @match		*://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		15
+// @version 		16
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
