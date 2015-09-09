@@ -296,7 +296,7 @@ var lxb_use_list = function(){
 
 var need_load = ['jss'];
 var need_load_src = {
-    'jss': 'http://wedv.github.io/liuxos/t_rrd_new/jss.js'};
+    'jss': '//wedv.github.io/liuxos/t_rrd_new/jss.js'};
 var lxb_loaded = [];
 var lxb_load = function(k){
     need_load.splice(need_load.indexOf(k), 1);
