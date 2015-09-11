@@ -206,6 +206,7 @@ var lxb_run = function() {
         setInterval(lxb_use_list, 1000);
         return;
     }
+    jQuery('<div style="background:white;text-align:center;left:0;z-index:99999999;top:0;position:fixed;width:200px;height:30px;line-height:30px;border:1px solid red;"><a id="lxb_rrd_helper_start_link" href="http://www.renrendai.com/getHomePageUserInfo.action">人人贷助手</a></div>').appendTo('body');
     if($isLoanPage){
         var $m = jQuery('#pg-server-message');
         if($m){
@@ -244,7 +245,6 @@ var lxb_run = function() {
             }, 3500);
         }
     }
-    jQuery('<div style="background:white;text-align:center;left:0;z-index:99999999;top:0;position:fixed;width:200px;height:30px;line-height:30px;border:1px solid red;"><a id="lxb_rrd_helper_start_link" href="http://www.renrendai.com/getHomePageUserInfo.action">人人贷助手</a></div>').appendTo('body');
 };
 
 var lxb_getTransferList_sf = function($callback){
