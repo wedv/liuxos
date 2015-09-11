@@ -191,9 +191,11 @@ var lxb_run = function() {
     var $transList = 'www.renrendai.com/getHomePageUserInfo.action';
     var $loan = 'www.renrendai.com/transfer/loanTransferDetail.action';
     var $login = 'www.renrendai.com/loginPage.action';
+    var $accountInfo = 'www.renrendai.com/account/index.action';
     var $isTransListPage = ($url.indexOf($transList) !== -1) ? true : false;
     var $isLoanPage = ($url.indexOf($loan) !== -1) ? true : false;
     var $isLoginPage = ($url.indexOf($login) !== -1) ? true : false;
+    var $isAccountInfoPage = ($url.indexOf($accountInfo) !== -1) ? true : false;
     if($isTransListPage){
 	setCookie('rrd_page_init_time', gtttstr());
         document.title = 'rrd helper';
@@ -213,7 +215,9 @@ var lxb_run = function() {
         return;
     }
     if($isLoginPage){
-        if(window.top!=window.self){
+        console.log('$isLoginPage:' + $isLoginPage);
+        var $loginLim = window.top!=window.self ? true : true;
+        if($loginLim){
             var $ruser = getCookie('lxb-rrd-user');
             var $rpwd = getCookie('lxb-rrd-password');
             if(jQuery.trim($ruser) && jQuery.trim($rpwd)){
@@ -225,6 +229,15 @@ var lxb_run = function() {
                     }, 3500);
                 }
             }
+        }
+    }
+    if($isAccountInfoPage){
+        console.log('$isAccountInfoPage:' + $isAccountInfoPage);
+        if(getCookie('lxb-rrd-user-need-auto-login')){
+            setTimeout(function(){
+                jQuery('#lxb_rrd_helper_start_link').click();
+                setCookie('lxb-rrd-user-need-auto-login', 0);
+            }, 3500);
         }
     }
     jQuery('<div id="lxb_rrd_helper_start_link" style="background:white;text-align:center;left:0;z-index:99999999;top:0;position:fixed;width:200px;height:30px;line-height:30px;border:1px solid red;"><a href="http://www.renrendai.com/getHomePageUserInfo.action">人人贷助手</a></div>').appendTo('body');
