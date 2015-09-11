@@ -102,7 +102,7 @@ var lxb_html = {
         $dom += '</div>';
         $dom += '</div>';
         $dom += '<div id="lxb-buy-iframe" name="lxb-buy-iframe" style="display:none;"></div>';
-        $dom += '<iframe id="lxb-rrd-login-iframe" style="display:none;" data-click_count=0></iframe>';
+        $dom += '<iframe id="lxb-rrd-login-iframe" style="display:none;" data-login_count=0></iframe>';
         $dom += '<input type="hidden" id="lxb-buy-hide-id" value="0">';
         $dom += '<div id="lxb-buy-hide-auto-commit" style="display:none;"></div>';
         $dom += '<div id="lxb-buy-hide" name="lxb-buy-hide" style="overflow:auto;display:none;margin:-1px;padding:0;width:900px;height:200px;border:1px double red;background:#373b42;"></div>';
@@ -130,7 +130,7 @@ var lxb_html = {
 
 var lxb_rrd_login = function(){
     var $target = jQuery('#lxb-rrd-login-iframe');
-    var attr = 'data-click_count';
+    var attr = 'data-login_count';
     var click_count = parseInt($target.attr(attr)) + 1;
     if(click_count > 8){
         return false;
@@ -164,7 +164,7 @@ var lxb_renderUserInfo = function() {
         if($isOffLine){
             if( (getCookie(login_time_cookie_key) <= 0) || ((gttt() - getCookie(login_time_cookie_key)) >= 3600000) ){
                 setCookie(login_time_cookie_key, gttt());
-//                lxb_rrd_login();
+                lxb_rrd_login();
             }
         }else{
             setCookie(login_time_cookie_key, 0);
