@@ -240,6 +240,7 @@ var lxb_run = function() {
             setTimeout(function(){
                 jQuery('#lxb_rrd_helper_start_link').click();
                 setCookie('lxb-rrd-user-need-auto-login', 0);
+                setCookie('lxb_rrd_user_off_line', 0);
             }, 3500);
         }
     }
