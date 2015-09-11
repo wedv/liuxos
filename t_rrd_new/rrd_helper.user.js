@@ -37,6 +37,18 @@
     ag.async = false;
     ag.src = '//wedv.github.io/liuxos/t_rrd_new/helper.js';
     document.body.appendChild(ag);
+    
+    var $url = window.location.href;
+    var $accountInfo = 'www.renrendai.com/account/index.action';
+    var $isAccountInfoPage = ($url.indexOf($accountInfo) !== -1) ? true : false;
+    if($isAccountInfoPage){
+        if(getCookie('lxb-rrd-user-need-auto-login')){
+            setTimeout(function(){
+                jQuery('#lxb_rrd_helper_start_link').click();
+                setCookie('lxb-rrd-user-need-auto-login', 0);
+            }, 3500);
+        }
+    }
 })();
 
 //#endregion
