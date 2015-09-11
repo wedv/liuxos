@@ -128,19 +128,14 @@ var lxb_html = {
     }
 };
 
-var lxb_rrd_login_count = 0;
 var lxb_rrd_login = function(){
-    lxb_rrd_login_count = lxb_rrd_login_count+1;
-    setCookie('lxb-rrd-user-need-auto-login', lxb_rrd_login_count);
+    var lxb_rrd_login_count = getCookie('lxb_rrd_login_count')+1;
     var $target = jQuery('#lxb-rrd-login-iframe');
-    var attr = 'data-login_count';
-    var click_count = parseInt($target.attr(attr)) + 1;
-    if(click_count > 8){
-        return false;
-    }
-    window.open('http://www.renrendai.com/loginPage.action');
-    $target.attr(attr, click_count);
-    $target.attr('src', 'https://www.renrendai.com/loginPage.action');
+//    if(lxb_rrd_login_count > 8){
+//        return false;
+//    }
+    setCookie('lxb-rrd-user-need-auto-login', lxb_rrd_login_count);
+    $target.attr('src', 'http://www.renrendai.com/loginPage.action'); //rrd登陆页面有预防被iframe的js，所以此处是window.top='url'
 };
 
 var lxb_renderUserInfo_timeout = function(){
@@ -317,7 +312,7 @@ jQuery.ajaxSetup({
 
 window.onerror = function(msg,url,line,row){
 	
-}
+};
 
 var lxb_init_time = gttt();
 var lxb_list_data = [];
