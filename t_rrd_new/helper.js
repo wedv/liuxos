@@ -239,6 +239,14 @@ var lxb_showLogin = function(ddd, $callback){
     var D = new Date();
     t += D.getHours() + ':' + D.getMinutes() + ':' + D.getSeconds();
     jQuery("#show-lxb-login-time").html(t + ddd.sid);
+    setTimeout(function(){
+        lxb_autoLogin();
+    }, 180000);
+};
+var lxb_autoLogin = function(){
+    if($("#lxb-member").css("display") != 'none'){
+        $('#lxb_member_submit').click();
+    }
 };
 var lxb_doLogin = function($callback){
     var $u = jQuery("#lxb_member_user").val();
