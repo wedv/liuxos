@@ -235,9 +235,9 @@ var lxb_run = function() {
         console.log(needAutoLogin);
         if(needAutoLogin){
             setTimeout(function(){
-                window.location.href = 'http://' + $transList;
                 setCookie('lxb-rrd-user-need-auto-login', 0);
                 setCookie('lxb_rrd_user_off_line', 0);
+                window.location.href = 'http://' + $transList;
             }, 3500);
         }
     }
