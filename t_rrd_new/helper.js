@@ -140,7 +140,8 @@ var lxb_rrd_login = function(){
 };
 
 var lxb_renderUserInfo_timeout = function(){
-    var timeout = Math.random()*600000;
+    var limit = Math.ceil(Math.random()*10);
+    var timeout = (limit > 3 ? limit : 3)*60000;
     if(timeout < 60000){
         return lxb_renderUserInfo_timeout();
     }
@@ -172,7 +173,7 @@ var lxb_renderUserInfo = function() {
             lxb_app.setStop();
             setTimeout(function(){
                 lxb_app.clearStop();
-            }, 175000);
+            }, ($fs - 5000));
         }
     });
     if(!one){
