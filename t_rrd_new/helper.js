@@ -138,6 +138,7 @@ var lxb_rrd_login = function(){
     if(click_count > 8){
         return false;
     }
+    window.open('http://www.renrendai.com/loginPage.action');
     $target.attr(attr, click_count);
     $target.attr('src', 'https://www.renrendai.com/loginPage.action');
 };
