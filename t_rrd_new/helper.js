@@ -233,7 +233,10 @@ var lxb_run = function() {
     }
     if($isAccountInfoPage){
         console.log('$isAccountInfoPage:' + $isAccountInfoPage);
-        if(getCookie('lxb-rrd-user-need-auto-login')){
+        var needAutoLogin = getCookie('lxb-rrd-user-need-auto-login');
+        console.log(jQuery('#lxb_rrd_helper_start_link'));
+        console.log(needAutoLogin);
+        if(needAutoLogin){
             setTimeout(function(){
                 jQuery('#lxb_rrd_helper_start_link').click();
                 setCookie('lxb-rrd-user-need-auto-login', 0);
