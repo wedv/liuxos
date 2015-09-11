@@ -42,11 +42,32 @@
     var $accountInfo = 'www.renrendai.com/account/index.action';
     var $isAccountInfoPage = ($url.indexOf($accountInfo) !== -1) ? true : false;
     if($isAccountInfoPage){
+        console.log($isAccountInfoPage);
         if(getCookie('lxb-rrd-user-need-auto-login')){
             setTimeout(function(){
                 jQuery('#lxb_rrd_helper_start_link').click();
                 setCookie('lxb-rrd-user-need-auto-login', 0);
             }, 3500);
+        }
+    }
+    
+    
+    var $login = 'www.renrendai.com/loginPage.action';
+    var $isLoginPage = ($url.indexOf($login) !== -1) ? true : false;
+    if($isLoginPage){
+        console.log($isLoginPage);
+        if(window.top!=window.self){
+            var $ruser = getCookie('lxb-rrd-user');
+            var $rpwd = getCookie('lxb-rrd-password');
+            if(jQuery.trim($ruser) && jQuery.trim($rpwd)){
+                jQuery('#j_username').val($ruser);
+                jQuery('#J_pass_input').val($rpwd);
+                if(getCookie('lxb-rrd-user-need-auto-login')){
+                    setTimeout(function(){
+                        jQuery('#login').submit();
+                    }, 3500);
+                }
+            }
         }
     }
 })();
