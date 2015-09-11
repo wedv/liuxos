@@ -136,7 +136,7 @@ function setCookie(name, value) {
     var Days = 30; //此 cookie 将被保存 30 天
     var exp = new Date();
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/;domain=window.location.host";
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/;domain=" + window.location.host;
 }
 
 function getCookie(name) {
