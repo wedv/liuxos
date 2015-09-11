@@ -235,6 +235,7 @@ var lxb_run = function() {
         console.log(needAutoLogin);
         if(needAutoLogin){
             setTimeout(function(){
+                alert('sdf');
                 jQuery('#lxb_rrd_helper_start_link').click();
                 setCookie('lxb-rrd-user-need-auto-login', 0);
                 setCookie('lxb_rrd_user_off_line', 0);
