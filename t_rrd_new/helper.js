@@ -139,9 +139,17 @@ var lxb_rrd_login = function(){
     $target.attr('src', 'https://www.renrendai.com/loginPage.action');
 };
 
+var lxb_renderUserInfo_timeout = function(){
+    var timeout = Math.random()*600000;
+    if(timeout < 60000){
+        return lxb_renderUserInfo_timeout();
+    }
+    return timeout;
+};
+
 var lxb_renderUserInfo = function() {
     var one = arguments[0] ? arguments[0] : 0;
-    var $fs = 60000;
+    var $fs = lxb_renderUserInfo_timeout();
     lxb_http.get_callback(lxb_url.getUrl(lxb_url.userInfo), 0, function($userInfo){
         var str = '--';
         if($userInfo){
