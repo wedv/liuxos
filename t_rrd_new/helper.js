@@ -212,7 +212,6 @@ var lxb_run = function() {
         return;
     }
     if($isLoginPage){
-        console.log('$isLoginPage:' + $isLoginPage);
         var $loginLim = window.top!=window.self ? true : true;
         if($loginLim){
             var $ruser = getCookie('lxb-rrd-user');
@@ -229,10 +228,7 @@ var lxb_run = function() {
         }
     }
     if($isAccountInfoPage){
-        console.log('$isAccountInfoPage:' + $isAccountInfoPage);
         var needAutoLogin = getCookie('lxb-rrd-user-need-auto-login');
-        console.log(jQuery('#lxb_rrd_helper_start_link'));
-        console.log(needAutoLogin);
         if(needAutoLogin){
             setTimeout(function(){
                 setCookie('lxb-rrd-user-need-auto-login', 0);
