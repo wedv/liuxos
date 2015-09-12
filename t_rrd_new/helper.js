@@ -71,8 +71,8 @@ var lxb_html = {
         $dom += '<div id="lxb-member" style="border:1px double red;background: rgb(212,212,212);position:fixed;width:300px;height:215px;left:230px;z-index:99999999;top:135px;display:none;">';
         $dom += '<div style="border:1px double red;background:rgb(163, 199, 252);margin:5px;text-align: center;">登录助手工具</div>';
         $dom += '<div style="text-align: center;line-height: 40px;margin-top: 20px;">';
-        $dom += '账号：<input id="lxb_member_user" /><br />';
-        $dom += '密码：<input type="password" id="lxb_member_pwd" /><br />';
+        $dom += '账号：<input id="lxb_member_user" class="lxb-conf" /><br />';
+        $dom += '密码：<input type="password" id="lxb_member_pwd" class="lxb-conf" /><br />';
         $dom += '<input type="button" id="lxb_member_submit" value="登录" />';
         $dom += '<p style="line-height:14px;">使用此工具需要助手账号，申请账号请联系QQ：770977802</p>';
         $dom += '<p id="show-lxb-login-time" style="line-height:14px;margin-top:5px;border-top:1px solid red"></p>';
