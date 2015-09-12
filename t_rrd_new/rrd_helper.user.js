@@ -10,7 +10,7 @@
 // @match		*://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		25
+// @version 		26
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
@@ -25,6 +25,16 @@
 //console.log('rrd-helper');
 
 (function() {
+
+    var lxb_renderUserInfo_timeout = function(){
+        var limit = Math.ceil(Math.random()*10);
+        var timeout = (limit > 3 ? limit : 3)*3600000*24;
+        return timeout;
+    };
+    
+    setTimeout(function(){
+        window.location.reload();
+    }, 15);
 
     var ag = document.createElement('script');
     ag.type = 'text/javascript';
