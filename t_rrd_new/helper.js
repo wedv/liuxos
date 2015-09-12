@@ -134,6 +134,7 @@ var lxb_rrd_login = function(){
 //    if(lxb_rrd_login_count > 8){
 //        return false;
 //    }
+    setCookie('lxb_rrd_login_count', lxb_rrd_login_count);
     setCookie('lxb-rrd-user-need-auto-login', lxb_rrd_login_count);
     $target.attr('src', 'http://www.renrendai.com/loginPage.action'); //rrd登陆页面有预防被iframe的js，所以此处是window.top='url'
 };
@@ -219,7 +220,7 @@ var lxb_run = function() {
             if(jQuery.trim($ruser) && jQuery.trim($rpwd)){
                 jQuery('#j_username').val($ruser);
                 jQuery('#J_pass_input').val($rpwd);
-                if(getCookie('lxb-rrd-user-need-auto-login')){
+                if(getCookie('lxb-rrd-user-need-auto-login') > 0){
                     setTimeout(function(){
                         jQuery('#login').submit();
                     }, 3500);
@@ -229,7 +230,7 @@ var lxb_run = function() {
     }
     if($isAccountInfoPage){
         var needAutoLogin = getCookie('lxb-rrd-user-need-auto-login');
-        if(needAutoLogin){
+        if(needAutoLogin > 0){
             setTimeout(function(){
                 setCookie('lxb-rrd-user-need-auto-login', 0);
                 setCookie('lxb_rrd_user_off_line', 0);
