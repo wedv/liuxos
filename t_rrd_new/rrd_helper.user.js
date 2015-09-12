@@ -10,7 +10,7 @@
 // @match		*://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		21
+// @version 		22
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
