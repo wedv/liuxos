@@ -358,7 +358,7 @@ var lxb_use_list = function(){
                 if (v.interest >= $mlilv && ch > 7000) {
                     setTimeout(function(){
                         aaa(v.id, 1);
-                    }, 2500);
+                    }, 1200);
                     lxb_lastBuyTime = gttt();
                 }
             }
