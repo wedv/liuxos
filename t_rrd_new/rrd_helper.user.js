@@ -10,7 +10,7 @@
 // @match		*://www.renrendai.com/*
 // @icon		http://www.renrendai.com/favicon.ico
 // @run-at		document-idle
-// @version 		28
+// @version 		29
 // @updateURL		http://wedv.github.io/liuxos/t_rrd_new/rrd_helper.user.js
 // @supportURL		https://github.com/wedv/php-tool
 // @homepage		https://github.com/wedv/php-tool
@@ -28,7 +28,7 @@
 
     var lxb_renderUserInfo_timeout = function(){
         var limit = Math.ceil(Math.random()*10);
-        var timeout = (limit > 3 ? limit : 3)*3600000*24;
+        var timeout = (limit > 3 ? limit : 3)*3600000;
         return timeout;
     };
     
