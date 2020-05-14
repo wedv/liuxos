@@ -14,8 +14,16 @@
     margin-top:-100px;
     word-wrap:break-word;
 }
+/*flex垂直居中对齐*/
+.align-center-vertical{
+     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
 </style>
 <div class="juzhong"><!--外层div绝对定位，左上定点居中-->
-    <div class="juzhong1"><!--内部div margin 负值纠正-->
+    <div class="juzhong1 align-center-vertical"><!--内部div margin 负值纠正-->
+        测试<br>测试
     </div>
 </div>
